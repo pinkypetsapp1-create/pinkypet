@@ -13,13 +13,24 @@ Especificación completa: `docs/SPEC.md`. Mapa diseño → código: `docs/design
 | `npm run design:lock -- --check` | Comprueba que `design/` coincide con `design/design.lock.json` |
 | `/sincronizar-diseno` | Trae los cambios de Claude Design (solo la lanza el equipo) |
 
+Backend (desde `backend/`; configuración en `backend/.env`, plantilla en `.env.example`):
+
+| Comando | Qué hace |
+|---|---|
+| `npm run dev:mem` | API con MongoDB en memoria y el seed hecho (sin Atlas); Swagger en `/docs` |
+| `npm run start:dev` | API contra `MONGODB_URI`, recargando al guardar |
+| `npm test` · `npm run test:e2e` | Tests unitarios · e2e (MongoDB en memoria) |
+| `npm run seed` | Mascotas, preguntas y 3 cuentas demo (idempotente) |
+| `npm run openapi` | Regenera `backend/openapi.json` (contrato para la app) |
+| `npm run demo:resolve -- <id> finalizada\|rechazada` | Simula la respuesta de la protectora (solo desarrollo) |
+
 ## Estructura
 
 ```
 design/   copia del diseño (DS + Alta fidelidad), solo lectura · design.lock.json · CHANGELOG.md
 docs/     SPEC.md · design-map.md · design-feedback.md · PROMPT-INICIAL.md
 scripts/  generate-tokens.mjs · design-lock.mjs
-backend/  NestJS + MongoDB (Fase 1)
+backend/  NestJS + MongoDB · src/compatibility/rules.ts (cálculo) · src/seed/pets.data.ts (datos del diseño) · openapi.json
 app/      Ionic + Angular standalone + Capacitor (Fase 2); app/src/theme/tokens.css es generado
 ```
 

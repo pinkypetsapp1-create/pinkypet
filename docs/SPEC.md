@@ -112,6 +112,44 @@ Correo `persona@ejemplo.com`. Respuestas: 1 No · 2 No · 3 Vivo sola o solo · 
 
 Orden esperado para la cuenta demo: **Luna 92 · Coco 85 · Simba 81 · Kira 76 · Nube 70 · Rocky 64**.
 
+### 4.4 bis · Cálculo implementado (Fase 1, aprobado por el equipo el 2026-11-23)
+
+**El % siempre se calcula a partir de las respuestas de cada persona al test.** No hay ningún % fijo por mascota: los del diseño solo sirven para comprobar el orden con la cuenta demo.
+
+- Código: `backend/src/compatibility/rules.ts` (funciones puras). Los atributos de cada mascota están en `backend/src/seed/pets.data.ts`.
+- Cada pregunta compara la respuesta con un atributo y da un nivel: encaja (0), matiz leve (−5), encaje parcial (−15) o no encaja (−30).
+- Cada bloque vale 100 menos sus penalizaciones (mínimo 0). El global usa la fórmula de §4.4.
+- Una mascota es **compatible** si tiene un 50 % o más. Si ninguna llega, `sinCompatibles: true` y la app muestra la pantalla de error.
+
+Atributos derivados de los textos de cada ficha:
+
+| | Luna | Simba | Rocky | Kira | Coco | Nube |
+|---|---|---|---|---|---|---|
+| Tamaño | pequeño | pequeño | grande | mediano | pequeño | pequeño |
+| Etapa | adulto | adulto | adulto | mayor | adulto | adulto |
+| Actividad | baja | alta | alta | baja | media | media |
+| Vivienda mínima | piso | piso | casa con jardín | piso | piso | piso |
+| Horas sola, máx. | 8 | 6 | 4 | 6 | 8 | 4 |
+| Tiempo diario | bajo | medio | alto | medio | medio | medio |
+| Con niños | ¿? | ¿? | ¿? | ¿? | ¿? | ¿? |
+| Con otras mascotas | sí | ¿? | sí | sí | ¿? | prefiere otra cobaya |
+| Coste mensual | bajo | bajo | alto | alto | bajo | medio |
+| Necesidades especiales | leves | — | — | medias | — | altas |
+| Experiencia | básica | ninguna | básica | básica | ninguna | básica |
+
+Resultado con la cuenta demo, comprobado en los tests unitarios y e2e:
+
+| Mascota | Hogar / Día / Mascota | Calculado | Diseño |
+|---|---|---|---|
+| Luna | 100 / 100 / 90 | 97 | 92 |
+| Coco | 100 / 85 / 100 | 95 | 85 |
+| Simba | 100 / 65 / 95 | 87 | 81 |
+| Kira | 100 / 95 / 50 | 82 | 76 |
+| Nube | 85 / 55 / 70 | 70 | 70 |
+| Rocky | 85 / 25 / 50 | 54 | 64 |
+
+El orden coincide con el del diseño. Las diferencias de valor (de −10 a +10) se han aceptado; no se fuerzan los números.
+
 ### 4.5 Estados de la solicitud (`Estado.dc.html`, prop `fase`)
 
 | Fase | Etiqueta | Título / mensaje | Pasos |
@@ -147,7 +185,8 @@ Diálogos (textos literales en `Ficha.dc.html` y `Estado.dc.html`):
 
 ## 6. Reglas de negocio
 
-- **Una sola solicitud activa por persona**, garantizada en el backend (índice único parcial en Mongo sobre `userId` con `estado: 'en_proceso'`). Si se intenta enviar otra: error `ACTIVE_REQUEST_EXISTS` → diálogo de `Ficha-Limite`.
+- **Una sola solicitud activa por persona**, garantizada en el backend: índice único parcial `una_solicitud_activa_por_persona` sobre `userId` con `estado: 'en_proceso'`. Si se intenta enviar otra, error `ACTIVE_REQUEST_EXISTS` → diálogo de `Ficha-Limite`. «Continuar y cancelar la anterior» = `POST /requests` con `replaceActive: true`.
+  - La garantía real es el índice. El test de envíos simultáneos también pasa sin él, porque en un solo proceso las carreras casi nunca se dan. Por eso hay otro test que inserta directamente en la base de datos y comprueba que el índice lo rechaza (verificado quitando el índice: ese test falla).
 - **Cancelar** pide confirmación; la mascota sigue disponible.
 - **Enviar una solicitud** exige cuenta y test (pendiente de confirmar: §10).
 - **Respuesta de la protectora:** el paso de `en_proceso` a `finalizada` o `rechazada` se simula con un endpoint o un script que solo existe en desarrollo.
@@ -224,10 +263,12 @@ CLAUDE.md · docs/ · design/ (solo lectura) · scripts/ · backend/ (NestJS + M
 
 | Decisión | Notas | Estado |
 |---|---|---|
-| «Continuar con Google» | Fuera de la fase 1. ¿Oculto o desactivado con aviso? | pendiente |
-| Umbral de «ninguna mascota compatible» | No está definido en el diseño (`Error-SinCompatibles`). | pendiente |
-| ¿Solicitud sin test? | El diseño sugiere que no: solo hay ficha con botón de envío en el estado T. | pendiente de confirmar |
-| Simulación de la protectora | Endpoint o script solo de desarrollo. | pendiente |
+| «Continuar con Google» | **Oculto** (botón y separador «o») hasta que se implemente. Anotado en `design-feedback.md` F1-1. | decidido 2026-11-23 |
+| Umbral de «ninguna mascota compatible» | **50 %**: por debajo, la mascota no cuenta como compatible. | decidido 2026-11-23 |
+| ¿Solicitud sin test? | **No**: exige cuenta y test (`TEST_REQUIRED`). | decidido 2026-11-23 |
+| Simulación de la protectora | **Endpoint solo de desarrollo**: `POST /dev/requests/:id/resolve` con la cabecera `X-Dev-Key`. No existe con `NODE_ENV=production`. Atajo: `npm run demo:resolve -- <id> finalizada\|rechazada`. | decidido 2026-11-23 |
+| Disponibilidad tras la respuesta | Propuesta de implementación: si la protectora responde (`finalizada` o `rechazada`), la mascota deja de estar disponible y sale del catálogo. Si se cancela, sigue disponible. `npm run seed` vuelve a dejarlas todas disponibles. | **pendiente de confirmar** |
+| Cálculo del % | Siempre a partir de las respuestas del test (§4.4 bis). | decidido 2026-11-23 |
 | ¿iOS fuera de alcance? | — | pendiente |
 | Capturas de referencia | Las exporta el equipo a `design/_incoming/reference/`. | en espera |
 | Mitigar el arranque en frío de Render | Usar los estados de carga existentes (por ejemplo, el del botón) y timeouts largos, sin pantallas nuevas. | proponer en F3 |
