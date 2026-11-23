@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Ficha de la mascota · zoom 200 %</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&amp;family=Roboto:wght@400;500;600;700&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block">
+<style>
+body{margin:0}
+a{color:#734863}
+.ms{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;direction:ltr;font-feature-settings:'liga';-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.ms.f{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A6265;outline-offset:2px}
+.sl:hover{background-image:linear-gradient(rgba(28,27,27,.08),rgba(28,27,27,.08))}
+.sl:active{background-image:linear-gradient(rgba(28,27,27,.1),rgba(28,27,27,.1))}
+.sp:hover{background-image:linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08))}
+.sp:active{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.pm:active{border-radius:12px!important}
+.pp-scope{timeline-scope:--pp-main}
+.pp-main{scroll-timeline:--pp-main block}
+.pp-main>*{flex-shrink:0}
+.pp-bar{animation:pp-bar linear both;animation-timeline:--pp-main;animation-range:0 8px}
+@keyframes pp-bar{from{background-color:#FDF8F7}to{background-color:#F1EDEB}}
+</style>
+</helmet>
+<div class="pp-scope" style="position: relative; width: 206px; height: 458.5px; display: flex; flex-direction: column; background-color: #FDF8F7; color: #1C1B1B; font-family: Roboto, system-ui, sans-serif; overflow: hidden">
+  <header class="pp-bar" style="min-height: 64px; flex: none; display: flex; align-items: center; gap: 4px; padding: 0 4px; background-color: #FDF8F7">
+    <sc-if value="{{noOnBack}}" hint-placeholder-val="{{true}}">
+      <a href="{{backHref}}" aria-label="Volver" class="sl" style="flex: none; width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #1C1B1B; text-decoration: none"><span class="ms" aria-hidden="true" style="font-size: 24px">arrow_back</span></a>
+    </sc-if>
+    <sc-if value="{{hasOnBack}}" hint-placeholder-val="{{false}}">
+      <button type="button" aria-label="Volver" onClick="{{goBack}}" class="sl" style="flex: none; width: 48px; height: 48px; padding: 0; border: none; border-radius: 24px; background-color: transparent; display: flex; align-items: center; justify-content: center; color: #1C1B1B; cursor: pointer"><span class="ms" aria-hidden="true" style="font-size: 24px">arrow_back</span></button>
+    </sc-if>
+    <h1 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 22px; line-height: 28px; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Ficha de la mascota</h1>
+  </header>
+
+  <main class="pp-main" style="flex: 1; overflow-y: auto; padding: 8px 16px 24px; display: flex; flex-direction: column">
+    <div style="position: relative; flex: none; height: 280px; border-radius: 28px; overflow: hidden; background-color: #F5EDD3; color: #4B4734; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px">
+      <img src="{{photo}}" alt="{{photoAlt}}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%">
+      <span aria-hidden="true" style="position: absolute; left: 12px; bottom: 12px; min-height: 32px; box-sizing: border-box; padding: 0 12px; border-radius: 16px; background-color: #FFFFFF; display: flex; align-items: center; gap: 4px; font-size: 14px; line-height: 20px"><span style="font-weight: 700; color: #734863">{{pct}} %</span><span style="font-weight: 500; color: #1C1B1B">compatible</span></span>
+    </div>
+    <h2 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 16px 0 0; font-size: 36px; line-height: 44px; font-weight: 600">{{name}}</h2>
+    <p style="margin: 4px 0 0; display: flex; align-items: center; gap: 4px; font-size: 16px; line-height: 24px; color: #4F4449"><span class="ms" aria-hidden="true" style="font-size: 20px">location_on</span>{{loc}}</p>
+    <sc-if value="{{ne}}" hint-placeholder-val="{{false}}">
+      <span style="align-self: flex-start; margin-top: 12px; min-height: 24px; box-sizing: border-box; display: inline-flex; align-items: center; padding: 0 8px; border: 1px solid #81747A; border-radius: 8px; font-size: 12px; line-height: 16px; font-weight: 600; color: #4F4449">Necesidades especiales</span>
+    </sc-if>
+    <dl style="margin: 16px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+      <sc-for list="{{facts}}" as="x" hint-placeholder-count="4">
+        <div style="box-sizing: border-box; min-height: 72px; padding: 12px 4px; border-radius: 16px; background-color: #F5EDD3; color: #4B4734; display: flex; flex-direction: column-reverse; align-items: center; justify-content: center; gap: 2px; text-align: center">
+          <dt style="font-size: 12px; line-height: 16px">{{x.k}}</dt>
+          <dd style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 500">{{x.v}}</dd>
+        </div>
+      </sc-for>
+    </dl>
+
+    <section aria-labelledby="res-t" style="flex: none; margin-top: 24px; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 12px; padding: 16px; display: flex; flex-direction: column">
+      <h3 id="res-t" style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 500">Resultados de tu test</h3>
+      <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 4px">
+        <p style="margin: 0; display: flex; align-items: baseline; gap: 4px"><span style="font-size: 22px; line-height: 28px; font-weight: 600; color: #734863">{{pct}} %</span><span style="font-size: 14px; line-height: 20px; font-weight: 700">compatible</span></p>
+        <div aria-hidden="true" style="position: relative; height: 8px; display: flex; gap: 4px">
+          <span style="flex: none; height: 8px; border-radius: 4px; background-color: #734863; width: {{barW}}"></span>
+          <span style="flex: 1; height: 8px; border-radius: 4px; background-color: #E6E2E0"></span>
+          <span style="position: absolute; right: 2px; top: 2px; width: 4px; height: 4px; border-radius: 2px; background-color: #734863"></span>
+        </div>
+        <p style="margin: 0; font-size: 12px; line-height: 16px; color: #4F4449">Según tus respuestas en los 3 bloques del test.</p>
+      </div>
+      <dl style="margin: 16px 0 0; display: flex; flex-direction: column; gap: 12px">
+        <sc-for list="{{bars}}" as="b" hint-placeholder-count="3">
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <div style="display: flex; justify-content: space-between; gap: 8px; font-size: 14px; line-height: 20px"><dt>{{b.label}}</dt><dd style="margin: 0; font-weight: 500">{{b.pct}}</dd></div>
+            <div aria-hidden="true" style="position: relative; height: 4px; display: flex; gap: 4px">
+              <span style="flex: none; height: 4px; border-radius: 2px; background-color: #734863; width: {{b.w}}"></span>
+              <span style="flex: 1; height: 4px; border-radius: 2px; background-color: #E6E2E0"></span>
+              <span style="position: absolute; right: 0; top: 0; width: 4px; height: 4px; border-radius: 2px; background-color: #734863"></span>
+            </div>
+          </div>
+        </sc-for>
+      </dl>
+      <div style="margin-top: 20px; display: flex; align-items: flex-start; gap: 16px">
+        <span aria-hidden="true" style="position: relative; flex: none; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #234D50"><svg width="40" height="40" viewBox="0 0 40 40" focusable="false" style="position: absolute; inset: 0"><path fill="#BFEAED" d="M20.00 0.00L21.04 0.07L22.07 0.29L23.06 0.65L24.01 1.13L24.90 1.72L25.72 2.39L26.48 3.12L27.17 3.89L27.81 4.68L28.39 5.46L28.94 6.23L29.48 6.96L30.01 7.64L30.55 8.29L31.11 8.89L31.71 9.45L32.36 9.99L33.04 10.52L33.77 11.06L34.54 11.61L35.32 12.19L36.11 12.83L36.88 13.52L37.61 14.28L38.28 15.10L38.87 15.99L39.35 16.94L39.71 17.93L39.93 18.96L40.00 20.00L39.93 21.04L39.71 22.07L39.35 23.06L38.87 24.01L38.28 24.90L37.61 25.72L36.88 26.48L36.11 27.17L35.32 27.81L34.54 28.39L33.77 28.94L33.04 29.48L32.36 30.01L31.71 30.55L31.11 31.11L30.55 31.71L30.01 32.36L29.48 33.04L28.94 33.77L28.39 34.54L27.81 35.32L27.17 36.11L26.48 36.88L25.72 37.61L24.90 38.28L24.01 38.87L23.06 39.35L22.07 39.71L21.04 39.93L20.00 40.00L18.96 39.93L17.93 39.71L16.94 39.35L15.99 38.87L15.10 38.28L14.28 37.61L13.52 36.88L12.83 36.11L12.19 35.32L11.61 34.54L11.06 33.77L10.52 33.04L9.99 32.36L9.45 31.71L8.89 31.11L8.29 30.55L7.64 30.01L6.96 29.48L6.23 28.94L5.46 28.39L4.68 27.81L3.89 27.17L3.12 26.48L2.39 25.72L1.72 24.90L1.13 24.01L0.65 23.06L0.29 22.07L0.07 21.04L0.00 20.00L0.07 18.96L0.29 17.93L0.65 16.94L1.13 15.99L1.72 15.10L2.39 14.28L3.12 13.52L3.89 12.83L4.68 12.19L5.46 11.61L6.23 11.06L6.96 10.52L7.64 9.99L8.29 9.45L8.89 8.89L9.45 8.29L9.99 7.64L10.52 6.96L11.06 6.23L11.61 5.46L12.19 4.68L12.83 3.89L13.52 3.12L14.28 2.39L15.10 1.72L15.99 1.13L16.94 0.65L17.93 0.29L18.96 0.07Z"></path></svg><span class="ms" style="position: relative; font-size: 20px">check</span></span>
+        <div><p style="margin: 0; font-size: 14px; line-height: 20px; font-weight: 500">Lo que encaja contigo</p><p style="margin: 2px 0 0; font-size: 14px; line-height: 20px">{{encaja}}</p></div>
+      </div>
+      <div style="margin-top: 16px; display: flex; align-items: flex-start; gap: 16px">
+        <span aria-hidden="true" style="position: relative; flex: none; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #234D50"><svg width="40" height="40" viewBox="0 0 40 40" focusable="false" style="position: absolute; inset: 0"><path fill="#BFEAED" d="M20.00 0.00L21.04 0.25L22.00 0.93L22.87 1.88L23.64 2.86L24.38 3.66L25.16 4.12L26.06 4.21L27.13 3.99L28.33 3.65L29.59 3.39L30.77 3.41L31.76 3.82L32.45 4.63L32.83 5.75L32.97 7.03L33.02 8.27L33.15 9.35L33.51 10.19L34.19 10.79L35.18 11.24L36.35 11.67L37.52 12.20L38.47 12.91L39.02 13.82L39.10 14.88L38.76 16.01L38.12 17.13L37.43 18.17L36.90 19.11L36.70 20.00L36.90 20.89L37.43 21.83L38.12 22.87L38.76 23.99L39.10 25.12L39.02 26.18L38.47 27.09L37.52 27.80L36.35 28.33L35.18 28.76L34.19 29.21L33.51 29.81L33.15 30.65L33.02 31.73L32.97 32.97L32.83 34.25L32.45 35.37L31.76 36.18L30.77 36.59L29.59 36.61L28.33 36.35L27.13 36.01L26.06 35.79L25.16 35.88L24.38 36.34L23.64 37.14L22.87 38.12L22.00 39.07L21.04 39.75L20.00 40.00L18.96 39.75L18.00 39.07L17.13 38.12L16.36 37.14L15.62 36.34L14.84 35.88L13.94 35.79L12.87 36.01L11.67 36.35L10.41 36.61L9.23 36.59L8.24 36.18L7.55 35.37L7.17 34.25L7.03 32.97L6.98 31.73L6.85 30.65L6.49 29.81L5.81 29.21L4.82 28.76L3.65 28.33L2.48 27.80L1.53 27.09L0.98 26.18L0.90 25.12L1.24 23.99L1.88 22.87L2.57 21.83L3.10 20.89L3.30 20.00L3.10 19.11L2.57 18.17L1.88 17.13L1.24 16.01L0.90 14.88L0.98 13.82L1.53 12.91L2.48 12.20L3.65 11.67L4.82 11.24L5.81 10.79L6.49 10.19L6.85 9.35L6.98 8.27L7.03 7.03L7.17 5.75L7.55 4.63L8.24 3.82L9.23 3.41L10.41 3.39L11.67 3.65L12.87 3.99L13.94 4.21L14.84 4.12L15.62 3.66L16.36 2.86L17.13 1.88L18.00 0.93L18.96 0.25Z"></path></svg><span class="ms" style="position: relative; font-size: 20px">lightbulb</span></span>
+        <div><p style="margin: 0; font-size: 14px; line-height: 20px; font-weight: 500">Para que os vaya bien</p><p style="margin: 2px 0 0; font-size: 14px; line-height: 20px">{{cuenta}}</p></div>
+      </div>
+      <p style="margin: 16px 0 0; font-size: 12px; line-height: 16px; color: #4F4449">Este resultado te orienta según tus respuestas. La protectora te ayudará a confirmar el encaje antes de la adopción.</p>
+    </section>
+
+    <h3 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 32px 0 0; font-size: 22px; line-height: 28px; font-weight: 400">Información general</h3>
+    <section aria-labelledby="ig-salud" style="flex: none; margin-top: 8px; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 16px; padding: 16px 16px 8px">
+      <h4 id="ig-salud" style="margin: 0 0 4px; font-size: 16px; line-height: 24px; font-weight: 500">Salud y cuidados</h4>
+      <dl style="margin: 0; display: flex; flex-direction: column">
+        <sc-for list="{{salud}}" as="r" hint-placeholder-count="4">
+          <div style="padding: 8px 0; border-bottom: {{r.line}}; display: flex; flex-direction: column">
+            <dt style="font-size: 16px; line-height: 24px">{{r.k}}</dt>
+            <dd style="margin: 0; font-size: 14px; line-height: 20px; color: #4F4449">{{r.v}}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </section>
+    <section aria-labelledby="ig-caracter" style="flex: none; margin-top: 8px; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 16px; padding: 16px 16px 8px">
+      <h4 id="ig-caracter" style="margin: 0 0 4px; font-size: 16px; line-height: 24px; font-weight: 500">Carácter y convivencia</h4>
+      <dl style="margin: 0; display: flex; flex-direction: column">
+        <sc-for list="{{caracter}}" as="r" hint-placeholder-count="4">
+          <div style="padding: 8px 0; border-bottom: {{r.line}}; display: flex; flex-direction: column">
+            <dt style="font-size: 16px; line-height: 24px">{{r.k}}</dt>
+            <dd style="margin: 0; font-size: 14px; line-height: 20px; color: #4F4449">{{r.v}}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </section>
+    <p style="margin: 8px 0 0; font-size: 12px; line-height: 16px; color: #4F4449">Si un dato no se conoce, aparece como «Dato no disponible».</p>
+  </main>
+
+  <div style="flex: none; padding: 16px; background-color: #F1EDEB; display: flex; flex-direction: column; gap: 12px">
+    <sc-if value="{{showSend}}" hint-placeholder-val="{{true}}">
+      <button type="button" onClick="{{openConfirm}}" class="sp pm" style="width: 100%; min-height: 56px; padding: 8px 24px; border: none; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-family: inherit; font-size: 16px; line-height: 24px; font-weight: 500; cursor: pointer; text-align: center">Enviar solicitud de adopción</button>
+    </sc-if>
+    <sc-if value="{{sending}}" hint-placeholder-val="{{false}}">
+      <button type="button" aria-disabled="true" aria-label="Enviando solicitud" style="width: 100%; min-height: 56px; padding: 8px 24px; border: none; border-radius: 28px; background-color: #734863; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: default; text-align: center"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g><path fill="#FFFFFF" d="M12.00 0.00L12.63 0.04L13.24 0.18L13.84 0.39L14.41 0.68L14.94 1.03L15.43 1.43L15.89 1.87L16.30 2.33L16.68 2.81L17.04 3.28L17.37 3.74L17.69 4.17L18.00 4.59L18.33 4.97L18.67 5.33L19.03 5.67L19.41 6.00L19.83 6.31L20.26 6.63L20.72 6.96L21.19 7.32L21.67 7.70L22.13 8.11L22.57 8.57L22.97 9.06L23.32 9.59L23.61 10.16L23.82 10.76L23.96 11.37L24.00 12.00L23.96 12.63L23.82 13.24L23.61 13.84L23.32 14.41L22.97 14.94L22.57 15.43L22.13 15.89L21.67 16.30L21.19 16.68L20.72 17.04L20.26 17.37L19.83 17.69L19.41 18.00L19.03 18.33L18.67 18.67L18.33 19.03L18.00 19.41L17.69 19.83L17.37 20.26L17.04 20.72L16.68 21.19L16.30 21.67L15.89 22.13L15.43 22.57L14.94 22.97L14.41 23.32L13.84 23.61L13.24 23.82L12.63 23.96L12.00 24.00L11.37 23.96L10.76 23.82L10.16 23.61L9.59 23.32L9.06 22.97L8.57 22.57L8.11 22.13L7.70 21.67L7.32 21.19L6.96 20.72L6.63 20.26L6.31 19.83L6.00 19.41L5.67 19.03L5.33 18.67L4.97 18.33L4.59 18.00L4.17 17.69L3.74 17.37L3.28 17.04L2.81 16.68L2.33 16.30L1.87 15.89L1.43 15.43L1.03 14.94L0.68 14.41L0.39 13.84L0.18 13.24L0.04 12.63L0.00 12.00L0.04 11.37L0.18 10.76L0.39 10.16L0.68 9.59L1.03 9.06L1.43 8.57L1.87 8.11L2.33 7.70L2.81 7.32L3.28 6.96L3.74 6.63L4.17 6.31L4.59 6.00L4.97 5.67L5.33 5.33L5.67 4.97L6.00 4.59L6.31 4.17L6.63 3.74L6.96 3.28L7.32 2.81L7.70 2.33L8.11 1.87L8.57 1.43L9.06 1.03L9.59 0.68L10.16 0.39L10.76 0.18L11.37 0.04Z"><animate attributeName="d" dur="2.8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" keySplines="0.42 0 0.2 1;0.42 0 0.2 1;0.42 0 0.2 1;0.42 0 0.2 1" values="M12.00 0.00L12.63 0.04L13.24 0.18L13.84 0.39L14.41 0.68L14.94 1.03L15.43 1.43L15.89 1.87L16.30 2.33L16.68 2.81L17.04 3.28L17.37 3.74L17.69 4.17L18.00 4.59L18.33 4.97L18.67 5.33L19.03 5.67L19.41 6.00L19.83 6.31L20.26 6.63L20.72 6.96L21.19 7.32L21.67 7.70L22.13 8.11L22.57 8.57L22.97 9.06L23.32 9.59L23.61 10.16L23.82 10.76L23.96 11.37L24.00 12.00L23.96 12.63L23.82 13.24L23.61 13.84L23.32 14.41L22.97 14.94L22.57 15.43L22.13 15.89L21.67 16.30L21.19 16.68L20.72 17.04L20.26 17.37L19.83 17.69L19.41 18.00L19.03 18.33L18.67 18.67L18.33 19.03L18.00 19.41L17.69 19.83L17.37 20.26L17.04 20.72L16.68 21.19L16.30 21.67L15.89 22.13L15.43 22.57L14.94 22.97L14.41 23.32L13.84 23.61L13.24 23.82L12.63 23.96L12.00 24.00L11.37 23.96L10.76 23.82L10.16 23.61L9.59 23.32L9.06 22.97L8.57 22.57L8.11 22.13L7.70 21.67L7.32 21.19L6.96 20.72L6.63 20.26L6.31 19.83L6.00 19.41L5.67 19.03L5.33 18.67L4.97 18.33L4.59 18.00L4.17 17.69L3.74 17.37L3.28 17.04L2.81 16.68L2.33 16.30L1.87 15.89L1.43 15.43L1.03 14.94L0.68 14.41L0.39 13.84L0.18 13.24L0.04 12.63L0.00 12.00L0.04 11.37L0.18 10.76L0.39 10.16L0.68 9.59L1.03 9.06L1.43 8.57L1.87 8.11L2.33 7.70L2.81 7.32L3.28 6.96L3.74 6.63L4.17 6.31L4.59 6.00L4.97 5.67L5.33 5.33L5.67 4.97L6.00 4.59L6.31 4.17L6.63 3.74L6.96 3.28L7.32 2.81L7.70 2.33L8.11 1.87L8.57 1.43L9.06 1.03L9.59 0.68L10.16 0.39L10.76 0.18L11.37 0.04Z;M12.00 0.00L12.62 0.15L13.20 0.56L13.72 1.13L14.19 1.72L14.63 2.19L15.10 2.47L15.64 2.52L16.28 2.40L17.00 2.19L17.75 2.04L18.46 2.05L19.05 2.29L19.47 2.78L19.70 3.45L19.78 4.22L19.81 4.96L19.89 5.61L20.11 6.11L20.51 6.47L21.11 6.74L21.81 7.00L22.51 7.32L23.08 7.75L23.41 8.29L23.46 8.93L23.25 9.61L22.87 10.28L22.46 10.90L22.14 11.47L22.02 12.00L22.14 12.53L22.46 13.10L22.87 13.72L23.25 14.39L23.46 15.07L23.41 15.71L23.08 16.25L22.51 16.68L21.81 17.00L21.11 17.26L20.51 17.53L20.11 17.89L19.89 18.39L19.81 19.04L19.78 19.78L19.70 20.55L19.47 21.22L19.05 21.71L18.46 21.95L17.75 21.96L17.00 21.81L16.28 21.60L15.64 21.48L15.10 21.53L14.63 21.81L14.19 22.28L13.72 22.87L13.20 23.44L12.62 23.85L12.00 24.00L11.38 23.85L10.80 23.44L10.28 22.87L9.81 22.28L9.37 21.81L8.90 21.53L8.36 21.48L7.72 21.60L7.00 21.81L6.25 21.96L5.54 21.95L4.95 21.71L4.53 21.22L4.30 20.55L4.22 19.78L4.19 19.04L4.11 18.39L3.89 17.89L3.49 17.53L2.89 17.26L2.19 17.00L1.49 16.68L0.92 16.25L0.59 15.71L0.54 15.07L0.75 14.39L1.13 13.72L1.54 13.10L1.86 12.53L1.98 12.00L1.86 11.47L1.54 10.90L1.13 10.28L0.75 9.61L0.54 8.93L0.59 8.29L0.92 7.75L1.49 7.32L2.19 7.00L2.89 6.74L3.49 6.47L3.89 6.11L4.11 5.61L4.19 4.96L4.22 4.22L4.30 3.45L4.53 2.78L4.95 2.29L5.54 2.05L6.25 2.04L7.00 2.19L7.72 2.40L8.36 2.52L8.90 2.47L9.37 2.19L9.81 1.72L10.28 1.13L10.80 0.56L11.38 0.15Z;M12.00 0.00L12.62 0.10L13.22 0.39L13.77 0.80L14.28 1.27L14.76 1.70L15.23 2.04L15.74 2.25L16.30 2.33L16.93 2.32L17.61 2.29L18.30 2.30L18.97 2.41L19.55 2.68L20.00 3.11L20.32 3.68L20.51 4.33L20.62 5.02L20.70 5.68L20.82 6.27L21.03 6.79L21.37 7.23L21.82 7.63L22.36 8.02L22.90 8.46L23.37 8.95L23.70 9.51L23.84 10.12L23.79 10.76L23.56 11.39L23.21 12.00L22.84 12.57L22.52 13.11L22.31 13.63L22.24 14.18L22.30 14.76L22.44 15.39L22.58 16.06L22.67 16.75L22.62 17.41L22.39 18.00L21.99 18.49L21.45 18.86L20.81 19.14L20.15 19.34L19.54 19.54L19.00 19.78L18.57 20.11L18.22 20.56L17.91 21.11L17.61 21.71L17.25 22.31L16.82 22.83L16.30 23.19L15.70 23.38L15.05 23.37L14.38 23.21L13.74 22.96L13.12 22.69L12.55 22.50L12.00 22.43L11.45 22.50L10.88 22.69L10.26 22.96L9.62 23.21L8.95 23.37L8.30 23.38L7.70 23.19L7.18 22.83L6.75 22.31L6.39 21.71L6.09 21.11L5.78 20.56L5.43 20.11L5.00 19.78L4.46 19.54L3.85 19.34L3.19 19.14L2.55 18.86L2.01 18.49L1.61 18.00L1.38 17.41L1.33 16.75L1.42 16.06L1.56 15.39L1.70 14.76L1.76 14.18L1.69 13.63L1.48 13.11L1.16 12.57L0.79 12.00L0.44 11.39L0.21 10.76L0.16 10.12L0.30 9.51L0.63 8.95L1.10 8.46L1.64 8.02L2.18 7.63L2.63 7.23L2.97 6.79L3.18 6.27L3.30 5.68L3.38 5.02L3.49 4.33L3.68 3.68L4.00 3.11L4.45 2.68L5.03 2.41L5.70 2.30L6.39 2.29L7.07 2.32L7.70 2.33L8.26 2.25L8.77 2.04L9.24 1.70L9.72 1.27L10.23 0.80L10.78 0.39L11.38 0.10Z;M12.00 0.00L12.63 0.07L13.23 0.25L13.82 0.54L14.36 0.88L14.88 1.24L15.39 1.57L15.90 1.85L16.42 2.07L16.98 2.23L17.57 2.35L18.19 2.47L18.82 2.61L19.43 2.82L20.00 3.12L20.49 3.51L20.88 4.00L21.18 4.57L21.39 5.18L21.53 5.81L21.65 6.43L21.77 7.02L21.93 7.58L22.15 8.10L22.43 8.61L22.76 9.12L23.12 9.64L23.46 10.18L23.75 10.77L23.93 11.37L24.00 12.00L23.93 12.63L23.75 13.23L23.46 13.82L23.12 14.36L22.76 14.88L22.43 15.39L22.15 15.90L21.93 16.42L21.77 16.98L21.65 17.57L21.53 18.19L21.39 18.82L21.18 19.43L20.88 20.00L20.49 20.49L20.00 20.88L19.43 21.18L18.82 21.39L18.19 21.53L17.57 21.65L16.98 21.77L16.42 21.93L15.90 22.15L15.39 22.43L14.88 22.76L14.36 23.12L13.82 23.46L13.23 23.75L12.63 23.93L12.00 24.00L11.37 23.93L10.77 23.75L10.18 23.46L9.64 23.12L9.12 22.76L8.61 22.43L8.10 22.15L7.58 21.93L7.02 21.77L6.43 21.65L5.81 21.53L5.18 21.39L4.57 21.18L4.00 20.88L3.51 20.49L3.12 20.00L2.82 19.43L2.61 18.82L2.47 18.19L2.35 17.57L2.23 16.98L2.07 16.42L1.85 15.90L1.57 15.39L1.24 14.88L0.88 14.36L0.54 13.82L0.25 13.23L0.07 12.63L0.00 12.00L0.07 11.37L0.25 10.77L0.54 10.18L0.88 9.64L1.24 9.12L1.57 8.61L1.85 8.10L2.07 7.58L2.23 7.02L2.35 6.43L2.47 5.81L2.61 5.18L2.82 4.57L3.12 4.00L3.51 3.51L4.00 3.12L4.57 2.82L5.18 2.61L5.81 2.47L6.43 2.35L7.02 2.23L7.58 2.07L8.10 1.85L8.61 1.57L9.12 1.24L9.64 0.88L10.18 0.54L10.77 0.25L11.37 0.07Z;M12.00 0.00L12.63 0.04L13.24 0.18L13.84 0.39L14.41 0.68L14.94 1.03L15.43 1.43L15.89 1.87L16.30 2.33L16.68 2.81L17.04 3.28L17.37 3.74L17.69 4.17L18.00 4.59L18.33 4.97L18.67 5.33L19.03 5.67L19.41 6.00L19.83 6.31L20.26 6.63L20.72 6.96L21.19 7.32L21.67 7.70L22.13 8.11L22.57 8.57L22.97 9.06L23.32 9.59L23.61 10.16L23.82 10.76L23.96 11.37L24.00 12.00L23.96 12.63L23.82 13.24L23.61 13.84L23.32 14.41L22.97 14.94L22.57 15.43L22.13 15.89L21.67 16.30L21.19 16.68L20.72 17.04L20.26 17.37L19.83 17.69L19.41 18.00L19.03 18.33L18.67 18.67L18.33 19.03L18.00 19.41L17.69 19.83L17.37 20.26L17.04 20.72L16.68 21.19L16.30 21.67L15.89 22.13L15.43 22.57L14.94 22.97L14.41 23.32L13.84 23.61L13.24 23.82L12.63 23.96L12.00 24.00L11.37 23.96L10.76 23.82L10.16 23.61L9.59 23.32L9.06 22.97L8.57 22.57L8.11 22.13L7.70 21.67L7.32 21.19L6.96 20.72L6.63 20.26L6.31 19.83L6.00 19.41L5.67 19.03L5.33 18.67L4.97 18.33L4.59 18.00L4.17 17.69L3.74 17.37L3.28 17.04L2.81 16.68L2.33 16.30L1.87 15.89L1.43 15.43L1.03 14.94L0.68 14.41L0.39 13.84L0.18 13.24L0.04 12.63L0.00 12.00L0.04 11.37L0.18 10.76L0.39 10.16L0.68 9.59L1.03 9.06L1.43 8.57L1.87 8.11L2.33 7.70L2.81 7.32L3.28 6.96L3.74 6.63L4.17 6.31L4.59 6.00L4.97 5.67L5.33 5.33L5.67 4.97L6.00 4.59L6.31 4.17L6.63 3.74L6.96 3.28L7.32 2.81L7.70 2.33L8.11 1.87L8.57 1.43L9.06 1.03L9.59 0.68L10.16 0.39L10.76 0.18L11.37 0.04Z"></animate></path><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2.8s" repeatCount="indefinite"></animateTransform></g></svg></button>
+    </sc-if>
+    <p aria-live="polite" style="position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0)">{{liveMsg}}</p>
+    <a ref="{{setNav}}" href="{{estadoHref}}" tabindex="-1" aria-hidden="true" style="display: none">Estado de la solicitud</a>
+    <sc-if value="{{enviada}}" hint-placeholder-val="{{false}}">
+      <a href="{{solicitudHref}}" class="sp pm" style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 8px 24px; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-size: 16px; line-height: 24px; font-weight: 500; text-decoration: none; text-align: center">Ver el estado de mi solicitud</a>
+    </sc-if>
+    <sc-if value="{{noOnBack}}" hint-placeholder-val="{{true}}">
+      <a href="{{seguirHref}}" class="sl pm" style="display: flex; align-items: center; justify-content: center; min-height: 56px; box-sizing: border-box; padding: 8px 24px; border: 1px solid #D2C2C9; border-radius: 28px; color: #734863; font-size: 16px; line-height: 24px; font-weight: 500; text-decoration: none; text-align: center">Seguir mirando otras mascotas</a>
+    </sc-if>
+    <sc-if value="{{hasOnBack}}" hint-placeholder-val="{{false}}">
+      <button type="button" onClick="{{goBack}}" class="sl pm" style="width: 100%; min-height: 56px; box-sizing: border-box; padding: 8px 24px; border: 1px solid #D2C2C9; border-radius: 28px; background-color: transparent; color: #734863; font-family: inherit; font-size: 16px; line-height: 24px; font-weight: 500; cursor: pointer; text-align: center">Seguir mirando otras mascotas</button>
+    </sc-if>
+  </div>
+  <dc-import name="TabBarZoom" active="buscar" estado="completo" segunda="{{segunda}}" hint-size="206px,64px"></dc-import>
+
+  <sc-if value="{{limit}}" hint-placeholder-val="{{false}}">
+    <button type="button" aria-label="Salir y mantener la solicitud anterior" onClick="{{closeLimit}}" style="position: absolute; inset: 0; border: none; padding: 0; margin: 0; background-color: rgba(0, 0, 0, 0.32); cursor: pointer"></button>
+    <div role="alertdialog" aria-modal="true" aria-labelledby="lim-t" aria-describedby="lim-d" style="position: absolute; left: 50px; top: 230px; width: 312px; box-sizing: border-box; padding: 24px; border-radius: 28px; background-color: #ECE7E6; display: flex; flex-direction: column">
+      <h2 id="lim-t" style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 24px; line-height: 32px; font-weight: 400">¿Cancelar tu solicitud anterior?</h2>
+      <p id="lim-d" style="margin: 16px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">Solo puedes tener una solicitud de adopción en proceso. Si continúas, cancelaremos tu solicitud anterior y enviaremos esta nueva. Si sales, mantendrás tu solicitud anterior.</p>
+      <div style="margin-top: 24px; display: flex; flex-direction: column; align-items: flex-end">
+        <button type="button" onClick="{{closeLimit}}" class="sl" style="min-height: 48px; padding: 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer">Salir y mantener la anterior</button>
+        <a href="{{estadoHref}}" class="sl" style="min-height: 48px; display: flex; align-items: center; padding: 0 12px; border-radius: 24px; color: #734863; font-size: 14px; line-height: 20px; font-weight: 500; text-decoration: none">Continuar y cancelar la anterior</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{confirm}}" hint-placeholder-val="{{false}}">
+    <button type="button" aria-label="Cancelar y cerrar" onClick="{{closeConfirm}}" style="position: absolute; inset: 0; border: none; padding: 0; margin: 0; background-color: rgba(0, 0, 0, 0.32); cursor: pointer"></button>
+    <div role="dialog" aria-modal="true" aria-labelledby="conf-t" style="position: absolute; left: 50px; top: 250px; width: 312px; box-sizing: border-box; padding: 24px; border-radius: 28px; background-color: #ECE7E6; display: flex; flex-direction: column">
+      <h2 id="conf-t" style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 24px; line-height: 32px; font-weight: 400">¿Enviar tu solicitud para adoptar a {{name}}?</h2>
+      <p style="margin: 16px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">La protectora revisará tu solicitud y te responderá. Podrás seguir el estado en «Proceso».</p>
+      <div style="margin-top: 24px; display: flex; flex-direction: column; align-items: flex-end">
+        <button type="button" onClick="{{send}}" class="sl" style="min-height: 48px; padding: 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer">Sí, enviar solicitud</button>
+        <button type="button" onClick="{{closeConfirm}}" class="sl" style="min-height: 48px; padding: 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer">Cancelar</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{errorEnvio}}" hint-placeholder-val="{{false}}">
+    <button type="button" aria-label="Cerrar" onClick="{{closeError}}" style="position: absolute; inset: 0; border: none; padding: 0; margin: 0; background-color: rgba(0, 0, 0, 0.32); cursor: pointer"></button>
+    <div role="alertdialog" aria-modal="true" aria-labelledby="err-t" aria-describedby="err-d" style="position: absolute; left: 50px; top: 220px; width: 312px; box-sizing: border-box; padding: 24px; border-radius: 28px; background-color: #ECE7E6; display: flex; flex-direction: column">
+      <span class="ms" aria-hidden="true" style="align-self: center; font-size: 24px; color: #3A6265">error</span>
+      <h2 id="err-t" style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 16px 0 0; font-size: 24px; line-height: 32px; font-weight: 400; text-align: center">No se ha podido enviar tu solicitud</h2>
+      <p id="err-d" style="margin: 16px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">Tu solicitud para adoptar a {{name}} todavía no ha llegado a la protectora. Comprueba tu conexión e inténtalo de nuevo.</p>
+      <div style="margin-top: 24px; display: flex; flex-direction: column; align-items: flex-end">
+        <button type="button" onClick="{{send}}" class="sl" style="min-height: 48px; padding: 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer">Reintentar el envío</button>
+        <button type="button" onClick="{{closeError}}" class="sl" style="min-height: 48px; padding: 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer">Volver a la ficha</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animal":{"editor":"enum","options":["luna","simba","rocky","kira","coco","nube"],"default":"luna"},"$preview":{"width":206,"height":459}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sending: false, confirm: false, limit: props.limiteAbierto === true || props.limiteAbierto === 'true', errorEnvio: props.errorEnvio === true || props.errorEnvio === 'true' };
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+  renderVals() {
+    const D = {
+      luna: { name: 'Luna', meta: 'Gata · Hembra · 3 años · Barcelona · Pequeño', ne: true, pct: 92, b: [95, 90, 90],
+        info: ['Buena. Visión reducida en el ojo izquierdo.', 'Al día', 'Rutina estable y pocos cambios en casa.', 'Tranquila y cariñosa.', 'Baja', 'Se lleva bien con otros gatos.', 'Sí: visión reducida en un ojo.', 'Rescatada en la calle.'],
+        encaja: 'Busca un hogar tranquilo y una rutina estable.', cuenta: 'Se orienta de maravilla si los muebles se quedan en su sitio: así su visión reducida no es un problema.' },
+      simba: { name: 'Simba', meta: 'Gato · Macho · 1 año · Badalona · Pequeño', ne: false, pct: 81, b: [85, 75, 83],
+        info: ['Buena.', 'Al día', 'Juego diario y rascador.', 'Curioso y juguetón.', 'Alta', 'Dato no disponible', 'No', 'Nació en una colonia felina.'],
+        encaja: 'Se adapta bien a un piso y puede quedarse solo unas horas.', cuenta: 'Disfrutará mucho con un buen rato de juego cada día.' },
+      rocky: { name: 'Rocky', meta: 'Perro · Macho · 5 años · Sabadell · Grande', ne: false, pct: 64, b: [55, 70, 67],
+        info: ['Buena.', 'Al día', 'Dos paseos largos al día.', 'Noble y enérgico.', 'Alta', 'Se lleva bien con otros perros.', 'No', 'Dato no disponible'],
+        encaja: 'Le gustan las personas activas.', cuenta: 'Será más feliz con mucho espacio y dos paseos largos al día.' },
+      kira: { name: 'Kira', meta: 'Perra · Hembra · 8 años · Barcelona · Mediano', ne: true, pct: 76, b: [80, 75, 73],
+        info: ['Artrosis leve en las patas traseras.', 'Al día', 'Paseos cortos y revisiones veterinarias periódicas.', 'Tranquila y sociable.', 'Baja', 'Se lleva bien con perros y gatos.', 'Sí: artrosis leve.', 'Su familia anterior ya no podía cuidarla.'],
+        encaja: 'Es tranquila y se adapta a una rutina estable.', cuenta: 'Estará genial con paseos cortos y sus revisiones veterinarias al día.' },
+      coco: { name: 'Coco', meta: "Conejo · Macho · 2 años · L'Hospitalet de Llobregat · Pequeño", ne: false, pct: 85, b: [90, 85, 80],
+        info: ['Buena.', 'Al día', 'Salir de la jaula y moverse libremente cada día.', 'Tímido al principio.', 'Media', 'Dato no disponible', 'No', 'Entregado por su familia anterior.'],
+        encaja: 'Se adapta bien a un piso y a tu horario.', cuenta: 'Le encanta salir de la jaula y moverse libremente cada día.' },
+      nube: { name: 'Nube', meta: 'Cobaya · Hembra · 4 años · Terrassa · Pequeño', ne: true, pct: 70, b: [75, 70, 65],
+        info: ['Necesita revisiones dentales.', 'No aplica', 'Dieta rica en heno y revisiones dentales.', 'Tranquila y sociable.', 'Media', 'Convive mejor con otra cobaya.', 'Sí: problemas dentales.', 'Rescatada de un abandono.'],
+        encaja: 'Es tranquila y sociable.', cuenta: 'Estará estupenda con sus revisiones dentales y, si puede ser, la compañía de otra cobaya.' }
+    };
+    const FOTO = {
+      luna: ['/_blob/f499ff1e450e2795f8e1d11984d2dd45', 'Luna, gata gris y blanca, sentada junto a un muro de piedra y unas flores'],
+      simba: ['/_blob/f1ebb8f05095c1002b8ad4a70bc49034', 'Simba, gato naranja y blanco, sentado en un camino de piedra'],
+      rocky: ['/_blob/e64e5104dba8cc71abdf9658d68c71c3', 'Rocky, perro de pelo dorado, sentado en el césped con la lengua fuera'],
+      kira: ['/_blob/e279d8b2fac5945d660786711e94302d', 'Kira, perra blanca y marrón con collar rosa, sentada en un parque'],
+      coco: ['/_blob/00c86d453d6db4db83544cd15853d468', 'Coco, conejo blanco y beige de orejas caídas, sentado sobre una alfombra'],
+      nube: ['/_blob/a1537a9ce239f0ab16a66a7430cd6b0c', 'Nube, cobaya blanca y naranja sobre una manta azul']
+    };
+    const a = D[this.props.animal ?? 'luna'] || D.luna;
+    const ph = FOTO[this.props.animal ?? 'luna'] || FOTO.luna;
+    const keys = ['Estado de salud', 'Vacunación', 'Cuidados que necesita', 'Su comportamiento', 'Su nivel de actividad', 'Convivencia con mascotas', 'Necesidades especiales', 'Su historia'];
+    const bl = ['Mi hogar', 'Mi día a día', 'La mascota que busco'];
+    const m = a.meta.split(' · ');
+    const grp = (ix) => ix.map((j, n) => ({ k: keys[j], v: a.info[j], line: n === ix.length - 1 ? 'none' : '1px solid #D2C2C9' }));
+    const enviada = this.props.enviada === true || this.props.enviada === 'true';
+    const limite = this.props.limite === true || this.props.limite === 'true';
+    const segunda = this.props.segunda ?? (enviada ? a.name : '');
+    const onBack = typeof this.props.onBack === 'function' ? this.props.onBack : null;
+    const solicitudHref = a.name === 'Luna' ? 'Zoom-MiSolicitud.dc.html' : 'Solicitud-' + a.name + '.dc.html';
+    const seguirHref = segunda ? 'Compatibles-Limite-' + segunda + '.dc.html' : 'Zoom-Compatibles.dc.html';
+    return {
+      enviada, noEnviada: !enviada, solicitudHref, segunda, seguirHref,
+      hasOnBack: !!onBack, noOnBack: !onBack, goBack: () => { if (onBack) onBack(); },
+      misHref: segunda === 'Luna' ? 'Zoom-MiSolicitud.dc.html' : 'Solicitud-' + segunda + '.dc.html',
+      limit: this.state.limit,
+      closeLimit: () => this.setState({ limit: false }),
+      backHref: enviada ? solicitudHref : seguirHref,
+      name: a.name, photo: ph[0], photoAlt: ph[1], meta: a.meta, ne: a.ne, pct: a.pct,
+      barW: 'calc(' + a.pct + '% - 2px)',
+      loc: m[3],
+      facts: [['Especie', m[0]], ['Sexo', m[1]], ['Edad', m[2]], ['Tamaño', m[4]]].map(([k, v]) => ({ k, v })),
+      salud: grp([0, 1, 2, 6]), caracter: grp([3, 4, 5, 7]),
+      bars: bl.map((label, i) => ({ label, pct: a.b[i] + ' %', w: 'calc(' + a.b[i] + '% - 2px)' })),
+      encaja: a.encaja, cuenta: a.cuenta,
+      estadoHref: 'Estado-' + a.name + '.dc.html',
+      confirm: this.state.confirm,
+      openConfirm: () => { if (enviada) return; if (limite) this.setState({ limit: true }); else this.setState({ confirm: true }); },
+      closeConfirm: () => this.setState({ confirm: false }),
+      sending: this.state.sending,
+      showSend: !enviada && !this.state.sending,
+      liveMsg: this.state.sending ? 'Enviando solicitud…' : '',
+      setNav: (el) => { this._nav = el; },
+      send: () => {
+        this.setState({ confirm: false, errorEnvio: false, sending: true });
+        clearTimeout(this._t);
+        this._t = setTimeout(() => { this.setState({ sending: false }); if (this._nav) this._nav.click(); }, 1600);
+      },
+      errorEnvio: this.state.errorEnvio,
+      closeError: () => this.setState({ errorEnvio: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

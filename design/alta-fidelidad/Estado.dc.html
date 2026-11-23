@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Estado de la solicitud</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&amp;family=Roboto:wght@400;500;600;700&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block">
+<style>
+body{margin:0}
+a{color:#734863}
+.ms{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;direction:ltr;font-feature-settings:'liga';-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.ms.f{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A6265;outline-offset:2px}
+.sl:hover{background-image:linear-gradient(rgba(28,27,27,.08),rgba(28,27,27,.08))}
+.sl:active{background-image:linear-gradient(rgba(28,27,27,.1),rgba(28,27,27,.1))}
+.sp:hover{background-image:linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08))}
+.sp:active{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.pm:active{border-radius:12px!important}
+.pp-scope{timeline-scope:--pp-main}
+.pp-main{scroll-timeline:--pp-main block}
+.pp-main>*{flex-shrink:0}
+.pp-bar{animation:pp-bar linear both;animation-timeline:--pp-main;animation-range:0 8px}
+@keyframes pp-bar{from{background-color:#FDF8F7}to{background-color:#F1EDEB}}
+</style>
+</helmet>
+<div class="pp-scope" style="position: relative; width: 412px; height: 917px; display: flex; flex-direction: column; background-color: #FDF8F7; color: #1C1B1B; font-family: Roboto, system-ui, sans-serif; overflow: hidden">
+  <header class="pp-bar" style="min-height: 64px; flex: none; display: flex; align-items: center; gap: 4px; padding: 0 4px; background-color: #FDF8F7">
+    <sc-if value="{{noOnBack}}" hint-placeholder-val="{{true}}">
+      <a href="{{backHref}}" aria-label="Volver" class="sl" style="flex: none; width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #1C1B1B; text-decoration: none"><span class="ms" aria-hidden="true" style="font-size: 24px">arrow_back</span></a>
+    </sc-if>
+    <sc-if value="{{hasOnBack}}" hint-placeholder-val="{{false}}">
+      <button type="button" aria-label="Volver" onClick="{{goBack}}" class="sl" style="flex: none; width: 48px; height: 48px; padding: 0; border: none; border-radius: 24px; background-color: transparent; display: flex; align-items: center; justify-content: center; color: #1C1B1B; cursor: pointer"><span class="ms" aria-hidden="true" style="font-size: 24px">arrow_back</span></button>
+    </sc-if>
+    <h1 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 22px; line-height: 28px; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Estado de la solicitud</h1>
+  </header>
+
+  <main class="pp-main" style="flex: 1; overflow-y: auto; padding: 8px 16px 24px; display: flex; flex-direction: column; gap: 24px">
+    <section style="flex: none; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+        <span style="font-size: 14px; line-height: 20px; font-weight: 500">Estado</span>
+        <span style="min-height: 28px; box-sizing: border-box; display: inline-flex; align-items: center; padding: 0 12px; border-radius: 14px; border: {{tagBorder}}; background-color: {{tagBg}}; color: {{tagFg}}; font-size: 12px; line-height: 16px; font-weight: 700">{{tag}}</span>
+      </div>
+      <p style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 22px; line-height: 28px; font-weight: 600">{{name}}</p>
+    </section>
+
+    <div style="flex: none; display: flex; flex-direction: column; gap: 8px">
+      <sc-if value="{{title}}" hint-placeholder-val="{{false}}">
+        <h2 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 24px; line-height: 32px; font-weight: 400">{{title}}</h2>
+      </sc-if>
+      <p style="margin: 0; font-size: 16px; line-height: 24px">{{message}}</p>
+    </div>
+
+    <ol aria-label="Pasos de la solicitud" style="flex: none; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+      <sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+        <li aria-current="{{s.cur}}" aria-label="{{s.aria}}" style="display: flex; flex-direction: column">
+          <sc-if value="{{s.conn}}" hint-placeholder-val="{{false}}">
+            <span aria-hidden="true" style="margin-left: 15px; height: 16px; border-left: 2px dashed #81747A"></span>
+          </sc-if>
+          <div style="min-height: 40px; display: flex; align-items: center; gap: 16px">
+            <span aria-hidden="true" style="flex: none; width: 32px; height: 32px; box-sizing: border-box; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: {{s.bg}}; border: {{s.border}}; color: {{s.fg}}">
+              <sc-if value="{{s.icon}}" hint-placeholder-val="{{true}}"><span class="ms" style="font-size: 20px">{{s.icon}}</span></sc-if>
+              <sc-if value="{{s.num}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; line-height: 20px; font-weight: 700">{{s.num}}</span></sc-if>
+            </span>
+            <span aria-hidden="true" style="font-size: 16px; line-height: 24px; font-weight: {{s.w}}; color: {{s.color}}">{{s.label}} <span style="font-size: 12px; line-height: 16px; font-weight: 400; color: #4F4449">{{s.note}}</span></span>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+
+    <div style="flex: none; display: flex; flex-direction: column; gap: 12px">
+      <sc-if value="{{volverCompat}}" hint-placeholder-val="{{false}}">
+        <a href="Compatibles.dc.html" class="sp pm" style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 8px 24px; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-size: 16px; line-height: 24px; font-weight: 500; text-decoration: none; text-align: center">Volver a mis mascotas compatibles</a>
+      </sc-if>
+      <sc-if value="{{conFicha}}" hint-placeholder-val="{{true}}">
+        <a href="{{fichaHref}}" class="sl pm" style="display: flex; align-items: center; justify-content: center; min-height: 56px; box-sizing: border-box; padding: 8px 24px; border: 1px solid #D2C2C9; border-radius: 28px; color: #734863; font-size: 16px; line-height: 24px; font-weight: 500; text-decoration: none; text-align: center">Ver la ficha de la mascota</a>
+      </sc-if>
+      <sc-if value="{{puedeCancelar}}" hint-placeholder-val="{{true}}">
+        <button type="button" onClick="{{openCancel}}" class="sl" style="align-self: center; min-height: 48px; display: flex; align-items: center; gap: 8px; padding: 0 16px 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer"><span class="ms" aria-hidden="true" style="font-size: 20px">close</span>Cancelar solicitud</button>
+      </sc-if>
+    </div>
+  </main>
+  <dc-import name="TabBar" active="como" estado="completo" segunda="{{segunda}}" hint-size="412px,64px"></dc-import>
+
+  <sc-if value="{{showAviso}}" hint-placeholder-val="{{false}}">
+    <button type="button" aria-label="Cerrar aviso" onClick="{{close}}" style="position: absolute; inset: 0; border: none; padding: 0; margin: 0; background-color: rgba(0, 0, 0, 0.32); cursor: pointer"></button>
+    <div role="dialog" aria-modal="true" aria-labelledby="aviso-t" style="position: absolute; left: 50px; top: 280px; width: 312px; box-sizing: border-box; padding: 24px; border-radius: 28px; background-color: #ECE7E6; display: flex; flex-direction: column">
+      <span class="ms" aria-hidden="true" style="align-self: center; font-size: 24px; color: #3A6265">check_circle</span>
+      <h2 id="aviso-t" style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 16px 0 0; font-size: 24px; line-height: 32px; font-weight: 400; text-align: center">Solicitud enviada</h2>
+      <p style="margin: 16px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">Espera la respuesta. Puedes ver el estado del proceso aquí.</p>
+      <div style="margin-top: 24px; display: flex; justify-content: flex-end">
+        <button type="button" onClick="{{close}}" class="sl" style="min-height: 48px; padding: 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer">Ver el estado del proceso</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{confirmCancel}}" hint-placeholder-val="{{false}}">
+    <button type="button" aria-label="Mantener la solicitud y cerrar" onClick="{{closeCancel}}" style="position: absolute; inset: 0; border: none; padding: 0; margin: 0; background-color: rgba(0, 0, 0, 0.32); cursor: pointer"></button>
+    <div role="alertdialog" aria-modal="true" aria-labelledby="cancel-t" aria-describedby="cancel-d" style="position: absolute; left: 50px; top: 240px; width: 312px; box-sizing: border-box; padding: 24px; border-radius: 28px; background-color: #ECE7E6; display: flex; flex-direction: column">
+      <h2 id="cancel-t" style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 24px; line-height: 32px; font-weight: 400">¿Seguro que quieres cancelar tu solicitud para adoptar a {{name}}?</h2>
+      <p id="cancel-d" style="margin: 16px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">La protectora dejará de revisarla. Si cambias de idea, tendrás que enviar una solicitud nueva.</p>
+      <div style="margin-top: 24px; display: flex; flex-direction: column; align-items: flex-end">
+        <button type="button" onClick="{{closeCancel}}" class="sl" style="min-height: 48px; padding: 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer">No, mantener mi solicitud</button>
+        <button type="button" onClick="{{doCancel}}" class="sl" style="min-height: 48px; padding: 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer">Sí, cancelar solicitud</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{errorCancel}}" hint-placeholder-val="{{false}}">
+    <button type="button" aria-label="Cerrar" onClick="{{closeErrorCancel}}" style="position: absolute; inset: 0; border: none; padding: 0; margin: 0; background-color: rgba(0, 0, 0, 0.32); cursor: pointer"></button>
+    <div role="alertdialog" aria-modal="true" aria-labelledby="errc-t" aria-describedby="errc-d" style="position: absolute; left: 50px; top: 230px; width: 312px; box-sizing: border-box; padding: 24px; border-radius: 28px; background-color: #ECE7E6; display: flex; flex-direction: column">
+      <span class="ms" aria-hidden="true" style="align-self: center; font-size: 24px; color: #3A6265">error</span>
+      <h2 id="errc-t" style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 16px 0 0; font-size: 24px; line-height: 32px; font-weight: 400; text-align: center">No se ha podido cancelar tu solicitud</h2>
+      <p id="errc-d" style="margin: 16px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">Tu solicitud para adoptar a {{name}} sigue en proceso. Comprueba tu conexión e inténtalo de nuevo.</p>
+      <div style="margin-top: 24px; display: flex; flex-direction: column; align-items: flex-end">
+        <button type="button" onClick="{{doCancel}}" class="sl" style="min-height: 48px; padding: 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer">Reintentar la cancelación</button>
+        <button type="button" onClick="{{closeErrorCancel}}" class="sl" style="min-height: 48px; padding: 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer">Mantener mi solicitud</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animal":{"editor":"enum","options":["luna","simba","rocky","kira","coco","nube"],"default":"luna"},"fase":{"editor":"enum","options":["proceso","finalizada","rechazada","cancelada"],"default":"proceso"},"aviso":{"editor":"boolean","default":false},"$preview":{"width":412,"height":917}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { closed: false, confirmCancel: false, cancelled: false, errorCancel: props.errorCancel === true || props.errorCancel === 'true' };
+  }
+  renderVals() {
+    const names = { luna: 'Luna', simba: 'Simba', rocky: 'Rocky', kira: 'Kira', coco: 'Coco', nube: 'Nube' };
+    const n = names[this.props.animal ?? 'luna'] || 'Luna';
+    const fase = this.state.cancelled ? 'cancelada' : (this.props.fase ?? 'proceso');
+    const aviso = this.props.aviso === true || this.props.aviso === 'true';
+    const done = (label, note) => ({ label, note: note || '', icon: 'check', num: '', bg: '#1C1B1B', fg: '#FFFFFF', border: 'none', w: 700, color: '#1C1B1B', cur: 'false', st: 'completado' });
+    const now = (num, label) => ({ label, note: '', icon: '', num, bg: '#FFFFFF', fg: '#734863', border: '2px solid #734863', w: 700, color: '#1C1B1B', cur: 'step', st: 'paso actual' });
+    const next = (num, label) => ({ label, note: '', icon: '', num, bg: '#FFFFFF', fg: '#4F4449', border: '1px solid #81747A', w: 400, color: '#4F4449', cur: 'false', st: 'pendiente' });
+    const no = (label) => ({ label, note: '', icon: 'close', num: '', bg: '#FFFFFF', fg: '#1C1B1B', border: '2px solid #1C1B1B', w: 700, color: '#1C1B1B', cur: 'step', st: 'no disponible' });
+    let v;
+    if (fase === 'finalizada') {
+      v = { tag: 'Adopción finalizada', tagBg: '#31302F', tagFg: '#F4F0EE', tagBorder: '1px solid #31302F',
+        title: '¡La protectora ha aceptado tu solicitud!',
+        message: 'Se pondrá en contacto contigo para preparar la llegada de ' + n + ' a casa.',
+        steps: [done('Solicitud enviada'), done('Respuesta recibida'), done('Adopción finalizada')] };
+    } else if (fase === 'rechazada') {
+      v = { tag: 'No disponible', tagBg: 'transparent', tagFg: '#1C1B1B', tagBorder: '1px solid #81747A',
+        title: 'Esta mascota ya no está disponible',
+        message: 'Lo sentimos: ' + n + ' ya no está disponible para adopción. Puedes volver a tus mascotas compatibles y elegir otro.',
+        steps: [done('Solicitud enviada'), done('Respuesta recibida'), no('No disponible')] };
+    } else if (fase === 'cancelada') {
+      v = { tag: 'Cancelada', tagBg: 'transparent', tagFg: '#1C1B1B', tagBorder: '1px solid #81747A',
+        title: 'Has cancelado tu solicitud',
+        message: n + ' sigue disponible por si cambias de idea. Puedes volver a tus mascotas compatibles cuando quieras.',
+        steps: [done('Solicitud enviada'), no('Solicitud cancelada')] };
+    } else {
+      v = { tag: 'En proceso', tagBg: 'transparent', tagFg: '#1C1B1B', tagBorder: '1px solid #81747A',
+        title: '',
+        message: 'Has enviado tu solicitud de adopción. Ahora toca esperar una respuesta.',
+        steps: [done('Solicitud enviada', '(completado)'), now('2', 'Esperando respuesta'), next('3', 'Adopción finalizada')] };
+    }
+    const total = v.steps.length;
+    v.steps = v.steps.map((s, i) => ({ ...s, conn: i > 0, aria: 'Paso ' + (i + 1) + ' de ' + total + ', ' + s.label + ', ' + s.st }));
+    const fichaHref = 'Ficha-' + n + (fase === 'cancelada' ? '' : '-Enviada') + '.dc.html';
+    const segunda = this.props.segunda ?? (fase === 'proceso' ? n : '');
+    const misHref = segunda ? 'ComoAdoptar-Sesion-' + segunda + '.dc.html' : 'ComoAdoptar-Sesion.dc.html';
+    const onBack = typeof this.props.onBack === 'function' ? this.props.onBack : null;
+    return {
+      ...v, name: n, fichaHref, segunda,
+      hasOnBack: !!onBack, noOnBack: !onBack, goBack: () => { if (onBack) onBack(); },
+      backHref: this.props.back ?? (fase === 'proceso' ? (aviso ? fichaHref : misHref) : 'ComoAdoptar-Sesion.dc.html'),
+      volverCompat: fase === 'rechazada' || fase === 'cancelada', conFicha: fase !== 'rechazada',
+      puedeCancelar: fase === 'proceso',
+      showAviso: aviso && fase === 'proceso' && !this.state.closed,
+      close: () => this.setState({ closed: true }),
+      confirmCancel: this.state.confirmCancel,
+      openCancel: () => this.setState({ confirmCancel: true }),
+      closeCancel: () => this.setState({ confirmCancel: false }),
+      doCancel: () => {
+        this.setState({ confirmCancel: false, cancelled: true, closed: true, errorCancel: false });
+        if (typeof this.props.onCancel === 'function') this.props.onCancel();
+      },
+      errorCancel: this.state.errorCancel && fase === 'proceso',
+      closeErrorCancel: () => this.setState({ errorCancel: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

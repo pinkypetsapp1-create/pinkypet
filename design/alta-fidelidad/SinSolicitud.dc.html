@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Estado de la solicitud · sin solicitud</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&amp;family=Roboto:wght@400;500;600;700&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block">
+<style>
+body{margin:0}
+a{color:#734863}
+.ms{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;direction:ltr;font-feature-settings:'liga';-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+a:focus-visible,button:focus-visible{outline:3px solid #3A6265;outline-offset:2px}
+.sl:hover{background-image:linear-gradient(rgba(28,27,27,.08),rgba(28,27,27,.08))}
+.sl:active{background-image:linear-gradient(rgba(28,27,27,.1),rgba(28,27,27,.1))}
+.sp:hover{background-image:linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08))}
+.sp:active{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.pm:active{border-radius:12px!important}
+.pp-scope{timeline-scope:--pp-main}
+.pp-main{scroll-timeline:--pp-main block}
+.pp-main>*{flex-shrink:0}
+.pp-bar{animation:pp-bar linear both;animation-timeline:--pp-main;animation-range:0 8px}
+@keyframes pp-bar{from{background-color:#FDF8F7}to{background-color:#F1EDEB}}
+</style>
+</helmet>
+<div class="pp-scope" style="position: relative; width: 412px; height: 917px; display: flex; flex-direction: column; background-color: #FDF8F7; color: #1C1B1B; font-family: Roboto, system-ui, sans-serif; overflow: hidden">
+  <header class="pp-bar" style="min-height: 64px; flex: none; display: flex; align-items: center; gap: 4px; padding: 0 4px; background-color: #FDF8F7">
+    <a href="{{backHref}}" aria-label="Volver" class="sl" style="flex: none; width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #1C1B1B; text-decoration: none"><span class="ms" aria-hidden="true" style="font-size: 24px">arrow_back</span></a>
+    <h1 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 22px; line-height: 28px; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Estado de la solicitud</h1>
+  </header>
+
+  <main class="pp-main" style="flex: 1; overflow-y: auto; padding: 48px 16px 24px; display: flex; flex-direction: column; align-items: center; text-align: center">
+    <span aria-hidden="true" style="position: relative; flex: none; width: 96px; height: 96px; display: flex; align-items: center; justify-content: center"><svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" focusable="false" style="position: absolute; inset: 0"><path fill="#E6E2E0" d="M48.00 0.00L50.50 0.26L52.94 1.02L55.26 2.15L57.45 3.52L59.54 4.95L61.56 6.28L63.58 7.41L65.68 8.28L67.91 8.92L70.29 9.40L72.77 9.86L75.29 10.44L77.73 11.28L79.99 12.48L81.94 14.06L83.52 16.01L84.72 18.27L85.56 20.71L86.14 23.23L86.60 25.71L87.08 28.09L87.72 30.32L88.59 32.42L89.72 34.44L91.05 36.46L92.48 38.55L93.85 40.74L94.98 43.06L95.74 45.50L96.00 48.00L95.74 50.50L94.98 52.94L93.85 55.26L92.48 57.45L91.05 59.54L89.72 61.56L88.59 63.58L87.72 65.68L87.08 67.91L86.60 70.29L86.14 72.77L85.56 75.29L84.72 77.73L83.52 79.99L81.94 81.94L79.99 83.52L77.73 84.72L75.29 85.56L72.77 86.14L70.29 86.60L67.91 87.08L65.68 87.72L63.58 88.59L61.56 89.72L59.54 91.05L57.45 92.48L55.26 93.85L52.94 94.98L50.50 95.74L48.00 96.00L45.50 95.74L43.06 94.98L40.74 93.85L38.55 92.48L36.46 91.05L34.44 89.72L32.42 88.59L30.32 87.72L28.09 87.08L25.71 86.60L23.23 86.14L20.71 85.56L18.27 84.72L16.01 83.52L14.06 81.94L12.48 79.99L11.28 77.73L10.44 75.29L9.86 72.77L9.40 70.29L8.92 67.91L8.28 65.68L7.41 63.58L6.28 61.56L4.95 59.54L3.52 57.45L2.15 55.26L1.02 52.94L0.26 50.50L0.00 48.00L0.26 45.50L1.02 43.06L2.15 40.74L3.52 38.55L4.95 36.46L6.28 34.44L7.41 32.42L8.28 30.32L8.92 28.09L9.40 25.71L9.86 23.23L10.44 20.71L11.28 18.27L12.48 16.01L14.06 14.06L16.01 12.48L18.27 11.28L20.71 10.44L23.23 9.86L25.71 9.40L28.09 8.92L30.32 8.28L32.42 7.41L34.44 6.28L36.46 4.95L38.55 3.52L40.74 2.15L43.06 1.02L45.50 0.26Z"></path></svg><span class="ms" style="position: relative; font-size: 48px; color: #4F4449; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48">assignment</span></span>
+    <h2 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 12px 0 0; font-size: 24px; line-height: 32px; font-weight: 400">Todavía no has enviado ninguna solicitud de adopción.</h2>
+    <p style="margin: 12px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">Cuando elijas una mascota y envíes tu solicitud, aquí verás su estado.</p>
+    <a href="{{buscarHref}}" class="sp pm" style="box-sizing: border-box; align-self: stretch; margin-top: 24px; display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 8px 24px; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-size: 16px; line-height: 24px; font-weight: 500; text-decoration: none; text-align: center">Buscar mascotas</a>
+  </main>
+  <dc-import name="TabBar" active="como" estado="{{estado}}" hint-size="412px,64px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"estado":{"editor":"enum","options":["invitado","completo"],"default":"invitado"},"$preview":{"width":412,"height":917}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const estado = this.props.estado === 'completo' ? 'completo' : 'invitado';
+    return {
+      estado,
+      backHref: estado === 'completo' ? 'ComoAdoptar-Sesion.dc.html' : 'ComoAdoptar.dc.html',
+      buscarHref: estado === 'completo' ? 'Compatibles.dc.html' : 'Catalogo.dc.html'
+    };
+  }
+}
+</script>
+</body>
+</html>

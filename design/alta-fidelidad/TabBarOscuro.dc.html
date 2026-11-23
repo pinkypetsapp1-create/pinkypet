@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Navigation bar · oscuro</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&amp;family=Roboto:wght@400;500;600;700&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block">
+<style>
+body{margin:0;color-scheme:dark}
+</style>
+</helmet>
+<nav aria-label="Navegación principal" style="width: 412px; min-height: 64px; box-sizing: border-box; flex: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background-color: #201F1F; font-family: Roboto, system-ui, sans-serif">
+  <sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+    <a href="{{t.href}}" aria-current="{{t.cur}}" aria-label="{{t.aria}}" class="tb" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: {{t.color}}">
+      <span class="sl" style="width: 56px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background-color: {{t.ind}}">
+        <span aria-hidden="true" style="font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-feature-settings: 'liga'; color: {{t.icolor}}; font-variation-settings: {{t.fill}}; transition: font-variation-settings 300ms cubic-bezier(.31,.94,.34,1)">{{t.icon}}</span>
+      </span>
+      <span style="font-size: 12px; line-height: 16px; font-weight: {{t.w}}; letter-spacing: 0.5px">{{t.label}}</span>
+    </a>
+  </sc-for>
+</nav>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["inicio","buscar","como","perfil"],"default":"inicio"},"estado":{"editor":"enum","options":["invitado","registrado","completo"],"default":"invitado"},"$preview":{"width":412,"height":64}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const a = this.props.active ?? 'inicio';
+    const e = this.props.estado ?? 'invitado';
+    const s = this.props.segunda || '';
+    const pick = (inv, reg, comp) => e === 'completo' ? comp : (e === 'registrado' ? reg : inv);
+    const defs = [
+      { k: 'inicio', label: 'Inicio', icon: 'home', href: pick('Main.dc.html', 'Inicio-Registrado.dc.html', 'Oscuro-Inicio.dc.html') },
+      { k: 'buscar', label: 'Mascotas', icon: 'search', href: pick('Catalogo.dc.html', 'Catalogo-Registrado.dc.html', s ? 'Compatibles-Limite-' + s + '.dc.html' : 'Oscuro-Compatibles.dc.html') },
+      { k: 'como', label: 'Proceso', icon: 'hourglass_empty', href: pick('ComoAdoptar.dc.html', 'ComoAdoptar-Registrado.dc.html', s ? 'ComoAdoptar-Sesion-' + s + '.dc.html' : 'ComoAdoptar-Sesion.dc.html') },
+      { k: 'perfil', label: 'Mi perfil', icon: 'person', href: pick('PerfilVacio.dc.html', 'PerfilVacio-Registrado.dc.html', 'PerfilCompletado.dc.html') }
+    ];
+    return {
+      tabs: defs.map((d, i) => {
+        const on = d.k === a;
+        return {
+          href: d.href, label: d.label, icon: d.icon,
+          aria: d.label + ', pestaña ' + (i + 1) + ' de 4' + (on ? ', seleccionada' : ''),
+          cur: on ? 'page' : 'false',
+          color: on ? '#E6E2E0' : '#D2C2C9',
+          ind: on ? '#234D50' : 'transparent',
+          icolor: on ? '#BFEAED' : '#D2C2C9',
+          fill: on ? "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24" : "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24",
+          w: on ? 700 : 500
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

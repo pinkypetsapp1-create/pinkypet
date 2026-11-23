@@ -1,0 +1,138 @@
+{
+  "v": 3,
+  "assetGroups": {
+    "Ilustraciones": {
+      "name": "Ilustraciones",
+      "tile": "m",
+      "order": [
+        "gato.png",
+        "perro.png"
+      ],
+      "files": {
+        "gato.png": {
+          "name": "gato.png",
+          "blob": "6cea9973759e04296bb2bb0d15e7d5c0",
+          "size": 40724,
+          "type": "image/png"
+        },
+        "perro.png": {
+          "name": "perro.png",
+          "blob": "7dc9ceff30d7a00cad18c83681ce77fe",
+          "size": 25813,
+          "type": "image/png"
+        }
+      }
+    },
+    "Logotipo": {
+      "name": "Logotipo",
+      "tile": "m",
+      "order": [
+        "isotipo.svg",
+        "isotipo-invertido.svg",
+        "isotipo-una-tinta.svg",
+        "huella-p.svg"
+      ],
+      "files": {
+        "isotipo.svg": {
+          "name": "isotipo.svg",
+          "blob": "b54204f47a8206299ecd6c7bcfdea7ae",
+          "size": 543,
+          "type": "image/svg+xml"
+        },
+        "isotipo-invertido.svg": {
+          "name": "isotipo-invertido.svg",
+          "blob": "615e1928952a77be531574a8fec57116",
+          "size": 543,
+          "type": "image/svg+xml"
+        },
+        "isotipo-una-tinta.svg": {
+          "name": "isotipo-una-tinta.svg",
+          "blob": "d2adef95a079cf4fa2351f8b76603add",
+          "size": 543,
+          "type": "image/svg+xml"
+        },
+        "huella-p.svg": {
+          "name": "huella-p.svg",
+          "blob": "07c0cd02844cc5bc8bf658863f9b117a",
+          "size": 447,
+          "type": "image/svg+xml"
+        }
+      }
+    },
+    "Fotos": {
+      "name": "Fotos",
+      "tile": "m",
+      "order": [
+        "coco.jpg",
+        "kira.jpg",
+        "luna.jpg",
+        "nube.jpg",
+        "rocky.jpg",
+        "simba.jpg"
+      ],
+      "files": {
+        "coco.jpg": {
+          "name": "coco.jpg",
+          "blob": "94bd1359ef9185d1d1507d732ee8efca",
+          "size": 143003,
+          "type": "image/jpeg"
+        },
+        "kira.jpg": {
+          "name": "kira.jpg",
+          "blob": "ac461232eb8238de63357951befe7a2e",
+          "size": 192022,
+          "type": "image/jpeg"
+        },
+        "luna.jpg": {
+          "name": "luna.jpg",
+          "blob": "1f3e65def3222ffde415dbbb5e7a8ba2",
+          "size": 199122,
+          "type": "image/jpeg"
+        },
+        "nube.jpg": {
+          "name": "nube.jpg",
+          "blob": "039923f6b3e21542ae1295e72a0d4cfc",
+          "size": 190431,
+          "type": "image/jpeg"
+        },
+        "rocky.jpg": {
+          "name": "rocky.jpg",
+          "blob": "193d7a62bfb739444485b8d1fdf0b3a0",
+          "size": 235395,
+          "type": "image/jpeg"
+        },
+        "simba.jpg": {
+          "name": "simba.jpg",
+          "blob": "6f430dddf28f0877b99a8363ef3aa503",
+          "size": 218315,
+          "type": "image/jpeg"
+        }
+      }
+    }
+  },
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-11-13T08:45:35Z",
+    "v": 1
+  },
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "groups": [
+    "Logotipo",
+    "Ilustraciones",
+    "Fotos"
+  ],
+  "lastChange": {
+    "by": "Claude",
+    "at": "2026-11-18T18:30:00Z",
+    "via": "Claude",
+    "note": "MOV1: componentes Huella y Splash / Primer inicio (claro y oscuro) con curvas de M3."
+  },
+  "layout": "files",
+  "libraries": [],
+  "namespace": "PinkyPet",
+  "sections": {},
+  "title": "Pinky Pet · M3 Expressive"
+}

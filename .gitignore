@@ -1,0 +1,16 @@
+# Sistema
+.DS_Store
+
+# Dependencias y builds
+node_modules/
+dist/
+www/
+coverage/
+
+# Secretos: nunca en el repositorio
+.env
+.env.*
+!.env.example
+
+# Material de entrada del diseño (ZIP, capturas sin procesar)
+design/_incoming/

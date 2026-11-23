@@ -1,0 +1,25 @@
+<!-- @dsCard group="Navegación" height=220 subtitle="Inicio · Mascotas · Proceso · Mi perfil; con texto grande" -->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Roboto:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+<style>body{margin:0;background:var(--surface)} .demo{padding:24px;display:flex;flex-direction:column;gap:16px} .row{display:flex;flex-wrap:wrap;align-items:center;gap:12px} .cap{font:500 11px/16px var(--font-sans);letter-spacing:.5px;color:var(--on-surface-variant);text-transform:uppercase}</style>
+</head>
+<body class="pp-root">
+<nav class="pp-navbar" aria-label="Navegación principal" style="margin-top:24px">
+  <a class="pp-navbar__item" href="#" aria-current="page" aria-label="Inicio, pestaña 1 de 4, seleccionada"><span class="pp-navbar__ind pp-state"><span class="pp-icon " aria-hidden="true">home</span></span>Inicio</a>
+  <a class="pp-navbar__item" href="#" aria-label="Mascotas, pestaña 2 de 4"><span class="pp-navbar__ind pp-state"><span class="pp-icon " aria-hidden="true">search</span></span>Mascotas</a>
+  <a class="pp-navbar__item" href="#" aria-label="Proceso, pestaña 3 de 4"><span class="pp-navbar__ind pp-state"><span class="pp-icon " aria-hidden="true">hourglass_empty</span></span>Proceso</a>
+  <a class="pp-navbar__item" href="#" aria-label="Mi perfil, pestaña 4 de 4"><span class="pp-navbar__ind pp-state"><span class="pp-icon " aria-hidden="true">person</span></span>Mi perfil</a>
+</nav>
+<p style="margin:16px 24px 8px;font:500 11px/16px var(--font-sans);letter-spacing:.5px;color:var(--on-surface-variant);text-transform:uppercase">Texto grande · solo la etiqueta activa</p>
+<nav class="pp-navbar pp-navbar--label-activa" aria-label="Navegación principal (texto grande)" style="font-size:24px">
+  <a class="pp-navbar__item" href="#" aria-current="page" aria-label="Inicio, pestaña 1 de 4, seleccionada" style="font-size:24px;line-height:32px"><span class="pp-navbar__ind pp-state"><span class="pp-icon " aria-hidden="true">home</span></span>Inicio</a>
+  <a class="pp-navbar__item" href="#" aria-label="Mascotas, pestaña 2 de 4"><span class="pp-navbar__ind pp-state"><span class="pp-icon " aria-hidden="true">search</span></span>Mascotas</a>
+  <a class="pp-navbar__item" href="#" aria-label="Proceso, pestaña 3 de 4"><span class="pp-navbar__ind pp-state"><span class="pp-icon " aria-hidden="true">hourglass_empty</span></span>Proceso</a>
+  <a class="pp-navbar__item" href="#" aria-label="Mi perfil, pestaña 4 de 4"><span class="pp-navbar__ind pp-state"><span class="pp-icon " aria-hidden="true">person</span></span>Mi perfil</a>
+</nav>
+<script>(function(){if(document.querySelector('link[data-pp-fonts]'))return;var l=document.createElement('link');l.rel='stylesheet';l.setAttribute('data-pp-fonts','');l.href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Roboto:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block';(document.head||document.documentElement).appendChild(l);})();</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!-- @dsCard height=336 -->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Roboto:wght@400;700&display=block">
+<style>
+body { margin: 0; background: var(--surface); }
+.cover { position: relative; width: 960px; height: 336px; overflow: hidden; background: var(--surface); }
+.cover svg { position: absolute; left: 0; top: 0; }
+.b-primary { fill: var(--primary); }
+.b-sec { fill: var(--secondary-container); }
+.b-inv { fill: var(--inverse-surface); }
+.b-high { fill: var(--surface-container-highest); }
+.b-pc { fill: var(--tertiary-container); }
+.dot { fill: var(--on-primary); }
+.r-xxl { rx: var(--corner-extra-extra-large); }
+.r-xl { rx: var(--corner-extra-large); }
+.r-pill48 { rx: 48px; }
+.r-pill28 { rx: 28px; }
+.text { position: absolute; left: 48px; bottom: 40px; width: 420px; font-family: var(--font-sans); }
+.name { margin: 0; font-family: var(--font-brand); font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; font-size: 112px; line-height: 0.95; font-weight: 900; letter-spacing: -2px; color: var(--primary); }
+.tag { margin: 16px 0 0; font-size: 14px; line-height: 20px; color: var(--on-surface-variant); }
+</style>
+</head>
+<body class="pp-root">
+<div class="cover">
+  <svg width="960" height="336" viewBox="0 0 960 336" aria-hidden="true">
+    <!--
+      blocks: primary 176×280 (corner-extra-extra-large), secondary-container pill 280×96, inverse-surface disc r80, surface-container-highest 100×200 (corner-extra-large), primary-container pill 176×56
+      arrangement: tall slab bleeding off the top with satellites bleeding right, all right of x=480
+      pattern: discs (soft, friendly, large radii; Expressive shape morph) as a 3×5 dot grid at space-6 pitch on the primary slab
+      scales: space-6 (24) pitch, space-4/space-6 gaps, corner-extra-extra-large, corner-extra-large, corner-full
+    -->
+    <rect class="b-primary r-xxl" x="504" y="-40" width="176" height="280"></rect>
+    <rect class="b-sec r-pill48" x="704" y="24" width="280" height="96"></rect>
+    <circle class="b-inv" cx="784" cy="232" r="80"></circle>
+    <rect class="b-high r-xl" x="880" y="144" width="100" height="216"></rect>
+    <rect class="b-pc r-pill28" x="504" y="264" width="176" height="56"></rect>
+    <g>
+      <circle class="dot" cx="568" cy="80" r="4"></circle><circle class="dot" cx="592" cy="80" r="4"></circle><circle class="dot" cx="616" cy="80" r="4"></circle>
+      <circle class="dot" cx="568" cy="104" r="4"></circle><circle class="dot" cx="592" cy="104" r="4"></circle><circle class="dot" cx="616" cy="104" r="4"></circle>
+      <circle class="dot" cx="568" cy="128" r="4"></circle><circle class="dot" cx="592" cy="128" r="4"></circle><circle class="dot" cx="616" cy="128" r="4"></circle>
+      <circle class="dot" cx="568" cy="152" r="4"></circle><circle class="dot" cx="592" cy="152" r="4"></circle><circle class="dot" cx="616" cy="152" r="4"></circle>
+      <circle class="dot" cx="568" cy="176" r="4"></circle><circle class="dot" cx="592" cy="176" r="4"></circle><circle class="dot" cx="616" cy="176" r="4"></circle>
+    </g>
+  </svg>
+  <div class="text">
+    <p class="name">Pinky<br>Pet</p>
+    <p class="tag">Adopción responsable sobre Material 3 Expressive.</p>
+  </div>
+</div>
+</body>
+</html>

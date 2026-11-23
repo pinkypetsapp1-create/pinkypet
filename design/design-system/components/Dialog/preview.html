@@ -1,0 +1,21 @@
+<!-- @dsCard group="Comunicación" height=540 subtitle="Confirmación · alerta con icono" -->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Roboto:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+<style>body{margin:0;background:var(--surface)} .demo{padding:24px;display:flex;flex-direction:column;gap:16px} .row{display:flex;flex-wrap:wrap;align-items:center;gap:12px} .cap{font:500 11px/16px var(--font-sans);letter-spacing:.5px;color:var(--on-surface-variant);text-transform:uppercase}</style>
+</head>
+<body class="pp-root">
+<div style="position:relative;height:540px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--surface)">
+  <button type="button" class="pp-scrim" aria-label="Cerrar"></button>
+  <div class="pp-dialog" role="alertdialog" aria-modal="true" aria-labelledby="d1t" aria-describedby="d1d" style="position:relative">
+    <span class="pp-dialog__icon pp-icon" aria-hidden="true">error</span>
+    <h2 id="d1t" class="pp-dialog__title">No se ha podido enviar tu solicitud</h2>
+    <p id="d1d" class="pp-dialog__body">Tu solicitud para adoptar a Luna todavía no ha llegado a la protectora. Comprueba tu conexión e inténtalo de nuevo.</p>
+    <div class="pp-dialog__actions"><button type="button" class="pp-btn pp-btn--text pp-state">Reintentar el envío</button><button type="button" class="pp-btn pp-btn--text pp-state">Volver a la ficha</button></div>
+  </div>
+</div>
+<script>(function(){if(document.querySelector('link[data-pp-fonts]'))return;var l=document.createElement('link');l.rel='stylesheet';l.setAttribute('data-pp-fonts','');l.href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Roboto:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block';(document.head||document.documentElement).appendChild(l);})();</script>
+</body>
+</html>

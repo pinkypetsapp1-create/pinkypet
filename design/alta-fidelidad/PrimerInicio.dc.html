@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>00 · Primer inicio · claro</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&amp;family=Roboto:wght@400;500;600;700&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block">
+<style>
+body{margin:0;}
+.ms{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;direction:ltr;font-feature-settings:'liga';-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.rep:hover{background-image:linear-gradient(rgba(115,72,99,.08),rgba(115,72,99,.08))}
+.rep:active{background-image:linear-gradient(rgba(115,72,99,.1),rgba(115,72,99,.1))}
+.rep:focus-visible{outline:3px solid #3A6265;outline-offset:2px}
+/* MOV1 · Splash / Primer inicio (biblioteca: SplashPrimerInicio). Curvas de M3. */
+.spl{position:absolute;inset:0;z-index:20;overflow:hidden;animation:spl-end 1ms 1550ms forwards}
+.spl-scrim{position:absolute;inset:0;background-color:rgba(253, 248, 247, 0.86);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);animation:spl-out 450ms 1100ms cubic-bezier(0.3,0,0.8,0.15) forwards}
+.spl-print{position:absolute;width:40px;height:40px;color:#734863;opacity:0;transform:rotate(var(--r));animation:spl-step 750ms cubic-bezier(0.2,0,0,1) both;animation-delay:calc(var(--i) * 100ms)}
+.spl-print svg{display:block;width:100%;height:100%;fill:currentColor}
+.spl-seal{position:absolute;left:86.5px;top:325.5px;width:239px;height:239px;border-radius:50%;background-color:#734863;opacity:0;animation:spl-in 450ms 350ms cubic-bezier(0.05,0.7,0.1,1) both,spl-fly 500ms 1050ms cubic-bezier(0.2,0,0,1) forwards}
+.spl-seal::after{content:"";position:absolute;inset:0;background-color:#FFFFFF;-webkit-mask:url(data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cg%20transform%3D%27translate%2813%2013%29%20scale%28.72%29%27%3E%3Crect%20x%3D%2718%27%20y%3D%2746%27%20width%3D%2718%27%20height%3D%2748%27%20rx%3D%279%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2764%27%20rx%3D%2726%27%20ry%3D%2722%27%2F%3E%3Cellipse%20cx%3D%2730%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%28-20%2030%2028%29%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2720%27%20rx%3D%278.5%27%20ry%3D%2710%27%2F%3E%3Cellipse%20cx%3D%2778%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%2820%2078%2028%29%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E) center / 100% no-repeat;mask:url(data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cg%20transform%3D%27translate%2813%2013%29%20scale%28.72%29%27%3E%3Crect%20x%3D%2718%27%20y%3D%2746%27%20width%3D%2718%27%20height%3D%2748%27%20rx%3D%279%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2764%27%20rx%3D%2726%27%20ry%3D%2722%27%2F%3E%3Cellipse%20cx%3D%2730%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%28-20%2030%2028%29%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2720%27%20rx%3D%278.5%27%20ry%3D%2710%27%2F%3E%3Cellipse%20cx%3D%2778%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%2820%2078%2028%29%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E) center / 100% no-repeat}
+@keyframes spl-step{0%{opacity:0;transform:translateY(5px) rotate(var(--r))}30%,70%{opacity:.5;transform:rotate(var(--r))}100%{opacity:0;transform:rotate(var(--r))}}
+@keyframes spl-in{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+@keyframes spl-fly{from{opacity:1;transform:none}to{opacity:1;transform:translate(-174px,-413px) scale(.1339)}}
+@keyframes spl-out{to{opacity:0}}
+@keyframes spl-end{to{visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.spl{display:none}}
+</style>
+</helmet>
+<div style="width: 412px; height: 985px; display: flex; flex-direction: column; align-items: center; gap: 12px; font-family: Roboto, system-ui, sans-serif">
+  <div style="position: relative; flex: none; width: 412px; height: 917px; overflow: hidden">
+    <dc-import name="Main" hint-size="412px,917px"></dc-import>
+    <sc-if value="{{show}}" hint-placeholder-val="{{true}}">
+      <div class="spl" aria-hidden="true">
+        <div class="spl-scrim"></div>
+        <span class="spl-print" style="--i: 0; left: 163px; top: 838px; --r: -6deg"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><rect x="18" y="46" width="18" height="48" rx="9"/><ellipse cx="54" cy="64" rx="26" ry="22"/><ellipse cx="30" cy="28" rx="8.5" ry="10" transform="rotate(-20 30 28)"/><ellipse cx="54" cy="20" rx="8.5" ry="10"/><ellipse cx="78" cy="28" rx="8.5" ry="10" transform="rotate(20 78 28)"/></svg></span><span class="spl-print" style="--i: 1; left: 209px; top: 760px; --r: 6deg"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><rect x="18" y="46" width="18" height="48" rx="9"/><ellipse cx="54" cy="64" rx="26" ry="22"/><ellipse cx="30" cy="28" rx="8.5" ry="10" transform="rotate(-20 30 28)"/><ellipse cx="54" cy="20" rx="8.5" ry="10"/><ellipse cx="78" cy="28" rx="8.5" ry="10" transform="rotate(20 78 28)"/></svg></span><span class="spl-print" style="--i: 2; left: 163px; top: 682px; --r: -6deg"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><rect x="18" y="46" width="18" height="48" rx="9"/><ellipse cx="54" cy="64" rx="26" ry="22"/><ellipse cx="30" cy="28" rx="8.5" ry="10" transform="rotate(-20 30 28)"/><ellipse cx="54" cy="20" rx="8.5" ry="10"/><ellipse cx="78" cy="28" rx="8.5" ry="10" transform="rotate(20 78 28)"/></svg></span><span class="spl-print" style="--i: 3; left: 209px; top: 604px; --r: 6deg"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><rect x="18" y="46" width="18" height="48" rx="9"/><ellipse cx="54" cy="64" rx="26" ry="22"/><ellipse cx="30" cy="28" rx="8.5" ry="10" transform="rotate(-20 30 28)"/><ellipse cx="54" cy="20" rx="8.5" ry="10"/><ellipse cx="78" cy="28" rx="8.5" ry="10" transform="rotate(20 78 28)"/></svg></span>
+        <span class="spl-seal"></span>
+      </div>
+    </sc-if>
+  </div>
+  <button type="button" onClick="{{replay}}" class="rep" aria-label="Repetir la animación de primer inicio" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 16px 8px 12px; border: 1px solid #81747A; border-radius: 20px; background-color: #FDF8F7; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer"><span class="ms" aria-hidden="true" style="font-size: 18px">replay</span>Repetir</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":985}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    // Fuera del prototipo, la app guarda que ya se vio y no la vuelve a mostrar (solo el primer inicio).
+    this.state = { show: true };
+    this.replay = () => {
+      clearTimeout(this._t);
+      this.setState({ show: false });
+      this._t = setTimeout(() => this.setState({ show: true }), 40);
+    };
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+  renderVals() { return { show: this.state.show, replay: this.replay }; }
+}
+</script>
+</body>
+</html>

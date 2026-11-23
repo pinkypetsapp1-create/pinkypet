@@ -1,0 +1,17 @@
+<!-- @dsCard group="Selección y entrada" height=340 subtitle="Outlined · foco · error" -->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Roboto:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+<style>body{margin:0;background:var(--surface)} .demo{padding:24px;display:flex;flex-direction:column;gap:16px} .row{display:flex;flex-wrap:wrap;align-items:center;gap:12px} .cap{font:500 11px/16px var(--font-sans);letter-spacing:.5px;color:var(--on-surface-variant);text-transform:uppercase}</style>
+</head>
+<body class="pp-root">
+<div class="demo" style="gap:24px">
+  <div class="pp-field"><div class="pp-field__box"><input id="tf1" class="pp-field__input" type="email" value="maria.gomez@correo.com" autocomplete="email"><label for="tf1" class="pp-field__label">Correo electrónico</label></div></div>
+  <div class="pp-field pp-field--error"><div class="pp-field__box"><input id="tf2" class="pp-field__input" type="password" value="perro1" aria-invalid="true" aria-describedby="tf2h"><label for="tf2" class="pp-field__label">Contraseña</label><span class="pp-field__trailing pp-icon pp-icon--filled" aria-hidden="true">error</span></div><p id="tf2h" class="pp-field__support">La contraseña debe tener al menos 8 caracteres. Ahora tiene 6.</p></div>
+  <div class="pp-field"><div class="pp-field__box"><input id="tf3" class="pp-field__input" type="password" aria-describedby="tf3h" autocomplete="current-password"><label for="tf3" class="pp-field__label">Contraseña</label></div><p id="tf3h" class="pp-field__support">Por seguridad, vuelve a escribir tu contraseña.</p></div>
+</div>
+<script>(function(){if(document.querySelector('link[data-pp-fonts]'))return;var l=document.createElement('link');l.rel='stylesheet';l.setAttribute('data-pp-fonts','');l.href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Roboto:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block';(document.head||document.documentElement).appendChild(l);})();</script>
+</body>
+</html>

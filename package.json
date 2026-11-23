@@ -1,0 +1,12 @@
+{
+  "name": "pinky-pet",
+  "private": true,
+  "description": "Pinky Pet · proyecto académico de UX/UI (compatibilidad persona-mascota)",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "tokens": "node scripts/generate-tokens.mjs",
+    "design:lock": "node scripts/design-lock.mjs",
+    "test": "node --test scripts/*.test.mjs"
+  }
+}

@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mascotas</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&amp;family=Roboto:wght@400;500;600;700&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block">
+<style>
+body{margin:0}
+a{color:#734863}
+.ms{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;direction:ltr;font-feature-settings:'liga';-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.ms.f{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A6265;outline-offset:2px}
+.sl:hover{background-image:linear-gradient(rgba(28,27,27,.08),rgba(28,27,27,.08))}
+.sl:active{background-image:linear-gradient(rgba(28,27,27,.1),rgba(28,27,27,.1))}
+.sp:hover{background-image:linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08))}
+.sp:active{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.pm:active{border-radius:12px!important}
+.ps:active{border-radius:8px!important}
+.pp-scope{timeline-scope:--pp-main}
+.pp-main{scroll-timeline:--pp-main block}
+.pp-main>*{flex-shrink:0}
+.pp-bar{animation:pp-bar linear both;animation-timeline:--pp-main;animation-range:0 8px}
+@keyframes pp-bar{from{background-color:#FDF8F7}to{background-color:#F1EDEB}}
+.tc{transition:border-radius 350ms cubic-bezier(.42,1.67,.21,.9),background-color 200ms cubic-bezier(.31,.94,.34,1)}
+@media (prefers-reduced-motion:reduce){.tc{transition:none}}
+</style>
+</helmet>
+<div class="pp-scope" style="position: relative; width: 412px; height: 917px; display: flex; flex-direction: column; background-color: #FDF8F7; color: #1C1B1B; font-family: Roboto, system-ui, sans-serif; overflow: hidden">
+  <header class="pp-bar" style="min-height: 64px; flex: none; display: flex; align-items: center; gap: 12px; padding: 0 16px; background-color: #FDF8F7">
+    <span aria-hidden="true" style="position: relative; flex: none; width: 32px; height: 32px; box-sizing: border-box; border-radius: 50%; background-color: #734863; display: block"><span style="position: absolute; inset: 0; background-color: #FFFFFF; -webkit-mask: url(data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cg%20transform%3D%27translate%2813%2013%29%20scale%28.72%29%27%3E%3Crect%20x%3D%2718%27%20y%3D%2746%27%20width%3D%2718%27%20height%3D%2748%27%20rx%3D%279%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2764%27%20rx%3D%2726%27%20ry%3D%2722%27%2F%3E%3Cellipse%20cx%3D%2730%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%28-20%2030%2028%29%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2720%27%20rx%3D%278.5%27%20ry%3D%2710%27%2F%3E%3Cellipse%20cx%3D%2778%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%2820%2078%2028%29%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E) center / 100% no-repeat; mask: url(data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cg%20transform%3D%27translate%2813%2013%29%20scale%28.72%29%27%3E%3Crect%20x%3D%2718%27%20y%3D%2746%27%20width%3D%2718%27%20height%3D%2748%27%20rx%3D%279%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2764%27%20rx%3D%2726%27%20ry%3D%2722%27%2F%3E%3Cellipse%20cx%3D%2730%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%28-20%2030%2028%29%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2720%27%20rx%3D%278.5%27%20ry%3D%2710%27%2F%3E%3Cellipse%20cx%3D%2778%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%2820%2078%2028%29%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E) center / 100% no-repeat"></span></span>
+    <span style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; font-size: 22px; line-height: 28px; font-weight: 900; letter-spacing: -0.5px; color: #734863">Pinky Pet</span>
+  </header>
+
+  <main class="pp-main" style="position: relative; flex: 1; overflow-y: auto; padding: 16px 16px 24px; display: flex; flex-direction: column; gap: 16px">
+    <h1 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; flex: none; margin: 0; font-size: 32px; line-height: 40px; font-weight: 600">Mascotas</h1>
+
+    <sc-if value="{{showPct}}" hint-placeholder-val="{{false}}">
+      <section style="flex: none; background-color: #E6E2E0; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+        <p style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 500">Según tus respuestas del test</p>
+        <p style="margin: 0; font-size: 14px; line-height: 20px">El porcentaje te orienta según tus respuestas. En cada ficha verás por qué encaja contigo.</p>
+      </section>
+    </sc-if>
+
+    <section aria-label="Filtros" style="flex: none; position: relative; display: flex; flex-direction: column; gap: 8px">
+      <div role="group" aria-label="Tipo de mascota" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+        <sc-for list="{{types}}" as="t" hint-placeholder-count="3">
+          <button type="button" aria-pressed="{{t.pressed}}" onClick="{{t.pick}}" class="sl tc" style="position: relative; height: 124px; box-sizing: border-box; padding: 12px 0; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: {{t.radius}}; border: {{t.border}}; background-color: {{t.bg}}; color: {{t.fg}}; font-family: inherit; cursor: pointer">
+            <span aria-hidden="true" style="width: 72px; height: 72px; border-radius: 50%; background-color: {{t.circle}}; display: flex; align-items: center; justify-content: center">
+              <sc-if value="{{t.isImg}}" hint-placeholder-val="{{true}}"><img src="{{t.img}}" alt="" style="width: 44px; height: 44px"></sc-if>
+              <sc-if value="{{t.isMark}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="position: relative; flex: none; width: 40px; height: 40px; box-sizing: border-box; border-radius: 50%; background-color: #734863; display: block"><span style="position: absolute; inset: 0; background-color: #FFFFFF; -webkit-mask: url(data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cg%20transform%3D%27translate%2813%2013%29%20scale%28.72%29%27%3E%3Crect%20x%3D%2718%27%20y%3D%2746%27%20width%3D%2718%27%20height%3D%2748%27%20rx%3D%279%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2764%27%20rx%3D%2726%27%20ry%3D%2722%27%2F%3E%3Cellipse%20cx%3D%2730%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%28-20%2030%2028%29%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2720%27%20rx%3D%278.5%27%20ry%3D%2710%27%2F%3E%3Cellipse%20cx%3D%2778%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%2820%2078%2028%29%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E) center / 100% no-repeat; mask: url(data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cg%20transform%3D%27translate%2813%2013%29%20scale%28.72%29%27%3E%3Crect%20x%3D%2718%27%20y%3D%2746%27%20width%3D%2718%27%20height%3D%2748%27%20rx%3D%279%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2764%27%20rx%3D%2726%27%20ry%3D%2722%27%2F%3E%3Cellipse%20cx%3D%2730%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%28-20%2030%2028%29%27%2F%3E%3Cellipse%20cx%3D%2754%27%20cy%3D%2720%27%20rx%3D%278.5%27%20ry%3D%2710%27%2F%3E%3Cellipse%20cx%3D%2778%27%20cy%3D%2728%27%20rx%3D%278.5%27%20ry%3D%2710%27%20transform%3D%27rotate%2820%2078%2028%29%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E) center / 100% no-repeat"></span></span></sc-if>
+            </span>
+            <span style="font-size: 14px; line-height: 20px; font-weight: 500">{{t.label}}</span>
+            <sc-if value="{{t.on}}" hint-placeholder-val="{{false}}"><span class="ms f" aria-hidden="true" style="position: absolute; top: 8px; right: 8px; font-size: 24px; color: #234D50">check_circle</span></sc-if>
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <button type="button" aria-pressed="{{nePressed}}" onClick="{{toggleNe}}" style="min-height: 48px; padding: 0; border: none; background-color: transparent; font-family: inherit; cursor: pointer; display: flex; align-items: center">
+          <span class="sl tc" style="min-height: 32px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: {{neChip.pad}}; border-radius: {{neChip.r}}; border: {{neChip.border}}; background-color: {{neChip.bg}}; color: {{neChip.fg}}; font-size: 14px; line-height: 20px; font-weight: 500">
+            <sc-if value="{{ne}}" hint-placeholder-val="{{false}}"><span class="ms" aria-hidden="true" style="font-size: 18px">check</span></sc-if>
+            Necesidades especiales
+          </span>
+        </button>
+        <button type="button" aria-haspopup="menu" aria-expanded="{{menuExp}}" aria-label="{{provAria}}" onClick="{{toggleMenu}}" style="min-height: 48px; padding: 0; border: none; background-color: transparent; font-family: inherit; cursor: pointer; display: flex; align-items: center">
+          <span class="sl tc" style="min-height: 32px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: {{provChip.pad}}; border-radius: {{provChip.r}}; border: {{provChip.border}}; background-color: {{provChip.bg}}; color: {{provChip.fg}}; font-size: 14px; line-height: 20px; font-weight: 500">
+            <sc-if value="{{provOn}}" hint-placeholder-val="{{false}}"><span class="ms" aria-hidden="true" style="font-size: 18px">check</span></sc-if>
+            {{provLabel}}
+            <span class="ms" aria-hidden="true" style="font-size: 18px">arrow_drop_down</span>
+          </span>
+        </button>
+      </div>
+
+      <sc-if value="{{menu}}" hint-placeholder-val="{{false}}">
+        <div role="menu" aria-label="Ubicación" style="position: absolute; z-index: 5; left: 176px; top: 180px; width: 204px; max-height: 288px; overflow-y: auto; padding: 8px 0; border-radius: 4px; background-color: #F1EDEB; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15)">
+          <sc-for list="{{provs}}" as="p" hint-placeholder-count="5">
+            <button type="button" role="menuitemradio" aria-checked="{{p.on}}" onClick="{{p.pick}}" class="sl" style="width: 100%; min-height: 48px; display: flex; align-items: center; gap: 12px; padding: 0 12px; border: none; background-color: {{p.bg}}; color: {{p.fg}}; font-family: inherit; font-size: 16px; line-height: 24px; text-align: left; cursor: pointer">
+              <span class="ms" aria-hidden="true" style="flex: none; width: 24px; font-size: 24px; color: #234D50">{{p.check}}</span>{{p.name}}
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{hasFilters}}" hint-placeholder-val="{{false}}">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+          <p style="margin: 0; font-size: 14px; line-height: 20px; color: #4F4449">Filtros activos: {{activeText}}</p>
+          <button type="button" onClick="{{clear}}" class="sl" style="flex: none; min-height: 48px; display: flex; align-items: center; gap: 8px; padding: 0 16px 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer"><span class="ms" aria-hidden="true" style="font-size: 20px">filter_alt_off</span>Quitar filtros</button>
+        </div>
+      </sc-if>
+    </section>
+
+    <p aria-live="polite" style="flex: none; margin: 0; font-size: 14px; line-height: 20px; font-weight: 500">{{countText}}</p>
+
+    <div style="flex: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: -4px">
+      <sc-for list="{{list}}" as="a" hint-placeholder-count="6">
+        <article aria-label="{{a.name}}" style="box-sizing: border-box; height: 100%; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 12px; padding: 16px; display: flex; flex-direction: column">
+          <div style="position: relative; flex: none; margin: -16px -16px 0; height: 128px; border-radius: 11px 11px 0 0; overflow: hidden; background-color: #F5EDD3">
+            <img src="{{a.photo}}" alt="{{a.photoAlt}}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%">
+          </div>
+          <sc-if value="{{a.ne}}" hint-placeholder-val="{{false}}">
+            <span style="align-self: flex-start; margin-top: 12px; min-height: 24px; box-sizing: border-box; display: inline-flex; align-items: center; padding: 0 8px; border: 1px solid #81747A; border-radius: 8px; font-size: 12px; line-height: 16px; font-weight: 600; color: #4F4449; white-space: nowrap">Necesidades especiales</span>
+          </sc-if>
+          <h2 style="margin: 12px 0 0; font-size: 16px; line-height: 24px; font-weight: 700">{{a.name}}</h2>
+          <p style="margin: 0; font-size: 14px; line-height: 20px">{{a.line1}}</p>
+          <p style="margin: 0; font-size: 14px; line-height: 20px; color: #4F4449">{{a.line2}}</p>
+          <sc-if value="{{showPct}}" hint-placeholder-val="{{false}}">
+            <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 4px">
+              <p style="margin: 0; display: flex; align-items: baseline; gap: 4px"><span style="font-size: 22px; line-height: 28px; font-weight: 600; color: #734863">{{a.pct}} %</span><span style="font-size: 14px; line-height: 20px; font-weight: 700">compatible</span></p>
+              <div aria-hidden="true" style="position: relative; height: 8px; display: flex; gap: 4px">
+                <span style="flex: none; height: 8px; border-radius: 4px; background-color: #734863; width: {{a.barW}}"></span>
+                <span style="flex: 1; height: 8px; border-radius: 4px; background-color: #E6E2E0"></span>
+                <span style="position: absolute; right: 2px; top: 2px; width: 4px; height: 4px; border-radius: 2px; background-color: #734863"></span>
+              </div>
+              <p style="margin: 0; font-size: 12px; line-height: 16px; color: #4F4449">{{a.reason}}</p>
+            </div>
+          </sc-if>
+          <span aria-hidden="true" style="flex: 1; min-height: 12px"></span>
+          <hr style="flex: none; width: 100%; margin: 0; border: none; border-top: 1px solid #D2C2C9">
+          <sc-if value="{{a.link}}" hint-placeholder-val="{{true}}">
+            <a href="{{a.href}}" aria-label="{{a.aria}}" style="flex: none; margin-top: 4px; min-height: 48px; display: flex; align-items: center; text-decoration: none">
+              <span class="sl ps" style="box-sizing: border-box; flex: 1; min-height: 40px; padding: 8px 16px; border-radius: 20px; background-color: #BFEAED; color: #234D50; display: flex; align-items: center; justify-content: center; font-size: 14px; line-height: 20px; font-weight: 500; white-space: normal; text-align: center">{{a.label}}</span>
+            </a>
+          </sc-if>
+          <sc-if value="{{a.ov}}" hint-placeholder-val="{{false}}">
+            <button type="button" aria-label="{{a.aria}}" onClick="{{a.open}}" style="flex: none; margin-top: 4px; min-height: 48px; padding: 0; border: none; background-color: transparent; display: flex; align-items: center; font-family: inherit; cursor: pointer">
+              <span class="sl ps" style="box-sizing: border-box; flex: 1; min-height: 40px; padding: 8px 16px; border-radius: 20px; background-color: #BFEAED; color: #234D50; display: flex; align-items: center; justify-content: center; font-size: 14px; line-height: 20px; font-weight: 500; white-space: normal; text-align: center">{{a.label}}</span>
+            </button>
+          </sc-if>
+        </article>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+      <section style="flex: none; padding: 16px 0; display: flex; flex-direction: column; align-items: center; text-align: center">
+        <span aria-hidden="true" style="position: relative; flex: none; width: 96px; height: 96px; display: flex; align-items: center; justify-content: center"><svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" focusable="false" style="position: absolute; inset: 0"><path fill="#E6E2E0" d="M48.00 0.00L50.51 0.18L52.97 0.71L55.36 1.56L57.63 2.71L59.76 4.12L61.73 5.73L63.55 7.49L65.21 9.34L66.74 11.23L68.14 13.11L69.47 14.94L70.75 16.69L72.01 18.34L73.31 19.89L74.67 21.33L76.11 22.69L77.66 23.99L79.31 25.25L81.06 26.53L82.89 27.86L84.77 29.26L86.66 30.79L88.51 32.45L90.27 34.27L91.88 36.24L93.29 38.37L94.44 40.64L95.29 43.03L95.82 45.49L96.00 48.00L95.82 50.51L95.29 52.97L94.44 55.36L93.29 57.63L91.88 59.76L90.27 61.73L88.51 63.55L86.66 65.21L84.77 66.74L82.89 68.14L81.06 69.47L79.31 70.75L77.66 72.01L76.11 73.31L74.67 74.67L73.31 76.11L72.01 77.66L70.75 79.31L69.47 81.06L68.14 82.89L66.74 84.77L65.21 86.66L63.55 88.51L61.73 90.27L59.76 91.88L57.63 93.29L55.36 94.44L52.97 95.29L50.51 95.82L48.00 96.00L45.49 95.82L43.03 95.29L40.64 94.44L38.37 93.29L36.24 91.88L34.27 90.27L32.45 88.51L30.79 86.66L29.26 84.77L27.86 82.89L26.53 81.06L25.25 79.31L23.99 77.66L22.69 76.11L21.33 74.67L19.89 73.31L18.34 72.01L16.69 70.75L14.94 69.47L13.11 68.14L11.23 66.74L9.34 65.21L7.49 63.55L5.73 61.73L4.12 59.76L2.71 57.63L1.56 55.36L0.71 52.97L0.18 50.51L0.00 48.00L0.18 45.49L0.71 43.03L1.56 40.64L2.71 38.37L4.12 36.24L5.73 34.27L7.49 32.45L9.34 30.79L11.23 29.26L13.11 27.86L14.94 26.53L16.69 25.25L18.34 23.99L19.89 22.69L21.33 21.33L22.69 19.89L23.99 18.34L25.25 16.69L26.53 14.94L27.86 13.11L29.26 11.23L30.79 9.34L32.45 7.49L34.27 5.73L36.24 4.12L38.37 2.71L40.64 1.56L43.03 0.71L45.49 0.18Z"></path></svg><span class="ms" style="position: relative; font-size: 48px; color: #4F4449; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48">search_off</span></span>
+        <h2 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 12px 0 0; font-size: 24px; line-height: 32px; font-weight: 400">No hay mascotas con estos filtros</h2>
+        <p style="margin: 12px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">{{emptyText}}</p>
+        <button type="button" onClick="{{clear}}" class="sp pm" style="align-self: stretch; margin-top: 24px; min-height: 56px; padding: 8px 24px; border: none; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-family: inherit; font-size: 16px; line-height: 24px; font-weight: 500; cursor: pointer; text-align: center">Quitar filtros</button>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{noSesion}}" hint-placeholder-val="{{true}}">
+      <section style="flex: none; margin-top: 8px; background-color: #E6E2E0; border-radius: 12px; padding: 16px; display: flex; flex-direction: column">
+        <h2 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 500">¿Quieres saber qué mascotas encajan contigo?</h2>
+        <p style="margin: 8px 0 0; font-size: 14px; line-height: 20px">Haz el test y verás las mascotas compatibles con tu hogar, tu día a día y lo que buscas en una mascota.</p>
+        <a href="{{testHref}}" class="sp pm" style="box-sizing: border-box; margin-top: 24px; display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 8px 24px; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-size: 16px; line-height: 24px; font-weight: 500; text-decoration: none; text-align: center">Descubrir mi compatibilidad</a>
+      </section>
+    </sc-if>
+  </main>
+  <dc-import name="TabBar" active="buscar" estado="{{estado}}" segunda="{{segunda}}" hint-size="412px,64px"></dc-import>
+
+  <sc-if value="{{ovOn}}" hint-placeholder-val="{{false}}">
+    <div style="position: absolute; inset: 0; z-index: 20">
+      <dc-import name="Ficha" animal="{{ovAnimal}}" enviada="{{ovEnviada}}" limite="{{ovLimite}}" segunda="{{segunda}}" on-back="{{closeOv}}" hint-size="412px,917px"></dc-import>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"estado":{"editor":"enum","options":["invitado","registrado","completo"],"default":"invitado"},"$preview":{"width":412,"height":917}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tipos: {}, ne: false, provincia: '', menu: false, ov: null };
+  }
+  renderVals() {
+    const estado = this.props.estado ?? 'invitado';
+    const sesion = estado === 'completo';
+    const testHref = estado === 'invitado' ? 'Registro.dc.html' : 'Test.dc.html';
+    const enviadas = String(this.props.enviadas ?? '').split(',').map(x => x.trim().toLowerCase()).filter(Boolean);
+    const segunda = this.props.segunda || '';
+    const ovMode = sesion && !!segunda;
+    const ov = this.state.ov;
+    const ICO = { gato: '/_blob/9b63ec990ddd19af160761a68e0105ee', perro: '/_blob/ff3e1eaee23977467ab134aa9e1fb9fb' };
+    const FOTO = {
+      luna: ['/_blob/f499ff1e450e2795f8e1d11984d2dd45', 'Luna, gata gris y blanca, sentada junto a un muro de piedra y unas flores'],
+      simba: ['/_blob/f1ebb8f05095c1002b8ad4a70bc49034', 'Simba, gato naranja y blanco, sentado en un camino de piedra'],
+      rocky: ['/_blob/e64e5104dba8cc71abdf9658d68c71c3', 'Rocky, perro de pelo dorado, sentado en el césped con la lengua fuera'],
+      kira: ['/_blob/e279d8b2fac5945d660786711e94302d', 'Kira, perra blanca y marrón con collar rosa, sentada en un parque'],
+      coco: ['/_blob/00c86d453d6db4db83544cd15853d468', 'Coco, conejo blanco y beige de orejas caídas, sentado sobre una alfombra'],
+      nube: ['/_blob/a1537a9ce239f0ab16a66a7430cd6b0c', 'Nube, cobaya blanca y naranja sobre una manta azul']
+    };
+    const animals = [
+      { id: 'Luna', tipo: 'gato', ne: true, sexo: 'Hembra', edad: '3 años', city: 'Barcelona', size: 'Pequeño', pct: 92, reason: 'Encaja con tu rutina' },
+      { id: 'Simba', tipo: 'gato', ne: false, sexo: 'Macho', edad: '1 año', city: 'Badalona', size: 'Pequeño', pct: 81, reason: 'Necesita juego diario' },
+      { id: 'Rocky', tipo: 'perro', ne: false, sexo: 'Macho', edad: '5 años', city: 'Sabadell', size: 'Grande', pct: 64, reason: 'Necesita mucho espacio' },
+      { id: 'Kira', tipo: 'perro', ne: true, sexo: 'Hembra', edad: '8 años', city: 'Barcelona', size: 'Mediano', pct: 76, reason: 'Necesita paseos cortos' },
+      { id: 'Coco', tipo: 'otros', ne: false, sexo: 'Macho', edad: '2 años', city: "L'Hospitalet de Llobregat", size: 'Pequeño', pct: 85, reason: 'Encaja con tu espacio' },
+      { id: 'Nube', tipo: 'otros', ne: true, sexo: 'Hembra', edad: '4 años', city: 'Terrassa', size: 'Pequeño', pct: 70, reason: 'Necesita cuidado dental' }
+    ];
+    const provincias = ['A Coruña', 'Álava', 'Albacete', 'Alicante', 'Almería', 'Asturias', 'Ávila', 'Badajoz', 'Baleares', 'Barcelona', 'Burgos', 'Cáceres', 'Cádiz', 'Cantabria', 'Castellón', 'Ceuta', 'Ciudad Real', 'Córdoba', 'Cuenca', 'Girona', 'Granada', 'Guadalajara', 'Guipúzcoa', 'Huelva', 'Huesca', 'Jaén', 'La Rioja', 'Las Palmas', 'León', 'Lleida', 'Lugo', 'Madrid', 'Málaga', 'Melilla', 'Murcia', 'Navarra', 'Ourense', 'Palencia', 'Pontevedra', 'Salamanca', 'Santa Cruz de Tenerife', 'Segovia', 'Sevilla', 'Soria', 'Tarragona', 'Teruel', 'Toledo', 'Valencia', 'Valladolid', 'Vizcaya', 'Zamora', 'Zaragoza'];
+    const { tipos, ne, provincia, menu } = this.state;
+    const anyTipo = Object.keys(tipos).some(k => tipos[k]);
+    let list = animals.filter(a => (!anyTipo || tipos[a.tipo]) && (!ne || a.ne) && (!provincia || provincia === 'Barcelona'));
+    if (sesion) list = list.slice().sort((x, y) => y.pct - x.pct);
+    const labels = { gato: 'Gatos', perro: 'Perros', otros: 'Otros' };
+    const types = ['gato', 'perro', 'otros'].map(k => {
+      const on = !!tipos[k];
+      return {
+        label: labels[k], img: ICO[k] || '', isImg: k !== 'otros', isMark: k === 'otros', on,
+        pressed: on ? 'true' : 'false',
+        bg: on ? '#BFEAED' : '#FFFFFF',
+        border: on ? '1px solid #BFEAED' : '1px solid #D2C2C9',
+        circle: on ? '#FFFFFF' : '#F7F3F1',
+        radius: on ? '20px' : '12px',
+        fg: on ? '#234D50' : '#1C1B1B',
+        pick: () => this.setState({ tipos: { ...this.state.tipos, [k]: !on } })
+      };
+    });
+    const chip = (on) => on
+      ? { pad: '0 16px 0 8px', border: '1px solid #BFEAED', bg: '#BFEAED', fg: '#234D50', r: '12px' }
+      : { pad: '0 16px', border: '1px solid #D2C2C9', bg: 'transparent', fg: '#4F4449', r: '8px' };
+    const provChip = provincia
+      ? { pad: '0 8px 0 8px', border: '1px solid #BFEAED', bg: '#BFEAED', fg: '#234D50', r: '12px' }
+      : { pad: '0 8px 0 16px', border: '1px solid #D2C2C9', bg: 'transparent', fg: '#4F4449', r: '8px' };
+    const active = [];
+    ['gato', 'perro', 'otros'].forEach(k => { if (tipos[k]) active.push(labels[k]); });
+    if (ne) active.push('Necesidades especiales');
+    if (provincia) active.push(provincia);
+    return {
+      estado, testHref, noSesion: !sesion, showPct: sesion, segunda,
+      ovOn: !!ov, ovAnimal: ov ? ov.animal : 'luna', ovEnviada: ov ? ov.enviada : false, ovLimite: ov ? ov.limite : false,
+      closeOv: () => this.setState({ ov: null }),
+      types, ne, nePressed: ne ? 'true' : 'false', neChip: chip(ne),
+      toggleNe: () => this.setState({ ne: !this.state.ne }),
+      provOn: !!provincia, provChip, provLabel: provincia || 'Ubicación',
+      provAria: 'Ubicación' + (provincia ? ': ' + provincia : ''),
+      menu, menuExp: menu ? 'true' : 'false',
+      toggleMenu: () => this.setState({ menu: !this.state.menu }),
+      provs: provincias.map(p => ({
+        name: p, on: p === provincia ? 'true' : 'false', check: p === provincia ? 'check' : '',
+        bg: p === provincia ? '#BFEAED' : 'transparent',
+        fg: p === provincia ? '#234D50' : '#1C1B1B',
+        pick: () => this.setState({ provincia: p === this.state.provincia ? '' : p, menu: false })
+      })),
+      empty: list.length === 0,
+      emptyText: provincia && provincia !== 'Barcelona'
+        ? 'Ahora mismo no hay mascotas en adopción en ' + provincia + '. Prueba con otra provincia o quita los filtros.'
+        : 'Prueba a cambiar o quitar algún filtro.',
+      clear: () => this.setState({ tipos: {}, ne: false, provincia: '', menu: false }),
+      hasFilters: active.length > 0,
+      activeText: active.join(' · '),
+      countText: list.length === 1 ? '1 mascota' : list.length + ' mascotas',
+      list: list.map(a => {
+        const key = a.id.toLowerCase();
+        const isEnv = enviadas.indexOf(key) !== -1;
+        return {
+        link: !ovMode, ov: ovMode,
+        open: () => this.setState({ ov: { animal: key, enviada: isEnv, limite: !isEnv }, menu: false }),
+        name: a.id, photo: FOTO[a.id.toLowerCase()][0], photoAlt: FOTO[a.id.toLowerCase()][1], ne: a.ne,
+        line1: a.sexo + ' · ' + a.edad, line2: a.city + ' · ' + a.size,
+        pct: a.pct, reason: a.reason,
+        barW: 'calc(' + a.pct + '% - 2px)',
+        href: sesion ? 'Ficha-' + a.id + (isEnv ? '-Enviada' : '') + '.dc.html' : testHref,
+        label: sesion ? 'Más información' : 'Ver compatibilidad',
+        aria: sesion ? 'Más información sobre ' + a.id : 'Ver compatibilidad: hacer el test para ver la ficha de ' + a.id
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

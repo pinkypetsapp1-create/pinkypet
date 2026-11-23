@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Test de compatibilidad · zoom 200 %</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&amp;family=Roboto:wght@400;500;600;700&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block">
+<style>
+body{margin:0}
+a{color:#734863}
+.ms{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;direction:ltr;font-feature-settings:'liga';-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.ms.f{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A6265;outline-offset:2px}
+.sl:hover{background-image:linear-gradient(rgba(28,27,27,.08),rgba(28,27,27,.08))}
+.sl:active{background-image:linear-gradient(rgba(28,27,27,.1),rgba(28,27,27,.1))}
+.sp:hover{background-image:linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08))}
+.sp:active{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.pm:active{border-radius:12px!important}
+.ps:active{border-radius:8px!important}
+.pp-scope{timeline-scope:--pp-main}
+.pp-main{scroll-timeline:--pp-main block}
+.pp-main>*{flex-shrink:0}
+.pp-bar{animation:pp-bar linear both;animation-timeline:--pp-main;animation-range:0 8px}
+@keyframes pp-bar{from{background-color:#FDF8F7}to{background-color:#F1EDEB}}
+</style>
+</helmet>
+<div ref="{{setRoot}}" class="pp-scope" style="position: relative; width: 206px; height: 458.5px; display: flex; flex-direction: column; background-color: #FDF8F7; color: #1C1B1B; font-family: Roboto, system-ui, sans-serif; overflow: hidden">
+  <header class="pp-bar" style="min-height: 64px; flex: none; display: flex; align-items: center; gap: 4px; padding: 0 4px; background-color: #FDF8F7">
+    <a href="{{backHref}}" aria-label="Volver" class="sl" style="flex: none; width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #1C1B1B; text-decoration: none"><span class="ms" aria-hidden="true" style="font-size: 24px">arrow_back</span></a>
+    <h1 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 22px; line-height: 28px; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Test de compatibilidad</h1>
+  </header>
+
+  <main class="pp-main" style="flex: 1; overflow-y: auto; padding: 8px 16px 24px; display: flex; flex-direction: column; gap: 24px">
+    <p style="flex: none; margin: 0; font-size: 16px; line-height: 24px">Responde a las 15 preguntas para saber qué mascotas encajan con tu hogar, tu día a día y lo que buscas en una mascota. Marca una respuesta en cada pregunta.</p>
+    <sc-for list="{{blocks}}" as="b" hint-placeholder-count="3">
+      <section style="flex: none; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 8px; border-bottom: 1px solid #D2C2C9; margin-bottom: 4px">
+          <h2 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 22px; line-height: 28px; font-weight: 600">{{b.title}}</h2>
+          <p style="margin: 0; font-size: 12px; line-height: 16px; color: #4F4449">{{b.meta}}</p>
+        </div>
+        <sc-for list="{{b.questions}}" as="q" hint-placeholder-count="5">
+          <fieldset aria-invalid="{{q.inv}}" style="margin: 0; min-width: 0; box-sizing: border-box; border: {{q.border}}; border-radius: 12px; padding: 16px 0 8px; background-color: #FFFFFF">
+            <legend style="float: left; width: 100%; box-sizing: border-box; padding: 0 16px; margin-bottom: 8px; font-size: 16px; line-height: 24px; font-weight: 500">{{q.text}}</legend>
+            <sc-if value="{{q.err}}" hint-placeholder-val="{{false}}">
+              <p style="clear: both; margin: 0 16px 4px; display: flex; align-items: center; gap: 8px; color: #BA1A1A; font-size: 14px; line-height: 20px; font-weight: 500"><span class="ms f" aria-hidden="true" style="font-size: 20px">error</span>Responde esta pregunta para continuar.</p>
+            </sc-if>
+            <sc-for list="{{q.options}}" as="o" hint-placeholder-count="3">
+              <label class="sl" style="clear: both; display: flex; align-items: center; gap: 16px; min-height: 56px; padding: 0 16px; font-size: 16px; line-height: 24px; cursor: pointer">
+                <input type="radio" name="{{q.id}}" value="{{o.label}}" checked="{{o.checked}}" onChange="{{o.pick}}" style="flex: none; width: 20px; height: 20px; margin: 0; accent-color: #734863">
+                <span>{{o.label}}</span>
+              </label>
+            </sc-for>
+          </fieldset>
+          <sc-if value="{{q.tip}}" hint-placeholder-val="{{false}}">
+            <aside aria-labelledby="{{q.tipId}}" style="background-color: #F5EDD3; color: #4B4734; border-radius: 16px; padding: 16px; display: flex; align-items: flex-start; gap: 16px">
+              <span aria-hidden="true" style="position: relative; flex: none; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center"><svg width="48" height="48" viewBox="0 0 48 48" focusable="false" style="position: absolute; inset: 0"><path fill="#FFFFFF" d="M24.00 0.00L25.25 0.13L26.47 0.51L27.63 1.08L28.73 1.76L29.77 2.47L30.78 3.14L31.79 3.70L32.84 4.14L33.96 4.46L35.14 4.70L36.38 4.93L37.64 5.22L38.87 5.64L39.99 6.24L40.97 7.03L41.76 8.01L42.36 9.13L42.78 10.36L43.07 11.62L43.30 12.86L43.54 14.04L43.86 15.16L44.30 16.21L44.86 17.22L45.53 18.23L46.24 19.27L46.92 20.37L47.49 21.53L47.87 22.75L48.00 24.00L47.87 25.25L47.49 26.47L46.92 27.63L46.24 28.73L45.53 29.77L44.86 30.78L44.30 31.79L43.86 32.84L43.54 33.96L43.30 35.14L43.07 36.38L42.78 37.64L42.36 38.87L41.76 39.99L40.97 40.97L39.99 41.76L38.87 42.36L37.64 42.78L36.38 43.07L35.14 43.30L33.96 43.54L32.84 43.86L31.79 44.30L30.78 44.86L29.77 45.53L28.73 46.24L27.63 46.92L26.47 47.49L25.25 47.87L24.00 48.00L22.75 47.87L21.53 47.49L20.37 46.92L19.27 46.24L18.23 45.53L17.22 44.86L16.21 44.30L15.16 43.86L14.04 43.54L12.86 43.30L11.62 43.07L10.36 42.78L9.13 42.36L8.01 41.76L7.03 40.97L6.24 39.99L5.64 38.87L5.22 37.64L4.93 36.38L4.70 35.14L4.46 33.96L4.14 32.84L3.70 31.79L3.14 30.78L2.47 29.77L1.76 28.73L1.08 27.63L0.51 26.47L0.13 25.25L0.00 24.00L0.13 22.75L0.51 21.53L1.08 20.37L1.76 19.27L2.47 18.23L3.14 17.22L3.70 16.21L4.14 15.16L4.46 14.04L4.70 12.86L4.93 11.62L5.22 10.36L5.64 9.13L6.24 8.01L7.03 7.03L8.01 6.24L9.13 5.64L10.36 5.22L11.62 4.93L12.86 4.70L14.04 4.46L15.16 4.14L16.21 3.70L17.22 3.14L18.23 2.47L19.27 1.76L20.37 1.08L21.53 0.51L22.75 0.13Z"></path></svg><span class="ms" style="position: relative; font-size: 24px">lightbulb</span></span>
+              <div>
+                <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.5px">Sobre la pregunta {{q.n}}</p>
+                <p id="{{q.tipId}}" style="margin: 2px 0 0; font-size: 16px; line-height: 24px; font-weight: 500">Consejo del experto</p>
+                <p style="margin: 4px 0 0; font-size: 14px; line-height: 20px">{{q.tipText}}</p>
+              </div>
+            </aside>
+          </sc-if>
+        </sc-for>
+      </section>
+    </sc-for>
+  </main>
+
+  <div style="flex: none; padding: 12px 16px 16px; background-color: #F1EDEB; display: flex; flex-direction: column; gap: 12px">
+    <sc-if value="{{showSummary}}" hint-placeholder-val="{{false}}">
+      <div role="alert" style="display: flex; align-items: flex-start; gap: 12px; padding: 16px; border-radius: 12px; background-color: #FFDAD6; color: #93000A">
+        <span class="ms f" aria-hidden="true" style="flex: none; font-size: 24px; color: #BA1A1A">error</span>
+        <p style="margin: 0; font-size: 14px; line-height: 20px; font-weight: 500">{{missingText}}</p>
+      </div>
+    </sc-if>
+    <sc-if value="{{hint}}" hint-placeholder-val="{{true}}">
+      <p aria-live="polite" style="margin: 0; font-size: 12px; line-height: 16px; color: #4F4449; text-align: center">{{answeredText}} · Responde todas para ver tus mascotas compatibles.</p>
+    </sc-if>
+    <sc-if value="{{complete}}" hint-placeholder-val="{{false}}">
+      <a href="Zoom-Compatibles.dc.html" class="sp pm" style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 8px 24px; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-size: 16px; line-height: 24px; font-weight: 500; text-decoration: none; text-align: center">Ver mis mascotas compatibles</a>
+    </sc-if>
+    <sc-if value="{{incomplete}}" hint-placeholder-val="{{true}}">
+      <button type="button" onClick="{{check}}" class="sp pm" style="width: 100%; min-height: 56px; padding: 8px 24px; border: none; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-family: inherit; font-size: 16px; line-height: 24px; font-weight: 500; cursor: pointer; text-align: center">Ver mis mascotas compatibles</button>
+    </sc-if>
+  </div>
+  <dc-import name="TabBarZoom" active="inicio" estado="{{tabEstado}}" hint-size="206px,64px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"error":{"editor":"boolean","default":false},"$preview":{"width":206,"height":459}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { answers: this.initialAnswers(), showErrors: props.error === true || props.error === 'true' };
+    this.setRoot = (el) => { this.root = el; };
+  }
+  isCompleto() {
+    return this.props.completo === true || this.props.completo === 'true';
+  }
+  initialAnswers() {
+    // Con el test ya hecho, las respuestas son las mismas que muestra «Mi perfil · completado».
+    if (!this.isCompleto()) return {};
+    return {
+      q1: 'No', q2: 'No', q3: 'Vivo sola o solo', q4: 'Piso con terraza o balcón', q5: 'Sí, el alquiler lo permite',
+      q6: 'Entre 4 y 8 horas', q7: 'Entre 1 y 2 horas', q8: 'Familia o amistades', q9: 'Tranquilo', q10: 'Sí, en casa familiar',
+      q11: 'Pequeño', q12: 'Medio', q13: 'Me da igual', q14: 'Entre 50 y 100 €', q15: 'Depende de sus necesidades'
+    };
+  }
+  componentDidMount() {
+    // Cada vez que se vuelve a entrar en el test (la pantalla pasa de oculta a visible), empieza vacío.
+    if (typeof IntersectionObserver === 'undefined' || !this.root) return;
+    this.wasHidden = false;
+    this.io = new IntersectionObserver((entries) => {
+      const visible = entries.some(e => e.isIntersecting);
+      if (!visible) { this.wasHidden = true; return; }
+      if (this.wasHidden) {
+        this.wasHidden = false;
+        this.setState({ answers: this.initialAnswers(), showErrors: this.props.error === true || this.props.error === 'true' });
+      }
+    });
+    this.io.observe(this.root);
+  }
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+  }
+  renderVals() {
+    const ans = this.state.answers;
+    const showErrors = this.state.showErrors;
+    const all = [];
+    const q = (n, text, options, tip) => {
+      const id = 'q' + n;
+      const missing = !ans[id];
+      const err = showErrors && missing;
+      all.push({ n, missing });
+      return {
+        id, n, tipId: 'tip-' + n, text: n + '. ' + text, tip: !!tip, tipText: tip || '', err, inv: err ? 'true' : 'false',
+        border: err ? '2px solid #BA1A1A' : '1px solid #D2C2C9',
+        options: options.map(label => ({
+          label, checked: ans[id] === label,
+          pick: () => this.setState({ answers: { ...this.state.answers, [id]: label } })
+        }))
+      };
+    };
+    const blocks = [
+      { title: 'Mi hogar', meta: '5 preguntas · 34 % del test', questions: [
+        q(1, '¿Hay niños pequeños en casa?', ['Sí', 'No']),
+        q(2, '¿Hay otras mascotas en casa?', ['No', 'Sí, perros o gatos', 'Sí, otras mascotas']),
+        q(3, '¿Todas las personas con las que vives están de acuerdo con la adopción?', ['Sí', 'No', 'Vivo sola o solo'], 'Adoptar es una decisión de todo el hogar. Si alguien no está de acuerdo, habla antes con esa persona: la mascota va a convivir con todas, no solo contigo.'),
+        q(4, '¿En qué tipo de vivienda vives?', ['Piso sin terraza', 'Piso con terraza o balcón', 'Casa con jardín']),
+        q(5, '¿Tu vivienda permite tener mascotas?', ['Sí, es propia', 'Sí, el alquiler lo permite', 'No lo sé'])
+      ]},
+      { title: 'Mi día a día', meta: '5 preguntas · 33 % del test', questions: [
+        q(6, '¿Cuánto tiempo estaría solo la mascota en casa?', ['Menos de 4 horas', 'Entre 4 y 8 horas', 'Más de 8 horas'], 'Ninguna mascota debería pasar muchas horas solo cada día. Si vas a estar fuera más de 8 horas, valora una mascota más independiente o busca a alguien que pueda acompañarlo o sacarlo durante el día.'),
+        q(7, '¿Cuánto tiempo al día puedes dedicarle?', ['Menos de 1 hora', 'Entre 1 y 2 horas', 'Más de 2 horas']),
+        q(8, 'Si viajas o enfermas, ¿quién cuidaría de la mascota?', ['Alguien de mi casa', 'Familia o amistades', 'No lo sé todavía']),
+        q(9, '¿Cómo es tu ritmo de vida?', ['Tranquilo', 'Moderado', 'Muy activo']),
+        q(10, '¿Has tenido mascotas antes?', ['Nunca', 'Sí, en casa familiar', 'Sí, bajo mi responsabilidad'])
+      ]},
+      { title: 'La mascota que busco', meta: '5 preguntas · 33 % del test', questions: [
+        q(11, '¿De qué tamaño buscas a la mascota?', ['Pequeño', 'Mediano', 'Grande']),
+        q(12, '¿Qué nivel de actividad buscas en la mascota?', ['Bajo', 'Medio', 'Alto']),
+        q(13, '¿Qué edad prefieres?', ['Cachorro', 'Adulto', 'Mayor', 'Me da igual']),
+        q(14, '¿Cuánto puedes dedicar cada mes a sus cuidados (comida, veterinario…)?', ['Menos de 50 €', 'Entre 50 y 100 €', 'Más de 100 €'], 'Además de la comida, cuenta el veterinario, las vacunas y los imprevistos. Calcula una cifra que puedas mantener todos los meses, no solo el primero.'),
+        q(15, '¿Adoptarías una mascota con necesidades especiales?', ['Sí', 'Depende de sus necesidades', 'No'])
+      ]}
+    ];
+    const missing = all.filter(x => x.missing).map(x => x.n);
+    const complete = missing.length === 0;
+    const joinNums = (arr) => arr.length === 1 ? String(arr[0]) : arr.slice(0, -1).join(', ') + ' y ' + arr[arr.length - 1];
+    const missingText = missing.length === 1
+      ? 'Te falta 1 pregunta por responder: la ' + missing[0] + '.'
+      : 'Te faltan ' + missing.length + ' preguntas por responder: ' + joinNums(missing) + '.';
+    return {
+      setRoot: this.setRoot,
+      backHref: this.isCompleto() ? 'Zoom-Inicio.dc.html' : 'Inicio-Registrado.dc.html',
+      tabEstado: this.isCompleto() ? 'completo' : 'registrado',
+      blocks, complete, incomplete: !complete,
+      showSummary: showErrors && !complete,
+      hint: !(showErrors && !complete),
+      answeredText: (15 - missing.length) + ' de 15 respondidas',
+      missingText,
+      check: () => this.setState({ showErrors: true })
+    };
+  }
+}
+</script>
+</body>
+</html>
