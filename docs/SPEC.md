@@ -270,7 +270,11 @@ CLAUDE.md · docs/ · design/ (solo lectura) · scripts/ · backend/ (NestJS + M
 | Disponibilidad tras la respuesta | Si la protectora responde (`finalizada` o `rechazada`), la mascota deja de estar disponible y sale del catálogo. Si se cancela, sigue disponible. `npm run seed` vuelve a dejarlas todas disponibles. | decidido 2026-11-23 |
 | Cálculo del % | Siempre a partir de las respuestas del test (§4.4 bis). | decidido 2026-11-23 |
 | ¿iOS fuera de alcance? | — | pendiente |
-| Capturas de referencia | Las exporta el equipo a `design/_incoming/reference/`. | en espera |
+| Capturas de referencia | Las saca Claude con Chrome desde el modo play de Claude Design (aproximadas, design-feedback F2-3); el equipo pidió trabajar con ellas. | decidido 2026-11-23 |
+| D1 · Fase 2 en tres entregas | 2a (base, Inicio, Registro, Login, Test) · 2b (Mascotas, Ficha) · 2c (Proceso, Perfil, primer inicio, errores). | aplicado 2026-11-23 (el equipo pidió empezar ya) |
+| D2 · Dónde se guarda la sesión | Android Keystore (`@aparajita/capacitor-secure-storage`); en el navegador, token de acceso en memoria y de renovación en `sessionStorage`. Ver `app/src/app/core/token-store.ts`. | aplicado 2026-11-23 (el equipo pidió empezar ya) |
+| D3 · Android Studio para «Texto 200 %» | Hace falta antes de cerrar la entrega 2c. | pendiente |
+| F2-1 · Texto de «sin conexión» en Registro, Login y Test | El diseño no lo tiene. Provisionalmente se reutiliza el de Error-Catalogo. | **pendiente** |
 | Mitigar el arranque en frío de Render | Usar los estados de carga existentes (por ejemplo, el del botón) y timeouts largos, sin pantallas nuevas. | proponer en F3 |
 
 ## 11. Fases

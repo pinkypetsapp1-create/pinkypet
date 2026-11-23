@@ -5,52 +5,52 @@ Versiones: DS `1795433635-941c` · AF `1795433636-1cea`. Las rutas y los compone
 
 ## 1. Componentes del Design System → componentes de código
 
-Todos son componentes Angular *standalone* en `app/src/app/ui/`, que pintan las clases `pp-` de `bundle.css`. Sus README están en `design/design-system/components/<Nombre>/`.
+Componentes Angular *standalone* en `app/src/app/ui/` que pintan las clases `pp-` de `bundle.css` (copiado sin el `@import` a `app/src/theme/ds-bundle.css` por `npm run tokens`). Los que son una sola etiqueta (Button, Card, SearchBar…) se usan directamente con sus clases. Sus README están en `design/design-system/components/<Nombre>/`.
 
 | Componente DS | Clases principales | Componente de código (propuesto) | Estado |
 |---|---|---|---|
-| AccountPrompt | `pp-prompt` | `pp-account-prompt` | pendiente F2 |
+| AccountPrompt | `pp-prompt` | `pp-account-prompts` (`app/src/app/ui/account-prompts.ts`) | hecho (2a) |
 | ActiveFilters | `pp-active-filters`, `pp-count` | `pp-active-filters` | pendiente F2 |
 | AnimalCard | `pp-animal-card` | `pp-animal-card` | pendiente F2 |
 | AnimalHeader | `pp-animal-hero` | `pp-animal-header` | pendiente F2 |
-| Banner | `pp-banner` | `pp-banner` | pendiente F2 |
-| BottomActionBar | `pp-action-bar` | `pp-bottom-action-bar` | pendiente F2 |
-| Button | `pp-btn` | directiva `ppButton` sobre `<button>`/`<a>` | pendiente F2 |
-| Card | `pp-card` | `pp-card` | pendiente F2 |
-| Carousel | `pp-carousel` | `pp-carousel` | pendiente F2 |
+| Banner | `pp-banner` | `pp-banner` (`ui/banner.ts`) | hecho (2a) |
+| BottomActionBar | `pp-action-bar` | `pp-bottom-action-bar` | en uso con sus clases `pp-` (2a) |
+| Button | `pp-btn` | directiva `ppButton` sobre `<button>`/`<a>` | en uso con sus clases `pp-` (2a) |
+| Card | `pp-card` | `pp-card` | en uso con sus clases `pp-` (2a) |
+| Carousel | `pp-carousel` | `pp-carousel` | en uso con sus clases `pp-` (2a) |
 | Checklist | `pp-checklist` | `pp-checklist` | pendiente F2 |
 | CompatibilityMeter | `pp-meter`, `pp-progress` | `pp-compatibility-meter` | pendiente F2 |
 | Cover | — | (solo es la portada del DS; no va a la app) | no aplica |
 | Dialog | `pp-dialog` | `pp-dialog` (con `ion-modal` estilizado o `<dialog>`) | pendiente F2 |
 | Divider | `pp-divider` | `pp-divider` | pendiente F2 |
 | EmptyState | `pp-empty` | `pp-empty-state` | pendiente F2 |
-| ExpertTip | `pp-tip` | `pp-expert-tip` | pendiente F2 |
+| ExpertTip | `pp-tip` | `pp-expert-tip` | en uso con sus clases `pp-` (2a) |
 | FactTiles | `pp-facts` | `pp-fact-tiles` | pendiente F2 |
 | FilterChip | `pp-chip` | `pp-filter-chip` | pendiente F2 |
-| HomeHero | `pp-hero` | `pp-home-hero` | pendiente F2 |
+| HomeHero | `pp-hero` | `pp-home-hero` | en uso con sus clases `pp-` (2a) |
 | Huella | `pp-paw` | `pp-huella` | pendiente F2 |
 | IconButton | `pp-icon-btn` | `pp-icon-button` | pendiente F2 |
 | InfoGroup | `pp-info-group`, `pp-list` | `pp-info-group` | pendiente F2 |
 | List | `pp-list` | `pp-list` | pendiente F2 |
-| Logo | `pp-mark`, `pp-topbar__mark` | `pp-logo` | pendiente F2 |
+| Logo | `pp-mark`, `pp-topbar__mark` | `pp-logo` | en uso con sus clases `pp-` (2a) |
 | MediaPlaceholder | `pp-media` | `pp-media` | pendiente F2 |
 | Menu | `pp-menu` | `pp-menu` | pendiente F2 |
-| NavigationBar | `pp-navbar` | `pp-navigation-bar` (dentro de `ion-tabs`) | pendiente F2 |
+| NavigationBar | `pp-navbar` | `pp-navigation-bar` (`ui/navigation-bar.ts`) | hecho (2a) |
 | ProcessHero | `pp-hero` | `pp-process-hero` | pendiente F2 |
 | ProcessSteps | `pp-psteps`, `pp-pstep` | `pp-process-steps` | pendiente F2 |
-| ProgressRing | `pp-ring` | `pp-progress-ring` | pendiente F2 |
-| Question | `pp-question` | `pp-question` | pendiente F2 |
-| SearchBar | `pp-search` | `pp-search-bar` | pendiente F2 |
+| ProgressRing | `pp-ring` | `pp-progress-ring` | en uso con sus clases `pp-` (2a) |
+| Question | `pp-question` | `pp-question` | en uso con sus clases `pp-` (2a) |
+| SearchBar | `pp-search` | `pp-search-bar` | en uso con sus clases `pp-` (2a) |
 | SelectableCard | `pp-select-card` | `pp-selectable-card` | pendiente F2 |
-| Shapes | `pp-shape` | `pp-shape` | pendiente F2 |
+| Shapes | `pp-shape` | `pp-shape` | en uso con sus clases `pp-` (2a) |
 | SplashPrimerInicio | `pp-splash` | `pp-splash` | pendiente F2 |
 | StatusCard | `pp-status-card`, `pp-status` | `pp-status-card` | pendiente F2 |
 | Stepper | `pp-steps`, `pp-step` | `pp-stepper` | pendiente F2 |
 | Tag | `pp-tag` | `pp-tag` | pendiente F2 |
 | TestResults | `pp-results`, `pp-block-bar`, `pp-insight` | `pp-test-results` | pendiente F2 |
-| TextField | `pp-field` | `pp-text-field` | pendiente F2 |
+| TextField | `pp-field` | `pp-text-field` (`ui/text-field.ts`) | hecho (2a) |
 | TextPatterns | — | (patrones de texto; se aplican en las pantallas) | no aplica |
-| TopAppBar | `pp-topbar` | `pp-top-app-bar` | pendiente F2 |
+| TopAppBar | `pp-topbar` | `pp-top-app-bar` (`ui/top-app-bar.ts`) | hecho (2a) |
 
 > Las clases de la segunda columna están comprobadas contra `bundle.css` y las previews. Antes de crear cada componente, lee su README entero.
 

@@ -2,7 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { generate, SOURCE, OUTPUT } from './generate-tokens.mjs';
+import { generate, generateBundle, SOURCE, OUTPUT, BUNDLE_SOURCE, BUNDLE_OUTPUT, ASSET_COPIES } from './generate-tokens.mjs';
+import { readdirSync } from 'node:fs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const source = readFileSync(SOURCE, 'utf8');
@@ -52,4 +53,21 @@ test('toda variable que usa bundle.css existe en tokens.css o en el propio bundl
   const local = new Set(['i', 'r', 'x', 'y', 'pp-value']);
   const missing = [...used].filter((v) => !definedInBundle.has(v) && !local.has(v) && !css.includes(`--${v}:`));
   assert.deepEqual(missing, []);
+});
+
+test('ds-bundle.css es bundle.css sin el @import de Google Fonts y está al día', () => {
+  const out = generateBundle(readFileSync(BUNDLE_SOURCE, 'utf8'));
+  assert.doesNotMatch(out, /fonts\.googleapis\.com/);
+  assert.match(out, /^\/\* ARCHIVO GENERADO · NO EDITAR/);
+  assert.ok(out.includes('.pp-btn {'));
+  assert.equal(readFileSync(BUNDLE_OUTPUT, 'utf8'), out);
+});
+
+test('las imágenes de la app son copias exactas de las del Design System', () => {
+  for (const { from, to, ext } of ASSET_COPIES) {
+    const files = readdirSync(from).filter((f) => f.endsWith(ext));
+    assert.ok(files.length > 0);
+    assert.deepEqual(readdirSync(to).filter((f) => f.endsWith(ext)).sort(), files.sort());
+    for (const f of files) assert.ok(readFileSync(join(from, f)).equals(readFileSync(join(to, f))), f);
+  }
 });

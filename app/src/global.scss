@@ -1,0 +1,8 @@
+/*
+ * Estilos globales de Pinky Pet.
+ * Orden: Ionic (solo estructura) → fuentes → tokens.css y ds-bundle.css (GENERADOS por `npm run tokens`) → app.css.
+ * Nada de valores de color, forma, espaciado ni movimiento a mano: solo var(--…) de los tokens.
+ */
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";

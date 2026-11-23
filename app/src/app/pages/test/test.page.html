@@ -1,0 +1,53 @@
+<div class="pp-page">
+  <pp-top-app-bar variant="back" title="Test de compatibilidad" back="/inicio" [headingTitle]="true" [scrolled]="scrolled()" />
+  <ion-content [scrollEvents]="true" (ionScroll)="scrolled.set($event.detail.scrollTop > 0)">
+    <main class="pp-page__main pp-page__main--gap-6">
+      <p class="pp-intro">Responde a las 15 preguntas para saber qué mascotas encajan con tu hogar, tu día a día y lo que buscas en una mascota. Marca una respuesta en cada pregunta.</p>
+      @for (b of bloques(); track b.titulo) {
+        <section class="test-block">
+          <div class="pp-block-head test-block__head">
+            <h2 class="pp-block-head__title">{{ b.titulo }}</h2>
+            <p class="pp-block-head__meta">{{ b.meta }}</p>
+          </div>
+          @for (q of b.preguntas; track q.id) {
+            <fieldset class="pp-question" [attr.aria-invalid]="hasError(q) ? 'true' : 'false'">
+              <legend class="pp-question__legend">{{ q.numero }}. {{ q.texto }}</legend>
+              @if (hasError(q)) {
+                <p class="pp-question__error"><span class="pp-icon pp-icon--filled pp-icon--20" aria-hidden="true">error</span>{{ preguntaSinResponder }}</p>
+              }
+              @for (o of q.opciones; track o) {
+                <label class="pp-radio pp-state">
+                  <input type="radio" [name]="q.id" [value]="o" [checked]="answers()[q.id] === o" (change)="pick(q, o)" />
+                  <span>{{ o }}</span>
+                </label>
+              }
+            </fieldset>
+            @if (q.consejo) {
+              <aside class="pp-tip" [attr.aria-labelledby]="'tip-' + q.numero">
+                <span class="pp-tip__shape" aria-hidden="true">
+                  <svg width="48" height="48" viewBox="0 0 48 48" focusable="false"><path [attr.d]="tipShape" /></svg>
+                  <span class="pp-icon">lightbulb</span>
+                </span>
+                <div>
+                  <p class="pp-tip__eyebrow">Sobre la pregunta {{ q.numero }}</p>
+                  <p class="pp-tip__title" [id]="'tip-' + q.numero">Consejo del experto</p>
+                  <p class="pp-tip__body">{{ q.consejo }}</p>
+                </div>
+              </aside>
+            }
+          }
+        </section>
+      }
+    </main>
+  </ion-content>
+  <div class="pp-action-bar pp-action-bar--test">
+    @if (showErrors() && !complete()) {
+      <pp-banner [text]="missingText()" />
+    } @else {
+      @if (sendError()) { <pp-banner [text]="sendError()!" /> }
+      <p class="pp-action-bar__hint" aria-live="polite">{{ 15 - missing().length }} de 15 respondidas · Responde todas para ver tus mascotas compatibles.</p>
+    }
+    <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-state" [attr.aria-disabled]="sending()" (click)="submit()">Ver mis mascotas compatibles</button>
+  </div>
+  <pp-navigation-bar active="inicio" />
+</div>

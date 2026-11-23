@@ -1,0 +1,35 @@
+<div class="pp-page">
+  <pp-top-app-bar variant="back" title="Registro" back="/inicio" [scrolled]="scrolled()" />
+  <ion-content [scrollEvents]="true" (ionScroll)="scrolled.set($event.detail.scrollTop > 0)">
+    <main class="auth-main">
+      <div class="auth-head">
+        <h1 class="pp-screen-title">Crea tu cuenta</h1>
+        <p class="pp-intro">Necesitas una cuenta para hacer el test de compatibilidad y enviar una solicitud de adopción.</p>
+      </div>
+
+      @if (summary()) { <pp-banner [text]="summary()!" /> }
+
+      <form class="auth-fields" novalidate (submit)="$event.preventDefault(); submit()">
+        <pp-text-field label="Correo electrónico" type="email" autocomplete="email"
+                       [(value)]="email" [error]="emailError()" [invalid]="emailTaken()" [describedBy]="emailTaken() ? 'email-existe' : null">
+          @if (emailTaken()) {
+            <div class="pp-banner pp-banner--action auth-email-error" id="email-existe" role="alert">
+              <p class="pp-banner__row"><span class="pp-icon pp-icon--filled" aria-hidden="true">error</span>{{ correoExiste }}</p>
+              <span class="pp-target"><button type="button" class="pp-btn pp-btn--outlined pp-btn--s pp-btn--block pp-state" (click)="loginConEsteCorreo()">Iniciar sesión con este correo</button></span>
+            </div>
+          }
+        </pp-text-field>
+        <pp-text-field label="Contraseña" type="password" autocomplete="new-password" [(value)]="password" [error]="passError()" />
+        <button type="submit" class="pp-visually-hidden" tabindex="-1" aria-hidden="true"></button>
+      </form>
+
+      <div class="auth-actions">
+        <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-state" [attr.aria-disabled]="sending()" (click)="submit()">Crear cuenta y hacer el test</button>
+      </div>
+
+      @if (!emailTaken() && !summary()) {
+        <pp-account-prompts [registro]="false" />
+      }
+    </main>
+  </ion-content>
+</div>

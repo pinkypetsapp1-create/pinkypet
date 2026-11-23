@@ -3,12 +3,19 @@
 // Es la única fuente de color, tipografía, forma, espaciado, elevación, opacidad y tamaño del código.
 // (El movimiento —curvas y duraciones— vive en bundle.css, también del Design System.)
 import { createHash } from 'node:crypto';
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, copyFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 export const SOURCE = join(ROOT, 'design/design-system/tokens.json');
 export const OUTPUT = join(ROOT, 'app/src/theme/tokens.css');
+export const BUNDLE_SOURCE = join(ROOT, 'design/design-system/components/bundle.css');
+export const BUNDLE_OUTPUT = join(ROOT, 'app/src/theme/ds-bundle.css');
+// Imágenes del Design System que la app empaqueta (Angular no sirve archivos de fuera de app/).
+export const ASSET_COPIES = [
+  { from: join(ROOT, 'design/design-system/assets/Fotos'), to: join(ROOT, 'app/src/assets/fotos'), ext: '.jpg' },
+  { from: join(ROOT, 'design/design-system/assets/Ilustraciones'), to: join(ROOT, 'app/src/assets/ilustraciones'), ext: '.png' },
+];
 
 // Tema del Design System → selector CSS.
 // Claro en :root; oscuro con el mismo selector que usa bundle.css; contrastes como clases opcionales.
@@ -78,9 +85,31 @@ export function generate(sourceText) {
   return out.join('\n');
 }
 
+// bundle.css del Design System, tal cual, salvo el @import de Google Fonts: la app lleva las fuentes
+// empaquetadas y debe funcionar sin red (docs/design-feedback.md F0-1).
+export function generateBundle(bundleText) {
+  const sha = createHash('sha256').update(bundleText).digest('hex');
+  const body = bundleText.replace(/^@import url\("https:\/\/fonts\.googleapis\.com[^\n]*\n/m, '');
+  if (body === bundleText) throw new Error('bundle.css ya no empieza por el @import de Google Fonts: revisa generateBundle');
+  return (
+    `/* ARCHIVO GENERADO · NO EDITAR\n` +
+    ` * Origen: design/design-system/components/bundle.css (sha256 ${sha.slice(0, 16)}…), sin el @import de Google Fonts\n` +
+    ` * Regenerar con: npm run tokens\n */\n` +
+    body
+  );
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
   const css = generate(readFileSync(SOURCE, 'utf8'));
   mkdirSync(dirname(OUTPUT), { recursive: true });
   writeFileSync(OUTPUT, css);
   console.log(`Escrito ${OUTPUT.replace(ROOT, '')} (${css.split('\n').length} líneas).`);
+  writeFileSync(BUNDLE_OUTPUT, generateBundle(readFileSync(BUNDLE_SOURCE, 'utf8')));
+  console.log(`Escrito ${BUNDLE_OUTPUT.replace(ROOT, '')}.`);
+  for (const { from, to, ext } of ASSET_COPIES) {
+    mkdirSync(to, { recursive: true });
+    const files = readdirSync(from).filter((f) => f.endsWith(ext));
+    for (const f of files) copyFileSync(join(from, f), join(to, f));
+    console.log(`Copiadas ${files.length} imágenes a ${to.replace(ROOT, '')}.`);
+  }
 }

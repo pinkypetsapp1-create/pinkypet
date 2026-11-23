@@ -1,0 +1,9 @@
+/* Solo var(--…) de los tokens; las medidas que no son espaciado son las del componente en el diseño. */
+.inicio-search { margin-bottom: calc(-1 * var(--space-2)); }
+.inicio-section { display: flex; flex-direction: column; gap: var(--space-3); }
+.inicio-muted { margin: 0; font: var(--type-body-medium-weight) var(--type-body-medium-size) / var(--type-body-medium-line) var(--font-sans); color: var(--on-surface-variant); }
+.inicio-blob--gato { left: 0; top: 0; width: 112px; height: 112px; }
+.inicio-blob--gato img { width: 56px; height: 56px; }
+.inicio-blob--perro { left: calc(112px + var(--space-3)); top: var(--space-4); width: 80px; height: 80px; }
+.inicio-blob--perro img { width: 44px; height: 44px; }
+.pp-carousel__item { transition: border-radius var(--pp-dur-fast) var(--pp-ease-spatial-fast); }

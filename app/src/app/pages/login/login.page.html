@@ -1,0 +1,28 @@
+<div class="pp-page">
+  <pp-top-app-bar variant="back" title="Iniciar sesión" back="/inicio" [scrolled]="scrolled()" />
+  <ion-content [scrollEvents]="true" (ionScroll)="scrolled.set($event.detail.scrollTop > 0)">
+    <main class="auth-main">
+      <div class="auth-head">
+        <h1 class="pp-screen-title">Hola de nuevo</h1>
+        @if (!banner()) {
+          <p class="pp-intro">Entra con tu cuenta para ver tus mascotas compatibles y el estado de tu solicitud.</p>
+        }
+      </div>
+      <!-- Con error, el aviso sustituye a la entradilla y va separado del título como en Error-Login -->
+      @if (banner()) { <pp-banner [text]="banner()!" /> }
+
+      <form class="auth-fields" novalidate (submit)="$event.preventDefault(); submit()">
+        <pp-text-field label="Correo electrónico" type="email" autocomplete="email" [(value)]="email" [error]="emailError()" />
+        <pp-text-field label="Contraseña" type="password" autocomplete="current-password" [(value)]="password"
+                       [error]="passError()" [support]="wrongCredentials() ? reescribe : null" />
+        <button type="submit" class="pp-visually-hidden" tabindex="-1" aria-hidden="true"></button>
+      </form>
+
+      <div class="auth-actions">
+        <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-state" [attr.aria-disabled]="sending()" (click)="submit()">Iniciar sesión</button>
+      </div>
+
+      <pp-account-prompts [login]="false" registroPregunta="¿No tienes cuenta?" />
+    </main>
+  </ion-content>
+</div>

@@ -1,0 +1,24 @@
+/* Puente entre Ionic y el Design System. Ionic solo da estructura: sus variables apuntan a los tokens. */
+:root {
+  --ion-font-family: var(--font-sans);
+  --ion-background-color: var(--surface);
+  --ion-text-color: var(--on-surface);
+  --ion-color-primary: var(--primary);
+  --ion-color-primary-contrast: var(--on-primary);
+  --ion-safe-area-top: env(safe-area-inset-top);
+}
+html, body { background: var(--surface); color: var(--on-surface); font-family: var(--font-sans); }
+
+/* Pantalla: barra superior + contenido con scroll + barras inferiores (igual que los artboards). */
+.pp-page { display: flex; flex-direction: column; height: 100%; background: var(--surface); }
+.pp-page > ion-content { flex: 1; --background: var(--surface); --color: var(--on-surface); }
+.pp-page__main { box-sizing: border-box; min-height: 100%; display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-2) var(--space-4) var(--space-6); }
+.pp-page__main > * { flex-shrink: 0; }
+.pp-page__main--gap-6 { gap: var(--space-6); }
+.pp-topbar { transition: background-color var(--pp-dur-effects) var(--pp-ease-effects); }
+.pp-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+a:focus-visible, button:focus-visible, input:focus-visible, label:has(input:focus-visible) { outline: 3px solid var(--secondary); outline-offset: 2px; }
+
+/* Reflujo (WCAG 1.4.10): los títulos grandes parten palabras con guion en vez de cortarse a 206 px.
+   A 412 px no cambia nada. docs/design-feedback.md F2-2. */
+.pp-hero__display, .pp-screen-title, .pp-section-title, .pp-topbar__title, .pp-block-head__title { hyphens: auto; overflow-wrap: break-word; }

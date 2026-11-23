@@ -1,0 +1,13 @@
+/* Fuentes empaquetadas en la app (licencias OFL y Apache 2.0). Los nombres de familia son los que piden los
+   tokens (--font-brand: Fraunces…, --font-sans: Roboto…). Material Symbols Rounded se carga desde material-symbols. */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-display: block;
+  font-weight: 100 900;
+  src: url('../../node_modules/@fontsource-variable/fraunces/files/fraunces-latin-full-normal.woff2') format('woff2-variations');
+}
+@font-face { font-family: 'Roboto'; font-style: normal; font-display: block; font-weight: 400; src: url('../../node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Roboto'; font-style: normal; font-display: block; font-weight: 500; src: url('../../node_modules/@fontsource/roboto/files/roboto-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Roboto'; font-style: normal; font-display: block; font-weight: 600; src: url('../../node_modules/@fontsource/roboto/files/roboto-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Roboto'; font-style: normal; font-display: block; font-weight: 700; src: url('../../node_modules/@fontsource/roboto/files/roboto-latin-700-normal.woff2') format('woff2'); }

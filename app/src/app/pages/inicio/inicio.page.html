@@ -1,0 +1,75 @@
+<div class="pp-page">
+  <pp-top-app-bar variant="brand" [scrolled]="scrolled()" />
+  <ion-content [scrollEvents]="true" (ionScroll)="scrolled.set($event.detail.scrollTop > 0)">
+    <main class="pp-page__main">
+      <a class="pp-search pp-state inicio-search" routerLink="/mascotas" aria-label="Buscar mascotas">
+        <span class="pp-icon" aria-hidden="true">search</span>
+        <span>Buscar mascotas</span>
+      </a>
+
+      <section class="pp-hero" aria-labelledby="hero-t">
+        <div class="pp-hero__stage" aria-hidden="true">
+          <span class="pp-hero__blob inicio-blob inicio-blob--gato">
+            <svg class="pp-hero__shape" viewBox="0 0 112 112"><path [attr.d]="shape112" /></svg>
+            <img src="assets/ilustraciones/gato.png" alt="" />
+          </span>
+          <span class="pp-hero__blob inicio-blob inicio-blob--perro">
+            <svg class="pp-hero__shape" viewBox="0 0 80 80"><path [attr.d]="shape80" /></svg>
+            <img src="assets/ilustraciones/perro.png" alt="" />
+          </span>
+        </div>
+        <h1 class="pp-hero__display" id="hero-t">{{ hero().titulo }}</h1>
+        <p class="pp-hero__body">{{ hero().texto }}</p>
+        <a class="pp-btn pp-btn--filled pp-btn--block pp-state" [routerLink]="hero().link">{{ hero().cta }}</a>
+      </section>
+
+      <section class="inicio-section" aria-labelledby="car-t">
+        <div class="pp-carousel-head">
+          <h2 class="pp-section-title" id="car-t">{{ conTest() ? 'Los que más encajan contigo' : 'Buscan hogar' }}</h2>
+          <a class="pp-btn pp-btn--text pp-state" routerLink="/mascotas">Ver todos</a>
+        </div>
+        <ul class="pp-carousel" [attr.aria-label]="conTest() ? 'Los que más encajan contigo' : 'Buscan hogar'">
+          @for (a of carousel(); track a.id) {
+            <li>
+              <a class="pp-carousel__item" [routerLink]="a.link" [attr.aria-label]="a.aria">
+                <img [src]="a.foto" alt="" />
+                @if (a.pct !== null) { <span class="pp-carousel__pct" aria-hidden="true">{{ a.pct }} %</span> }
+                <span class="pp-carousel__name" aria-hidden="true">{{ a.nombre }}</span>
+              </a>
+            </li>
+          }
+        </ul>
+      </section>
+
+      <section class="inicio-section">
+        <h2 class="pp-section-title">Qué tiene en cuenta el test</h2>
+        <p class="inicio-muted">15 preguntas en 3 bloques de 5. Cada diagrama indica qué parte del test ocupa cada bloque.</p>
+        <div class="pp-ring-tiles">
+          @for (b of bloques; track b.titulo) {
+            <div class="pp-ring-tile" role="img" [attr.aria-label]="b.titulo + ': 5 preguntas, ' + b.pct + ' % del test'">
+              <span class="pp-icon" aria-hidden="true">{{ b.icon }}</span>
+              <div class="pp-ring pp-ring--88">
+                <svg width="88" height="88" viewBox="0 0 88 88" aria-hidden="true">
+                  <circle class="pp-ring__track" cx="44" cy="44" r="40" [attr.stroke-dasharray]="b.track" transform="rotate(-90 44 44)" />
+                  <circle class="pp-ring__active pp-ring__active--in" cx="44" cy="44" r="40" [attr.stroke-dasharray]="b.active" transform="rotate(-90 44 44)" />
+                </svg>
+                <span class="pp-ring__label" aria-hidden="true">{{ b.pct }} %</span>
+              </div>
+              <span class="pp-ring-stat__title" aria-hidden="true">{{ b.titulo }}</span>
+              <span class="pp-ring-stat__meta" aria-hidden="true">5 preguntas</span>
+            </div>
+          }
+        </div>
+        <p class="pp-note">
+          <span class="pp-icon pp-icon--20" aria-hidden="true">check_circle</span>
+          <span><strong>Qué significa el resultado.</strong> Verás por qué cada mascota encaja contigo y qué necesita para estar bien. El resultado te orienta según tus respuestas, y la protectora te ayudará a confirmarlo.</span>
+        </p>
+      </section>
+
+      @if (session.state() === 'invitado') {
+        <pp-account-prompts />
+      }
+    </main>
+  </ion-content>
+  <pp-navigation-bar active="inicio" />
+</div>
