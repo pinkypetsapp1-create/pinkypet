@@ -62,7 +62,7 @@ const ESCENARIOS = {
     { nombre: 'Catalogo-Registrado', ruta: '/mascotas', cuenta: CUENTA.registrada },
     { nombre: 'Compatibles', ruta: '/mascotas', cuenta: CUENTA.conTest },
     { nombre: 'Compatibles-Limite-Luna', ruta: '/mascotas', cuenta: CUENTA.conSolicitud },
-    { nombre: 'Error-Catalogo', ruta: '/mascotas', cortar: '**/pets?*' },
+    { nombre: 'Error-Catalogo', ruta: '/mascotas', cortar: (u) => new URL(u).pathname === '/pets' },
     { nombre: 'Error-SinCompatibles', ruta: '/mascotas', cuenta: async () => cuentaNueva(RESPUESTAS_LEJANAS) },
     {
       nombre: 'Catalogo-Filtros-Vacio', ruta: '/mascotas',

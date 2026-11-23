@@ -12,6 +12,10 @@ Especificación completa: `docs/SPEC.md`. Mapa diseño → código: `docs/design
 | `npm test` | Tests de los scripts (tokens) |
 | `npm run design:lock -- --check` | Comprueba que `design/` coincide con `design/design.lock.json` |
 | `/sincronizar-diseno` | Trae los cambios de Claude Design (solo la lanza el equipo) |
+| `npm run capturas -- 2a\|2b\|2c` | Capturas de la app (claro, oscuro, 206 px) en `docs/evidencia/<entrega>/`; necesita API y app arrancadas |
+| `npm run comparar -- design/_incoming/reference docs/evidencia/<entrega>` | Diseño y app lado a lado en `docs/evidencia/<entrega>/comparacion/` |
+
+App (desde `app/`): `npx ng serve --port 8100` (usa la API de `localhost:3000`) · `npm run api:types` regenera los tipos desde `backend/openapi.json`.
 
 Backend (desde `backend/`; configuración en `backend/.env`, plantilla en `.env.example`):
 
@@ -31,7 +35,7 @@ design/   copia del diseño (DS + Alta fidelidad), solo lectura · design.lock.j
 docs/     SPEC.md · design-map.md · design-feedback.md · PROMPT-INICIAL.md
 scripts/  generate-tokens.mjs · design-lock.mjs
 backend/  NestJS + MongoDB · src/compatibility/rules.ts (cálculo) · src/seed/pets.data.ts (datos del diseño) · openapi.json
-app/      Ionic + Angular standalone + Capacitor (Fase 2); app/src/theme/tokens.css es generado
+app/      Ionic + Angular standalone + Capacitor · src/app/{core,ui,pages} · src/theme/{tokens,ds-bundle}.css y assets/{fotos,ilustraciones} son generados
 ```
 
 ## Reglas de oro
