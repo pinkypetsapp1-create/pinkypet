@@ -1,0 +1,51 @@
+<div class="pp-page">
+  <pp-top-app-bar variant="brand" [scrolled]="scrolled()" />
+  <ion-content [scrollEvents]="true" (ionScroll)="scrolled.set($event.detail.scrollTop > 0)">
+    <main class="proceso-main">
+      <h1 class="pp-screen-title">Cómo adoptar</h1>
+      <section class="pp-hero proceso-hero" aria-labelledby="hero-t">
+        <div class="pp-hero__art" aria-hidden="true">
+          <span><img src="assets/ilustraciones/gato.png" alt="" /></span>
+          <span><img src="assets/ilustraciones/perro.png" alt="" /></span>
+        </div>
+        <h2 class="pp-hero__title" id="hero-t">{{ hero().titulo }}</h2>
+        <p class="pp-hero__body">{{ hero().texto }}</p>
+        <a class="pp-btn pp-btn--filled pp-btn--block pp-state" [routerLink]="hero().link">{{ hero().cta }}</a>
+      </section>
+
+      <h2 class="pp-section-title proceso-h2">El proceso</h2>
+      <ol class="pp-psteps" aria-label="Pasos para adoptar">
+        @for (p of pasos(); track p.n; let last = $last) {
+          <li class="pp-pstep" [class.pp-pstep--done]="p.st === 'done'" [class.pp-pstep--current]="p.st === 'current'"
+              [attr.aria-label]="p.aria" [attr.aria-current]="p.st === 'current' ? 'step' : 'false'">
+            <div class="pp-pstep__mark" aria-hidden="true">
+              <span class="pp-pstep__shape">
+                <svg width="48" height="48" viewBox="0 0 48 48" focusable="false"><path [attr.d]="p.forma" /></svg>
+                @if (p.st === 'done') { <span class="pp-icon">check</span> } @else { <span>{{ p.n }}</span> }
+              </span>
+              @if (!last) { <span class="pp-pstep__line"></span> }
+            </div>
+            <div class="pp-pstep__body" aria-hidden="true">
+              <span class="pp-pstep__title">{{ p.titulo }}</span>
+              <span class="pp-pstep__desc">{{ p.texto }}</span>
+            </div>
+          </li>
+        }
+      </ol>
+
+      <h2 class="pp-section-title proceso-h2 proceso-h2--req">Requisitos para adoptar</h2>
+      <p class="pp-card__body proceso-muted">Tenlos listos antes de enviar tu solicitud.</p>
+      <ul class="pp-checklist">
+        @for (r of requisitos; track r) {
+          <li class="pp-checklist__item"><span class="pp-icon" aria-hidden="true">check</span>{{ r }}</li>
+        }
+      </ul>
+
+      @if (session.state() !== 'solicitud') {
+        <h2 class="pp-section-title proceso-h2 proceso-h2--sol">Mi solicitud</h2>
+        <a class="pp-btn pp-btn--outlined pp-btn--block pp-state" routerLink="/proceso/solicitud">Ver el estado de mi solicitud</a>
+      }
+    </main>
+  </ion-content>
+  <pp-navigation-bar active="proceso" />
+</div>

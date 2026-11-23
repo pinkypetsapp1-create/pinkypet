@@ -7,6 +7,7 @@ import { Session } from '../../core/session';
 import { AccountPrompts } from '../../ui/account-prompts';
 import { NavigationBar } from '../../ui/navigation-bar';
 import { SHAPE_HERO_112, SHAPE_HERO_80 } from '../../ui/shapes';
+import { Splash } from '../../ui/splash';
 import { TopAppBar } from '../../ui/top-app-bar';
 
 interface CarouselItem {
@@ -21,7 +22,7 @@ interface CarouselItem {
 /** Inicio (design/alta-fidelidad/Main.dc.html) en sus estados: sin cuenta, registrado, con test y con solicitud. */
 @Component({
   selector: 'pp-inicio',
-  imports: [IonContent, RouterLink, TopAppBar, NavigationBar, AccountPrompts],
+  imports: [IonContent, RouterLink, TopAppBar, NavigationBar, AccountPrompts, Splash],
   templateUrl: './inicio.page.html',
   styleUrl: './inicio.page.css',
 })

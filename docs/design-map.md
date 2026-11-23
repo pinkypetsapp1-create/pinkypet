@@ -10,44 +10,44 @@ Componentes Angular *standalone* en `app/src/app/ui/` que pintan las clases `pp-
 | Componente DS | Clases principales | Componente de código (propuesto) | Estado |
 |---|---|---|---|
 | AccountPrompt | `pp-prompt` | `pp-account-prompts` (`app/src/app/ui/account-prompts.ts`) | hecho (2a) |
-| ActiveFilters | `pp-active-filters`, `pp-count` | `pp-active-filters` | pendiente F2 |
-| AnimalCard | `pp-animal-card` | `pp-animal-card` | pendiente F2 |
-| AnimalHeader | `pp-animal-hero` | `pp-animal-header` | pendiente F2 |
+| ActiveFilters | `pp-active-filters`, `pp-count` | `pp-active-filters` | en uso con sus clases `pp-` (2b/2c) |
+| AnimalCard | `pp-animal-card` | `pp-animal-card` (`ui/animal-card.ts`) | hecho (2b/2c) |
+| AnimalHeader | `pp-animal-hero` | `pp-animal-header` | en uso con sus clases `pp-` (2b/2c) |
 | Banner | `pp-banner` | `pp-banner` (`ui/banner.ts`) | hecho (2a) |
 | BottomActionBar | `pp-action-bar` | `pp-bottom-action-bar` | en uso con sus clases `pp-` (2a) |
 | Button | `pp-btn` | directiva `ppButton` sobre `<button>`/`<a>` | en uso con sus clases `pp-` (2a) |
 | Card | `pp-card` | `pp-card` | en uso con sus clases `pp-` (2a) |
 | Carousel | `pp-carousel` | `pp-carousel` | en uso con sus clases `pp-` (2a) |
-| Checklist | `pp-checklist` | `pp-checklist` | pendiente F2 |
-| CompatibilityMeter | `pp-meter`, `pp-progress` | `pp-compatibility-meter` | pendiente F2 |
+| Checklist | `pp-checklist` | `pp-checklist` | en uso con sus clases `pp-` (2b/2c) |
+| CompatibilityMeter | `pp-meter`, `pp-progress` | `pp-compatibility-meter` (`ui/compatibility-meter.ts`) | hecho (2b/2c) |
 | Cover | — | (solo es la portada del DS; no va a la app) | no aplica |
-| Dialog | `pp-dialog` | `pp-dialog` (con `ion-modal` estilizado o `<dialog>`) | pendiente F2 |
-| Divider | `pp-divider` | `pp-divider` | pendiente F2 |
-| EmptyState | `pp-empty` | `pp-empty-state` | pendiente F2 |
+| Dialog | `pp-dialog` | `pp-dialog` (`ui/dialog.ts`) | hecho (2b/2c) |
+| Divider | `pp-divider` | `pp-divider` | en uso con sus clases `pp-` (2b/2c) |
+| EmptyState | `pp-empty` | `pp-empty-state` (`ui/empty-state.ts`) | hecho (2b/2c) |
 | ExpertTip | `pp-tip` | `pp-expert-tip` | en uso con sus clases `pp-` (2a) |
-| FactTiles | `pp-facts` | `pp-fact-tiles` | pendiente F2 |
-| FilterChip | `pp-chip` | `pp-filter-chip` | pendiente F2 |
+| FactTiles | `pp-facts` | `pp-fact-tiles` | en uso con sus clases `pp-` (2b/2c) |
+| FilterChip | `pp-chip` | `pp-filter-chip` | en uso con sus clases `pp-` (2b/2c) |
 | HomeHero | `pp-hero` | `pp-home-hero` | en uso con sus clases `pp-` (2a) |
-| Huella | `pp-paw` | `pp-huella` | pendiente F2 |
-| IconButton | `pp-icon-btn` | `pp-icon-button` | pendiente F2 |
-| InfoGroup | `pp-info-group`, `pp-list` | `pp-info-group` | pendiente F2 |
-| List | `pp-list` | `pp-list` | pendiente F2 |
+| Huella | `pp-paw` | `pp-huella` | en uso con sus clases `pp-` (2b/2c) |
+| IconButton | `pp-icon-btn` | `pp-icon-button` | en uso con sus clases `pp-` (2b/2c) |
+| InfoGroup | `pp-info-group`, `pp-list` | `pp-info-group` | en uso con sus clases `pp-` (2b/2c) |
+| List | `pp-list` | `pp-list` | en uso con sus clases `pp-` (2b/2c) |
 | Logo | `pp-mark`, `pp-topbar__mark` | `pp-logo` | en uso con sus clases `pp-` (2a) |
-| MediaPlaceholder | `pp-media` | `pp-media` | pendiente F2 |
-| Menu | `pp-menu` | `pp-menu` | pendiente F2 |
+| MediaPlaceholder | `pp-media` | `pp-media` | en uso con sus clases `pp-` (2b/2c) |
+| Menu | `pp-menu` | `pp-menu` | en uso con sus clases `pp-` (2b/2c) |
 | NavigationBar | `pp-navbar` | `pp-navigation-bar` (`ui/navigation-bar.ts`) | hecho (2a) |
-| ProcessHero | `pp-hero` | `pp-process-hero` | pendiente F2 |
-| ProcessSteps | `pp-psteps`, `pp-pstep` | `pp-process-steps` | pendiente F2 |
+| ProcessHero | `pp-hero` | `pp-process-hero` | en uso con sus clases `pp-` (2b/2c) |
+| ProcessSteps | `pp-psteps`, `pp-pstep` | `pp-process-steps` | en uso con sus clases `pp-` (2b/2c) |
 | ProgressRing | `pp-ring` | `pp-progress-ring` | en uso con sus clases `pp-` (2a) |
 | Question | `pp-question` | `pp-question` | en uso con sus clases `pp-` (2a) |
 | SearchBar | `pp-search` | `pp-search-bar` | en uso con sus clases `pp-` (2a) |
-| SelectableCard | `pp-select-card` | `pp-selectable-card` | pendiente F2 |
+| SelectableCard | `pp-select-card` | `pp-selectable-card` | en uso con sus clases `pp-` (2b/2c) |
 | Shapes | `pp-shape` | `pp-shape` | en uso con sus clases `pp-` (2a) |
-| SplashPrimerInicio | `pp-splash` | `pp-splash` | pendiente F2 |
-| StatusCard | `pp-status-card`, `pp-status` | `pp-status-card` | pendiente F2 |
-| Stepper | `pp-steps`, `pp-step` | `pp-stepper` | pendiente F2 |
-| Tag | `pp-tag` | `pp-tag` | pendiente F2 |
-| TestResults | `pp-results`, `pp-block-bar`, `pp-insight` | `pp-test-results` | pendiente F2 |
+| SplashPrimerInicio | `pp-splash` | `pp-splash` (`ui/splash.ts`) | hecho (2b/2c) |
+| StatusCard | `pp-status-card`, `pp-status` | `pp-status-card` | en uso con sus clases `pp-` (2b/2c) |
+| Stepper | `pp-steps`, `pp-step` | `pp-stepper` | en uso con sus clases `pp-` (2b/2c) |
+| Tag | `pp-tag` | `pp-tag` | en uso con sus clases `pp-` (2b/2c) |
+| TestResults | `pp-results`, `pp-block-bar`, `pp-insight` | `pp-test-results` | en uso con sus clases `pp-` (2b/2c) |
 | TextField | `pp-field` | `pp-text-field` (`ui/text-field.ts`) | hecho (2a) |
 | TextPatterns | — | (patrones de texto; se aplican en las pantallas) | no aplica |
 | TopAppBar | `pp-topbar` | `pp-top-app-bar` (`ui/top-app-bar.ts`) | hecho (2a) |

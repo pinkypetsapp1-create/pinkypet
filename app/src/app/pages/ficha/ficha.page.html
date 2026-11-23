@@ -1,0 +1,104 @@
+<div class="pp-page">
+  <pp-top-app-bar variant="back" title="Ficha de la mascota" [back]="volver()" [headingTitle]="true" [scrolled]="scrolled()" />
+  <ion-content [scrollEvents]="true" (ionScroll)="scrolled.set($event.detail.scrollTop > 0)">
+    @if (pet(); as p) {
+      <main class="ficha-main">
+        <div class="pp-animal-hero">
+          <img [src]="'assets/' + p.foto.asset" [alt]="p.foto.alt" />
+          @if (p.compatibilidad; as c) {
+            <span class="pp-animal-hero__pill" aria-hidden="true"><span class="pp-animal-hero__pct">{{ c.porcentaje }} %</span><span class="pp-animal-hero__unit">compatible</span></span>
+          }
+        </div>
+        <h2 class="pp-animal-name">{{ p.nombre }}</h2>
+        <p class="pp-animal-loc"><span class="pp-icon pp-icon--20" aria-hidden="true">location_on</span>{{ p.ciudad }}</p>
+        @if (p.necesidadesEspeciales) { <span class="pp-tag ficha-tag">Necesidades especiales</span> }
+        <dl class="pp-facts">
+          @for (f of facts(); track f[0]) {
+            <div class="pp-fact"><dt class="pp-fact__label">{{ f[0] }}</dt><dd class="pp-fact__value">{{ f[1] }}</dd></div>
+          }
+        </dl>
+
+        @if (p.compatibilidad; as c) {
+          <section class="pp-card pp-card--outlined ficha-results" aria-labelledby="res-t">
+            <h3 class="pp-card__title" id="res-t">Resultados de tu test</h3>
+            <pp-compatibility-meter class="ficha-meter" [pct]="c.porcentaje" caption="Según tus respuestas en los 3 bloques del test." />
+            <dl class="pp-block-bars">
+              @for (b of bloques(); track b[0]) {
+                <div class="pp-block-bar">
+                  <div class="pp-block-bar__head"><dt>{{ b[0] }}</dt><dd>{{ b[1] }} %</dd></div>
+                  <div class="pp-progress pp-progress--4" aria-hidden="true">
+                    <span class="pp-progress__active" [style.--pp-value]="'calc(' + b[1] + '% - 2px)'"></span>
+                    <span class="pp-progress__track"></span><span class="pp-progress__stop"></span>
+                  </div>
+                </div>
+              }
+            </dl>
+            <div class="pp-insight ficha-insight--first">
+              <span class="pp-insight__shape" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" focusable="false"><path [attr.d]="insightShape" /></svg><span class="pp-icon">check</span></span>
+              <div><p class="pp-insight__title">Lo que encaja contigo</p><p class="pp-insight__text">{{ p.encaja }}</p></div>
+            </div>
+            <div class="pp-insight">
+              <span class="pp-insight__shape" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40" focusable="false"><path [attr.d]="insightShape" /></svg><span class="pp-icon">lightbulb</span></span>
+              <div><p class="pp-insight__title">Para que os vaya bien</p><p class="pp-insight__text">{{ p.cuenta }}</p></div>
+            </div>
+            <p class="pp-card__note ficha-note">Este resultado te orienta según tus respuestas. La protectora te ayudará a confirmar el encaje antes de la adopción.</p>
+          </section>
+        }
+
+        <h3 class="pp-section-title ficha-info-title">Información general</h3>
+        <section class="pp-info-group ficha-group" aria-labelledby="ig-salud">
+          <h4 class="pp-info-group__title" id="ig-salud">Salud y cuidados</h4>
+          <dl class="pp-list">
+            @for (r of salud(); track r[0]) { <div class="pp-list__item"><dt class="pp-list__headline">{{ r[0] }}</dt><dd class="pp-list__supporting">{{ r[1] }}</dd></div> }
+          </dl>
+        </section>
+        <section class="pp-info-group ficha-group" aria-labelledby="ig-caracter">
+          <h4 class="pp-info-group__title" id="ig-caracter">Carácter y convivencia</h4>
+          <dl class="pp-list">
+            @for (r of caracter(); track r[0]) { <div class="pp-list__item"><dt class="pp-list__headline">{{ r[0] }}</dt><dd class="pp-list__supporting">{{ r[1] }}</dd></div> }
+          </dl>
+        </section>
+        <p class="pp-hint ficha-group">Si un dato no se conoce, aparece como «Dato no disponible».</p>
+      </main>
+    }
+  </ion-content>
+
+  <div class="pp-action-bar">
+    @if (enviada()) {
+      <a class="pp-btn pp-btn--filled pp-btn--block pp-state" routerLink="/proceso/solicitud">Ver el estado de mi solicitud</a>
+    } @else if (enviando()) {
+      <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-btn--loading" aria-disabled="true" aria-label="Enviando solicitud"><pp-loader /></button>
+    } @else {
+      <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-state" (click)="pedir()">Enviar solicitud de adopción</button>
+    }
+    <p class="pp-visually-hidden" aria-live="polite">{{ enviando() ? 'Enviando solicitud…' : '' }}</p>
+    <a class="pp-btn pp-btn--outlined pp-btn--block pp-state" routerLink="/mascotas">Seguir mirando otras mascotas</a>
+  </div>
+  <pp-navigation-bar active="mascotas" />
+
+  @switch (dialogo()) {
+    @case ('confirmar') {
+      <pp-dialog [title]="'¿Enviar tu solicitud para adoptar a ' + pet()?.nombre + '?'" scrimLabel="Cancelar y cerrar"
+                 body="La protectora revisará tu solicitud y te responderá. Podrás seguir el estado en «Proceso»." (closed)="dialogo.set(null)">
+        <button type="button" class="pp-btn pp-btn--text pp-state" (click)="enviar()">Sí, enviar solicitud</button>
+        <button type="button" class="pp-btn pp-btn--text pp-state" (click)="dialogo.set(null)">Cancelar</button>
+      </pp-dialog>
+    }
+    @case ('limite') {
+      <pp-dialog title="¿Cancelar tu solicitud anterior?" [alert]="true" scrimLabel="Salir y mantener la solicitud anterior"
+                 body="Solo puedes tener una solicitud de adopción en proceso. Si continúas, cancelaremos tu solicitud anterior y enviaremos esta nueva. Si sales, mantendrás tu solicitud anterior."
+                 (closed)="dialogo.set(null)">
+        <button type="button" class="pp-btn pp-btn--text pp-state" (click)="dialogo.set(null)">Salir y mantener la anterior</button>
+        <button type="button" class="pp-btn pp-btn--text pp-state" (click)="enviar(true)">Continuar y cancelar la anterior</button>
+      </pp-dialog>
+    }
+    @case ('error-envio') {
+      <pp-dialog title="No se ha podido enviar tu solicitud" icon="error" [alert]="true"
+                 [body]="'Tu solicitud para adoptar a ' + pet()?.nombre + ' todavía no ha llegado a la protectora. Comprueba tu conexión e inténtalo de nuevo.'"
+                 (closed)="dialogo.set(null)">
+        <button type="button" class="pp-btn pp-btn--text pp-state" (click)="enviar()">Reintentar el envío</button>
+        <button type="button" class="pp-btn pp-btn--text pp-state" (click)="dialogo.set(null)">Volver a la ficha</button>
+      </pp-dialog>
+    }
+  }
+</div>

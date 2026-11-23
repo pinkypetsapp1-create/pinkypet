@@ -1,0 +1,70 @@
+<div class="pp-page">
+  <pp-top-app-bar variant="back" title="Estado de la solicitud" back="/proceso" [headingTitle]="true" [scrolled]="scrolled()" />
+  <ion-content [scrollEvents]="true" (ionScroll)="scrolled.set($event.detail.scrollTop > 0)">
+    @if (vista(); as v) {
+      <main class="solicitud-main">
+        <section class="pp-card pp-card--outlined">
+          <div class="pp-status-card__head"><span>Estado</span><span class="pp-status" [class.pp-status--done]="v.tagDone">{{ v.tag }}</span></div>
+          <p class="pp-status-card__name">{{ nombre() }}</p>
+        </section>
+        <div class="solicitud-texto">
+          @if (v.titulo) { <h2 class="pp-result-title">{{ v.titulo }}</h2> }
+          <p class="pp-intro">{{ v.texto }}</p>
+        </div>
+        <ol class="pp-steps" aria-label="Pasos de la solicitud">
+          @for (p of v.pasos; track p.label; let i = $index) {
+            <li class="pp-step" [class.pp-step--done]="p.st === 'done'" [class.pp-step--current]="p.st === 'current'" [class.pp-step--stopped]="p.st === 'stopped'"
+                [attr.aria-current]="p.st === 'current' || p.st === 'stopped' ? 'step' : 'false'" [attr.aria-label]="aria(p, i, v.pasos.length)">
+              <div class="pp-step__row">
+                <span class="pp-step__dot" aria-hidden="true">
+                  @if (p.icon) { <span class="pp-icon pp-icon--20">{{ p.icon }}</span> } @else { {{ p.num }} }
+                </span>
+                <span class="pp-step__label" aria-hidden="true">{{ p.label }} @if (p.note) { <span class="pp-step__note">{{ p.note }}</span> }</span>
+              </div>
+            </li>
+          }
+        </ol>
+        <div class="solicitud-acciones">
+          @if (volverCompat()) { <a class="pp-btn pp-btn--filled pp-btn--block pp-state" routerLink="/mascotas">Volver a mis mascotas compatibles</a> }
+          @if (solicitud()?.estado !== 'rechazada') {
+            <a class="pp-btn pp-btn--outlined pp-btn--block pp-state" [routerLink]="'/mascotas/' + solicitud()?.mascota?.id">Ver la ficha de la mascota</a>
+          }
+          @if (solicitud()?.estado === 'en_proceso') {
+            <button type="button" class="pp-btn pp-btn--text pp-btn--lead pp-state solicitud-cancelar" [attr.aria-disabled]="cancelando()" (click)="dialogo.set('cancelar')">
+              <span class="pp-icon pp-icon--20" aria-hidden="true">close</span>Cancelar solicitud
+            </button>
+          }
+        </div>
+      </main>
+    } @else if (session.ready()) {
+      <main class="solicitud-vacia">
+        <pp-empty-state icon="assignment" title="Todavía no has enviado ninguna solicitud de adopción." [texts]="['Cuando elijas una mascota y envíes tu solicitud, aquí verás su estado.']">
+          <a class="pp-btn pp-btn--filled pp-btn--block pp-state" routerLink="/mascotas">Buscar mascotas</a>
+        </pp-empty-state>
+      </main>
+    }
+  </ion-content>
+  <pp-navigation-bar active="proceso" />
+
+  @switch (dialogo()) {
+    @case ('aviso') {
+      <pp-dialog icon="check_circle" title="Solicitud enviada" body="Espera la respuesta. Puedes ver el estado del proceso aquí." scrimLabel="Cerrar aviso" (closed)="dialogo.set(null)">
+        <button type="button" class="pp-btn pp-btn--text pp-state" (click)="dialogo.set(null)">Ver el estado del proceso</button>
+      </pp-dialog>
+    }
+    @case ('cancelar') {
+      <pp-dialog [alert]="true" [title]="'¿Seguro que quieres cancelar tu solicitud para adoptar a ' + nombre() + '?'" scrimLabel="Mantener la solicitud y cerrar"
+                 body="La protectora dejará de revisarla. Si cambias de idea, tendrás que enviar una solicitud nueva." (closed)="dialogo.set(null)">
+        <button type="button" class="pp-btn pp-btn--text pp-state" (click)="dialogo.set(null)">No, mantener mi solicitud</button>
+        <button type="button" class="pp-btn pp-btn--text pp-state" (click)="cancelar()">Sí, cancelar solicitud</button>
+      </pp-dialog>
+    }
+    @case ('error-cancelar') {
+      <pp-dialog [alert]="true" icon="error" title="No se ha podido cancelar tu solicitud"
+                 [body]="'Tu solicitud para adoptar a ' + nombre() + ' sigue en proceso. Comprueba tu conexión e inténtalo de nuevo.'" (closed)="dialogo.set(null)">
+        <button type="button" class="pp-btn pp-btn--text pp-state" (click)="cancelar()">Reintentar la cancelación</button>
+        <button type="button" class="pp-btn pp-btn--text pp-state" (click)="dialogo.set(null)">Mantener mi solicitud</button>
+      </pp-dialog>
+    }
+  }
+</div>

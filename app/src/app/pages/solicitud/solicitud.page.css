@@ -1,0 +1,7 @@
+.solicitud-main { box-sizing: border-box; display: flex; flex-direction: column; gap: var(--space-6); padding: var(--space-2) var(--space-4) var(--space-6); }
+.solicitud-main > * { flex-shrink: 0; }
+.solicitud-texto { display: flex; flex-direction: column; gap: var(--space-2); }
+.solicitud-acciones { display: flex; flex-direction: column; gap: var(--space-3); }
+.solicitud-cancelar { align-self: center; }
+/* SinSolicitud: 48 px arriba = 32 del main + 16 del relleno de pp-empty */
+.solicitud-vacia { box-sizing: border-box; display: flex; flex-direction: column; padding: var(--space-8) var(--space-4) var(--space-6); }

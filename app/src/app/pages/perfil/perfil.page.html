@@ -1,0 +1,49 @@
+<div class="pp-page">
+  <pp-top-app-bar variant="brand" [scrolled]="scrolled()" />
+  <ion-content [scrollEvents]="true" (ionScroll)="scrolled.set($event.detail.scrollTop > 0)">
+    <main class="perfil-main">
+      <div class="perfil-head">
+        <h1 class="pp-screen-title">Mi perfil</h1>
+        @if (conTest()) {
+          <p class="pp-intro">Estas son tus respuestas del test. Si cambia tu situación, actualízalas para que las recomendaciones sigan encajando contigo.</p>
+        } @else if (session.state() === 'registrado') {
+          <p class="pp-intro">Ya tienes tu cuenta. Haz el test de compatibilidad para completar tu perfil y ver las mascotas que encajan contigo.</p>
+        } @else {
+          <p class="pp-intro">Todavía no has hecho el test de compatibilidad. Tus respuestas se guardarán aquí y podrás modificarlas cuando quieras.</p>
+        }
+      </div>
+
+      @if (conTest()) {
+        <section class="pp-card pp-card--outlined perfil-cuenta">
+          <h2 class="pp-card__title">Mi cuenta</h2>
+          <p class="pp-card__body perfil-muted">Correo electrónico: {{ session.user()?.email }}</p>
+        </section>
+        <section class="perfil-respuestas">
+          @for (b of respuestas(); track b.titulo) {
+            <div class="perfil-bloque">
+              <h2 class="pp-info-group__title">{{ b.titulo }}</h2>
+              <dl class="pp-list">
+                @for (i of b.items; track i.q) {
+                  <div class="pp-list__item pp-list__item--plain"><dt class="pp-list__headline">{{ i.q }}</dt><dd class="pp-list__supporting">{{ i.a }}</dd></div>
+                }
+              </dl>
+            </div>
+          }
+        </section>
+        <div class="perfil-acciones">
+          <a class="pp-btn pp-btn--filled pp-btn--block pp-state" routerLink="/mascotas">Ver mis mascotas compatibles</a>
+          <a class="pp-btn pp-btn--outlined pp-btn--block pp-state" routerLink="/test">Modificar mis respuestas</a>
+        </div>
+      } @else {
+        <ul class="pp-list pp-list--contained">
+          @for (b of bloquesVacios; track b) {
+            <li class="pp-list__item"><span class="pp-list__headline">{{ b }}</span><span class="pp-list__supporting">Sin completar</span></li>
+          }
+        </ul>
+        <a class="pp-btn pp-btn--filled pp-btn--block pp-state" [routerLink]="session.state() === 'invitado' ? '/registro' : '/test'">Descubrir mi compatibilidad</a>
+        @if (session.state() === 'invitado') { <pp-account-prompts /> }
+      }
+    </main>
+  </ion-content>
+  <pp-navigation-bar active="perfil" />
+</div>

@@ -1,0 +1,97 @@
+<div class="pp-page">
+  <pp-top-app-bar variant="brand" [scrolled]="scrolled()" />
+  <ion-content [scrollEvents]="true" (ionScroll)="scrolled.set($event.detail.scrollTop > 0)">
+    <main class="mascotas-main">
+      <h1 class="pp-screen-title">Mascotas</h1>
+
+      @if (estado() === 'sin-conexion') {
+        <pp-empty-state class="mascotas-error" role="alert" icon="wifi_off" title="No hemos podido cargar las mascotas"
+                        [texts]="['Parece que no hay conexión a internet. Comprueba tu wifi o tus datos móviles e inténtalo de nuevo.']">
+          <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-state" (click)="load()">Reintentar</button>
+        </pp-empty-state>
+      } @else if (sinCompatibles()) {
+        <pp-empty-state class="mascotas-error" role="status" icon="pets" title="Todavía no hay mascotas compatibles contigo"
+                        [texts]="['Ahora mismo ninguna mascota en adopción encaja con tus respuestas del test. Llegan mascotas nuevas a menudo, así que vuelve a mirar pronto.', 'Si tu situación ha cambiado, puedes actualizar tus respuestas.']">
+          <a class="pp-btn pp-btn--filled pp-btn--block pp-state" routerLink="/perfil">Revisar mis respuestas</a>
+        </pp-empty-state>
+      } @else {
+        @if (conTest()) {
+          <section class="pp-card pp-card--filled">
+            <p class="pp-card__title">Según tus respuestas del test</p>
+            <p class="pp-card__body">El porcentaje te orienta según tus respuestas. En cada ficha verás por qué encaja contigo.</p>
+          </section>
+        }
+
+        <section class="mascotas-filtros" aria-label="Filtros">
+          <div class="mascotas-tipos" role="group" aria-label="Tipo de mascota">
+            @for (t of tiposDef; track t.k) {
+              <button type="button" class="pp-select-card pp-state" [attr.aria-pressed]="tipos()[t.k]" (click)="toggleTipo(t.k)">
+                <span class="pp-select-card__icon" aria-hidden="true">
+                  @if (t.img) { <img [src]="t.img" alt="" /> } @else { <span class="pp-mark"></span> }
+                </span>
+                <span>{{ t.label }}</span>
+                <span class="pp-icon pp-icon--filled pp-select-card__check" aria-hidden="true">check_circle</span>
+              </button>
+            }
+          </div>
+          <div class="mascotas-chips">
+            <button type="button" class="pp-chip-target" [attr.aria-pressed]="ne()" (click)="toggleNe()">
+              <span class="pp-chip pp-state">
+                @if (ne()) { <span class="pp-icon pp-icon--18" aria-hidden="true">check</span> }
+                Necesidades especiales
+              </span>
+            </button>
+            <div class="mascotas-ubicacion">
+              <button type="button" class="pp-chip-target" aria-haspopup="menu" [attr.aria-expanded]="menu()"
+                      [attr.aria-label]="'Ubicación' + (provincia() ? ': ' + provincia() : '')" (click)="menu.set(!menu())">
+                <span class="pp-chip pp-chip--menu pp-state" [class.pp-chip--selected]="!!provincia()">
+                  @if (provincia()) { <span class="pp-icon pp-icon--18" aria-hidden="true">check</span> }
+                  {{ provincia() || 'Ubicación' }}
+                  <span class="pp-icon pp-icon--18" aria-hidden="true">arrow_drop_down</span>
+                </span>
+              </button>
+              @if (menu()) {
+                <div class="pp-menu mascotas-menu" role="menu" aria-label="Ubicación">
+                  @for (p of provincias; track p) {
+                    <button type="button" class="pp-menu__item pp-state" role="menuitemradio" [attr.aria-checked]="p === provincia()" (click)="pickProvincia(p)">
+                      <span class="pp-icon" aria-hidden="true">{{ p === provincia() ? 'check' : '' }}</span>{{ p }}
+                    </button>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+          @if (activos().length) {
+            <div class="pp-active-filters">
+              <p class="pp-active-filters__text">Filtros activos: {{ activos().join(' · ') }}</p>
+              <button type="button" class="pp-btn pp-btn--text pp-btn--lead pp-state" (click)="clear()"><span class="pp-icon pp-icon--20" aria-hidden="true">filter_alt_off</span>Quitar filtros</button>
+            </div>
+          }
+        </section>
+
+        <p class="pp-count" aria-live="polite">{{ estado() === 'cargando' ? '' : contador() }}</p>
+
+        @if (pets().length) {
+          <div class="mascotas-grid">
+            @for (p of pets(); track p.id) {
+              <pp-animal-card [pet]="p" [link]="cardLink(p)" [label]="cardLabel()" [aria]="cardAria(p)" />
+            }
+          </div>
+        } @else if (estado() === 'ok') {
+          <pp-empty-state icon="search_off" title="No hay mascotas con estos filtros" [texts]="[vacioTexto()]">
+            <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-state" (click)="clear()">Quitar filtros</button>
+          </pp-empty-state>
+        }
+
+        @if (!conTest()) {
+          <section class="pp-card pp-card--filled mascotas-promo">
+            <h2 class="pp-card__title">¿Quieres saber qué mascotas encajan contigo?</h2>
+            <p class="pp-card__body">Haz el test y verás las mascotas compatibles con tu hogar, tu día a día y lo que buscas en una mascota.</p>
+            <div class="pp-card__actions"><a class="pp-btn pp-btn--filled pp-btn--block pp-state" [routerLink]="testLink()">Descubrir mi compatibilidad</a></div>
+          </section>
+        }
+      }
+    </main>
+  </ion-content>
+  <pp-navigation-bar active="mascotas" />
+</div>

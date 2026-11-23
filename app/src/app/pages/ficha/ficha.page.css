@@ -1,0 +1,9 @@
+.ficha-main { box-sizing: border-box; display: flex; flex-direction: column; padding: var(--space-2) var(--space-4) var(--space-6); }
+.ficha-main > * { flex-shrink: 0; }
+.ficha-tag { margin-top: var(--space-3); }
+.ficha-results { margin-top: var(--space-6); gap: 0; }
+.ficha-meter { margin-top: var(--space-3); }
+.ficha-insight--first { margin-top: calc(var(--space-4) + var(--space-1)); }
+.ficha-note { margin-top: var(--space-4); }
+.ficha-info-title { margin-top: var(--space-8); }
+.ficha-group { margin-top: var(--space-2); }

@@ -1,0 +1,8 @@
+.proceso-main { box-sizing: border-box; display: flex; flex-direction: column; padding: var(--space-4) var(--space-4) var(--space-6); }
+.proceso-main > * { flex-shrink: 0; }
+.proceso-hero { margin-top: var(--space-4); }
+.proceso-h2 { margin: var(--space-8) 0 var(--space-4); }
+.proceso-h2--req { margin-bottom: var(--space-1); }
+.proceso-h2--sol { margin-bottom: var(--space-3); }
+.proceso-muted { margin: 0 0 var(--space-3); color: var(--on-surface-variant); }
+.pp-pstep__shape path { transition: fill var(--pp-dur-effects) var(--pp-ease-effects); }
