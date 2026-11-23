@@ -267,7 +267,7 @@ CLAUDE.md · docs/ · design/ (solo lectura) · scripts/ · backend/ (NestJS + M
 | Umbral de «ninguna mascota compatible» | **50 %**: por debajo, la mascota no cuenta como compatible. | decidido 2026-11-23 |
 | ¿Solicitud sin test? | **No**: exige cuenta y test (`TEST_REQUIRED`). | decidido 2026-11-23 |
 | Simulación de la protectora | **Endpoint solo de desarrollo**: `POST /dev/requests/:id/resolve` con la cabecera `X-Dev-Key`. No existe con `NODE_ENV=production`. Atajo: `npm run demo:resolve -- <id> finalizada\|rechazada`. | decidido 2026-11-23 |
-| Disponibilidad tras la respuesta | Propuesta de implementación: si la protectora responde (`finalizada` o `rechazada`), la mascota deja de estar disponible y sale del catálogo. Si se cancela, sigue disponible. `npm run seed` vuelve a dejarlas todas disponibles. | **pendiente de confirmar** |
+| Disponibilidad tras la respuesta | Si la protectora responde (`finalizada` o `rechazada`), la mascota deja de estar disponible y sale del catálogo. Si se cancela, sigue disponible. `npm run seed` vuelve a dejarlas todas disponibles. | decidido 2026-11-23 |
 | Cálculo del % | Siempre a partir de las respuestas del test (§4.4 bis). | decidido 2026-11-23 |
 | ¿iOS fuera de alcance? | — | pendiente |
 | Capturas de referencia | Las exporta el equipo a `design/_incoming/reference/`. | en espera |
