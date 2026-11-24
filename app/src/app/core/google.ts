@@ -13,7 +13,11 @@ export class Google {
 
   /** null si la persona cierra el selector de Google sin elegir cuenta. */
   async idToken(): Promise<string | null> {
-    this.ready ??= SocialLogin.initialize({ google: { webClientId: environment.googleWebClientId, mode: 'online' } });
+    // En la web, Google abre una ventana emergente y vuelve a una URL fija, que debe estar en
+    // «URIs de redireccionamiento autorizados» del cliente OAuth (docs/DEPLOY.md, paso 3).
+    this.ready ??= SocialLogin.initialize({
+      google: { webClientId: environment.googleWebClientId, mode: 'online', redirectUrl: `${window.location.origin}/` },
+    });
     await this.ready;
     try {
       const r = await SocialLogin.login({ provider: 'google', options: { scopes: ['email', 'profile'] } });

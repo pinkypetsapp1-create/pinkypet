@@ -42,7 +42,7 @@ Necesitas la **huella SHA-1** de la firma del APK de depuración, que aparece al
 
 1. <https://console.cloud.google.com> → crea el proyecto **Pinky Pet**.
 2. **APIs y servicios → Pantalla de consentimiento de OAuth** → tipo **Externo** → nombre «Pinky Pet», tu correo de asistencia → ámbitos `email` y `profile` → en **Usuarios de prueba**, añade los correos de Google con los que vais a probar.
-3. **Credenciales → Crear credenciales → ID de cliente de OAuth → Aplicación web** → nombre «Pinky Pet web» → en *Orígenes de JavaScript autorizados* añade `http://localhost:8100` y `https://pinky-pet-app.onrender.com`. Copia el **ID de cliente** (termina en `.apps.googleusercontent.com`; no es secreto).
+3. **Credenciales → Crear credenciales → ID de cliente de OAuth → Aplicación web** → nombre «Pinky Pet web» → en *Orígenes de JavaScript autorizados* añade `https://pinky-pet-app.onrender.com` y `http://localhost:8100`, y en *URIs de redireccionamiento autorizados* `https://pinky-pet-app.onrender.com/` y `http://localhost:8100/` (con la barra final: en la web, Google vuelve a la raíz de la app en una ventana emergente). Copia el **ID de cliente** (termina en `.apps.googleusercontent.com`; no es secreto).
 4. Pega ese ID:
    - en `app/src/environments/environment.ts` y `environment.prod.ts`, en `googleWebClientId`;
    - en Render, en la variable `GOOGLE_CLIENT_IDS`.

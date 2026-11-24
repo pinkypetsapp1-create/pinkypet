@@ -3,6 +3,9 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter, withComponentInputBinding } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular';
 
+// La ventana emergente de Google vuelve a la raíz de la app: el plugin recoge el resultado al importarse,
+// antes de que el router cambie la URL. Por eso se importa aquí y no solo en Registro e Iniciar sesión.
+import '@capgo/capacitor-social-login';
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
 import { Session } from './app/core/session';
