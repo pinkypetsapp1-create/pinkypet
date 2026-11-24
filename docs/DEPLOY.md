@@ -32,13 +32,17 @@ Orden: **1 Atlas → 2 Render → 3 Google → 4 Android Studio y APK → 5 prue
 
 > El plan gratuito se duerme tras 15 minutos sin uso y tarda ~1 minuto en despertar. La app lo despierta al abrirse y espera hasta 75 s en cada petición.
 
+## 2 bis. La app como web: Render (gratis)
+
+`render.yaml` también publica la app como sitio estático **pinky-pet-app**: <https://pinky-pet-app.onrender.com>. Se vuelve a publicar sola con cada push a `main`. El backend acepta sus peticiones (está en `CORS_ORIGINS`).
+
 ## 3. «Continuar con Google»: Google Cloud (gratis)
 
 Necesitas la **huella SHA-1** de la firma del APK de depuración, que aparece al instalar Android Studio (paso 4.3). Puedes hacer los puntos 1–4 ya y el 5 después.
 
 1. <https://console.cloud.google.com> → crea el proyecto **Pinky Pet**.
 2. **APIs y servicios → Pantalla de consentimiento de OAuth** → tipo **Externo** → nombre «Pinky Pet», tu correo de asistencia → ámbitos `email` y `profile` → en **Usuarios de prueba**, añade los correos de Google con los que vais a probar.
-3. **Credenciales → Crear credenciales → ID de cliente de OAuth → Aplicación web** → nombre «Pinky Pet web» → en *Orígenes de JavaScript autorizados* añade `http://localhost:8100`. Copia el **ID de cliente** (termina en `.apps.googleusercontent.com`; no es secreto).
+3. **Credenciales → Crear credenciales → ID de cliente de OAuth → Aplicación web** → nombre «Pinky Pet web» → en *Orígenes de JavaScript autorizados* añade `http://localhost:8100` y `https://pinky-pet-app.onrender.com`. Copia el **ID de cliente** (termina en `.apps.googleusercontent.com`; no es secreto).
 4. Pega ese ID:
    - en `app/src/environments/environment.ts` y `environment.prod.ts`, en `googleWebClientId`;
    - en Render, en la variable `GOOGLE_CLIENT_IDS`.
