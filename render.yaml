@@ -24,8 +24,29 @@ services:
       - key: JWT_REFRESH_SECRET
         generateValue: true
       - key: CORS_ORIGINS
-        value: https://localhost,capacitor://localhost,http://localhost:8100
+        value: https://pinky-pet-app.onrender.com,https://localhost,capacitor://localhost,http://localhost:8100
       - key: SEED_DEMO_PASSWORD
         sync: false
       - key: GOOGLE_CLIENT_IDS
         sync: false
+
+  # La app como web (para probarla online desde cualquier navegador). Usa el backend de arriba (environment.prod.ts).
+  - type: web
+    name: pinky-pet-app
+    runtime: static
+    rootDir: app
+    buildCommand: npm ci && npx ng build
+    staticPublishPath: www
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "26"
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+    routes:
+      # Aplicación de una sola página: cualquier ruta (/mascotas, /test…) la resuelve index.html.
+      - type: rewrite
+        source: /*
+        destination: /index.html
