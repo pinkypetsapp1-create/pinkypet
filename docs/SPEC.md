@@ -274,7 +274,7 @@ CLAUDE.md · docs/ · design/ (solo lectura) · scripts/ · backend/ (NestJS + M
 | D1 · Fase 2 en tres entregas | 2a (base, Inicio, Registro, Login, Test) · 2b (Mascotas, Ficha) · 2c (Proceso, Perfil, primer inicio, errores). | aplicado 2026-11-23 (el equipo pidió empezar ya) |
 | D2 · Dónde se guarda la sesión | Android Keystore (`@aparajita/capacitor-secure-storage`); en el navegador, token de acceso en memoria y de renovación en `sessionStorage`. Ver `app/src/app/core/token-store.ts`. | aplicado 2026-11-23 (el equipo pidió empezar ya) |
 | D3 · Android Studio para «Texto 200 %» | Hace falta para comprobar «Texto 200 %» de verdad (design-feedback F0-2). Sin él, esa verificación de la Fase 2 queda pendiente. | pendiente |
-| F2-4 · Cerrar sesión | El diseño no tiene botón. Propuesta en design-feedback F2-4. | **pendiente** |
+| F2-4 · Cerrar sesión | «Cerrar sesión» en la tarjeta «Mi cuenta» de Mi perfil (completado y registrado sin test) → Inicio · sin cuenta. Añadido en DS y AF el 2026-11-24. | decidido 2026-11-24 |
 | F2-6 · Qué muestra «Estado de la solicitud» | Ver design-feedback F2-6. | aplicado 2026-11-23 |
 | F2-1 · Texto de «sin conexión» en Registro, Login y Test | Se reutiliza el texto literal de Error-Catalogo en el aviso de cada pantalla. | decidido 2026-11-23 |
 | Mitigar el arranque en frío de Render | Usar los estados de carga existentes (por ejemplo, el del botón) y timeouts largos, sin pantallas nuevas. | proponer en F3 |

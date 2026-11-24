@@ -126,9 +126,9 @@
   ],
   "lastChange": {
     "by": "Claude",
-    "at": "2026-11-18T18:30:00Z",
-    "via": "Claude",
-    "note": "MOV1: componentes Huella y Splash / Primer inicio (claro y oscuro) con curvas de M3."
+    "at": "2026-11-24T08:35:28Z",
+    "via": "Claude Code",
+    "note": "F2-4: botón de texto con icono «Cerrar sesión» (logout) en la tarjeta «Mi cuenta» de Mi perfil."
   },
   "layout": "files",
   "libraries": [],

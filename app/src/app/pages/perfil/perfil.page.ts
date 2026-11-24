@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IonContent, ViewWillEnter } from '@ionic/angular';
 import { Api } from '../../core/api';
 import type { AnswersView, TestView } from '../../core/api.types';
@@ -17,6 +17,7 @@ import { TopAppBar } from '../../ui/top-app-bar';
 })
 export class PerfilPage implements ViewWillEnter {
   private readonly api = inject(Api);
+  private readonly router = inject(Router);
   protected readonly session = inject(Session);
   protected readonly scrolled = signal(false);
   private readonly test = signal<TestView | null>(null);
@@ -30,6 +31,12 @@ export class PerfilPage implements ViewWillEnter {
     if (!t || !a) return [];
     return t.bloques.map((b) => ({ titulo: b.titulo, items: t.preguntas.filter((q) => q.bloque === b.id).map((q) => ({ q: q.resumen, a: a[q.id] })) }));
   });
+
+  /** «Cerrar sesión» (DS 1795509334-bb26 / AF 1795509349-ff9d): revoca la sesión y vuelve a Inicio · sin cuenta. */
+  protected async cerrarSesion(): Promise<void> {
+    await this.session.logout();
+    await this.router.navigateByUrl('/inicio');
+  }
 
   async ionViewWillEnter(): Promise<void> {
     if (!this.conTest()) return;

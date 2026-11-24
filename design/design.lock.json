@@ -2,8 +2,8 @@
   "comment": "Generado por scripts/design-lock.mjs. No editar a mano.",
   "designSystem": {
     "url": "https://claude.ai/artifact/FdYKiHu4B9TE7YT6tG8ErF",
-    "version": "1795433635-941c",
-    "syncedAt": "2026-11-23T11:41:24Z",
+    "version": "1795509334-bb26",
+    "syncedAt": "2026-11-24T08:36:05Z",
     "files": {
       "README.md": "9123948f7673016b17a6a6f93bbaeed5857c26cee323ebd2fc002a0eeb3a1a85",
       "assets/Fotos/README.md": "14e49479edba3383ba6dd1f2d8c5a2a7463c30d0df855bd86e569e125aa7c311",
@@ -21,7 +21,7 @@
       "components/Banner/preview.html": "9d631ab2e93b424aa78a1a5e8f6e9f06d16172f79033c4ff5b721a30cf455b89",
       "components/BottomActionBar/README.md": "6cabf411bd822be767a91c31f5d657d6b07e73bdee684118751215072754d648",
       "components/BottomActionBar/preview.html": "8db8f52bc903a022d67aea41f495fac47a3595307b344a7366cbea1ffc12ab07",
-      "components/Button/README.md": "eca47b4271a9b1d6bfa3397f245c147a7afb226c7ffaf42916f9f3a09061d208",
+      "components/Button/README.md": "b5f4faecce58fc5b646db14ce572530f2b3c58702afe7db77ca20f045e9e77cc",
       "components/Button/preview.html": "22348f08afffcea9787a593935f29e951555316008c203c676fd943c676bf598",
       "components/Card/README.md": "be9e093fdafb009c85b7eb1279504cc171760dd23821229fe42abcd0ebbb4ef9",
       "components/Card/preview.html": "69e51bcf71e989cdbe65b5f8d08c4ca5103c90a687ba208648e5414ca40c8f2c",
@@ -93,7 +93,7 @@
       "components/TopAppBar/README.md": "c6c173f775589117e3be0304b5d1f500b222287db8ef3bad2d0273670ae615a6",
       "components/TopAppBar/preview.html": "f20077cf2e128241b929166e6d3baefb3c943323f10e52cb05a9fc5e0b62532b",
       "components/bundle.css": "49db8b900e5057c5046c1533243f6a895b81bfb6b029f23459b329beee5cc703",
-      "design-system.json": "f9b5224779b6b42354b75a3af42b208f8771b8392d42c490a7e69fba946ed87e",
+      "design-system.json": "00a870026b2744fee27b2cb0ef752d0f41412b41ea849f5d52ddbf5010ee141d",
       "tokens.json": "1fee07b9fff74615370f294ad47ba50174836de51af824199c5e0aca53f446db"
     },
     "assets": {
@@ -149,8 +149,8 @@
   },
   "altaFidelidad": {
     "url": "https://claude.ai/artifact/1MwUAQpwJFExpLby6g9vH2",
-    "version": "1795433636-1cea",
-    "syncedAt": "2026-11-23T11:41:24Z",
+    "version": "1795509349-ff9d",
+    "syncedAt": "2026-11-24T08:36:05Z",
     "coherence": {
       "recordedVersion": "1795026227-9d5e",
       "copiedAt": "2026-11-18T18:35:00Z",
@@ -229,9 +229,9 @@
       "Oscuro-MiSolicitud.dc.html": "121a53402110c78e5c668260bd6a3f51eff6f9c9f243b15a4ca72a27ff32330c",
       "Oscuro-Test-Completado.dc.html": "b6419232c6fe258d9d58493245d70dfb1260bc493f68122d650095aeceff7821",
       "Oscuro-Test.dc.html": "4194134c5800106f9193317ed81709015b3abc6e0293ca26c4843d9ea99a06d1",
-      "PerfilCompletado.dc.html": "2a9a51e0109b62360afe45cd82c8a3580ed6ae5cf4769f625daefc90a8d03bf5",
+      "PerfilCompletado.dc.html": "57b8f641a25e8af037bc040088bcb36e75f541e102f0c7bc4fe077bcb51db2bb",
       "PerfilVacio-Registrado.dc.html": "1d294d8789e1b0896a820749f8c079b901d0e19d6fcc7bff13e3b5ffee847e13",
-      "PerfilVacio.dc.html": "2b66a376ee3ac62c9a51c05296706a9234399b5ad275853df13e06f594c6b2fa",
+      "PerfilVacio.dc.html": "4d07aa8947b3fdb5fac2c2d91eb1a3f7ee3c824b1cb45fe76f83f4ce6443701a",
       "PrimerInicio.dc.html": "5844358e34dbbb57b675ffdace4634677ea200bac363ff1cecc4c2f5b521b996",
       "PrimerInicioOscuro.dc.html": "099b8e5a673499bc9f8a4bb5a6af49e0317d9536042eafac24b9144396c71a76",
       "Registro.dc.html": "31b0da4d288a2080835d40b2b9a1156bc05f852510b4b251a5a466da00e9523c",
@@ -264,7 +264,7 @@
       "Zoom-MiSolicitud.dc.html": "1dc9a6afc15968b9d29091e4940ff7f66a2f533984138c772d4e801e7fa88494",
       "Zoom-Test-Completado.dc.html": "af226554e23cdb6052e0ea3d3004b4ddac5c6df4f1678b05990abf52f3ce0508",
       "Zoom-Test.dc.html": "0051bec92f9c5219d9b131f56aa251f1239faf2fb23c720aca9c5f705351d0a5",
-      "canvas.json": "d381ff1883796c53a6f958a1b5e6a242624585492569da9f2050fff5421a6eaa"
+      "canvas.json": "a9731efb1cf5fbcf9e9368db59ccfad77e1920b8ee27018e8bae201c91945671"
     }
   },
   "reference": {

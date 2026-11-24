@@ -1,7 +1,7 @@
 # Mapa diseño → código
 
 Sirve para saber qué código toca cada cambio del diseño. Se actualiza en cada `/sincronizar-diseno`.
-Versiones: DS `1795433635-941c` · AF `1795433636-1cea`. Las rutas y los componentes son **propuestas** hasta la Fase 2: la columna «Estado» dice si ya existen.
+Versiones: DS `1795509334-bb26` · AF `1795509349-ff9d`. Las rutas y los componentes son **propuestas** hasta la Fase 2: la columna «Estado» dice si ya existen.
 
 ## 1. Componentes del Design System → componentes de código
 
@@ -73,6 +73,6 @@ Las variantes «Oscuro…», «…Texto», «Texto-…», «…Zoom» y «Zoom-�
 | `/mascotas/:id` | `Ficha-<Mascota>` (T), `Ficha-<Mascota>-Enviada` (S, la propia), `Ficha-Limite` (S, otra), `Error-Envio` | T · S | Ficha completa, % por bloques, diálogos de envío, de límite y de error |
 | `/proceso` | `ComoAdoptar` (I), `ComoAdoptar-Registrado` (R), `ComoAdoptar-Sesion` (T), `ComoAdoptar-Sesion-<Mascota>` (S) | I · R · T · S | Pasos y requisitos para adoptar; acceso al estado |
 | `/proceso/solicitud` | `SinSolicitud` (I/R), `SinSolicitud-Sesion` (T), `MiSolicitud` y `Solicitud-<Mascota>` (S), `Estado-<Mascota>` (S, con el aviso «Solicitud enviada»), `Estado-Finalizada`, `Estado-NoDisponible`, `Error-Cancelar` | I · R · T · S | Estado de la solicitud activa (en proceso, finalizada, no disponible o cancelada) |
-| `/perfil` | `PerfilVacio` (I), `PerfilVacio-Registrado` (R), `PerfilCompletado` (T/S) | I · R · T · S | Correo y respuestas del test |
+| `/perfil` | `PerfilVacio` (I), `PerfilVacio-Registrado` (R), `PerfilCompletado` (T/S) | I · R · T · S | Correo, «Cerrar sesión» (R/T/S) y respuestas del test |
 
 Pestañas (`TabBar`): Inicio · Mascotas · Proceso · Mi perfil, con los iconos `home` · `search` · `hourglass_empty` · `person`. No aparecen en Registro ni en Login.

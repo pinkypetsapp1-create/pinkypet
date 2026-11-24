@@ -179,7 +179,9 @@ const VARIANTES = [
 const browser = await chromium.launch();
 mkdirSync(outDir, { recursive: true });
 let n = 0;
-for (const e of ESCENARIOS[entrega] ?? []) {
+// SOLO=Nombre1,Nombre2 para repetir solo algunas pantallas.
+const SOLO = process.env.SOLO ? new Set(process.env.SOLO.split(',')) : null;
+for (const e of (ESCENARIOS[entrega] ?? []).filter((x) => !SOLO || SOLO.has(x.nombre))) {
   // Las cuentas creadas para un escenario se crean una sola vez; cada variante inicia sesión (los tokens rotan).
   let creada = typeof e.cuenta === 'function' ? await e.cuenta() : null;
   for (const v of VARIANTES) {

@@ -10,7 +10,7 @@ Botón en píldora que se cuadra al pulsar (morph de forma de M3 Expressive): M 
 | Outlined M con logo | `+ pp-btn__logo` | «Continuar con Google» (logotipo «G» oficial de Google, multicolor, 20 × 20; no se recolorea) |
 | Outlined S | `pp-btn pp-btn--outlined pp-btn--s` | «Iniciar sesión con este correo» (dentro del aviso de error) |
 | Texto | `pp-btn pp-btn--text` | Acciones de diálogo: «Sí, enviar solicitud», «Cancelar», «Reintentar el envío»… |
-| Texto con icono | `pp-btn pp-btn--text pp-btn--lead` | `person_add` «Regístrate», `login` «Inicia sesión», `close` «Cancelar solicitud», `filter_alt_off` «Quitar filtros» |
+| Texto con icono | `pp-btn pp-btn--text pp-btn--lead` | `person_add` «Regístrate», `login` «Inicia sesión», `logout` «Cerrar sesión» (tarjeta «Mi cuenta» de Mi perfil), `close` «Cancelar solicitud», `filter_alt_off` «Quitar filtros» |
 
 ## Reglas
 **Nunca se encoge** (`flex-shrink: 0`): mantiene sus 56 o 40 px aunque esté dentro de un contenedor con scroll, que es el que debe desplazarse. **Alto mínimo, no fijo (ACC1):** 56 / 40 / 48 px son mínimos con 8 px de relleno vertical; con el tamaño de letra del sistema grande, el texto pasa a dos líneas y el botón crece hacia abajo en vez de desbordarse. A tamaño normal se ve igual. Una acción rellena por pantalla; las acciones repetidas (una por tarjeta) van en tonal. El tonal usa `secondary-container` con texto `on-secondary-container` (7,27:1), como indica M3.

@@ -38,6 +38,13 @@ a:focus-visible,button:focus-visible{outline:3px solid #3A6265;outline-offset:2p
       <p style="margin: 0; font-size: 16px; line-height: 24px">{{intro}}</p>
     </div>
 
+    <sc-if value="{{registrado}}" hint-placeholder-val="{{false}}">
+      <section style="flex: none; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 4px">
+        <h2 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 500">Mi cuenta</h2>
+        <p style="margin: 0; font-size: 14px; line-height: 20px; color: #4F4449">Correo electrónico: persona@ejemplo.com</p>
+        <a href="Main.dc.html" class="sl" style="align-self: flex-start; margin: 4px 0 -8px -12px; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 16px 0 12px; border-radius: 24px; color: #734863; font-size: 14px; line-height: 20px; font-weight: 500; text-decoration: none"><span class="ms" aria-hidden="true" style="font-size: 20px">logout</span>Cerrar sesión</a>
+      </section>
+    </sc-if>
     <ul style="flex: none; list-style: none; margin: 0; padding: 0; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 12px; overflow: hidden">
       <sc-for list="{{blocks}}" as="b" hint-placeholder-count="3">
         <li style="min-height: 72px; box-sizing: border-box; padding: 8px 16px; display: flex; flex-direction: column; justify-content: center; border-bottom: {{b.div}}">
@@ -70,7 +77,7 @@ class Component extends DCLogic {
     const invitado = estado === 'invitado';
     const names = ['Mi hogar', 'Mi día a día', 'La mascota que busco'];
     return {
-      estado, invitado,
+      estado, invitado, registrado: !invitado,
       intro: invitado
         ? 'Todavía no has hecho el test de compatibilidad. Tus respuestas se guardarán aquí y podrás modificarlas cuando quieras.'
         : 'Ya tienes tu cuenta. Haz el test de compatibilidad para completar tu perfil y ver las mascotas que encajan contigo.',

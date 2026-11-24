@@ -17,6 +17,9 @@
         <section class="pp-card pp-card--outlined perfil-cuenta">
           <h2 class="pp-card__title">Mi cuenta</h2>
           <p class="pp-card__body perfil-muted">Correo electrónico: {{ session.user()?.email }}</p>
+          <button type="button" class="pp-btn pp-btn--text pp-btn--lead pp-state perfil-salir" (click)="cerrarSesion()">
+            <span class="pp-icon pp-icon--20" aria-hidden="true">logout</span>Cerrar sesión
+          </button>
         </section>
         <section class="perfil-respuestas">
           @for (b of respuestas(); track b.titulo) {
@@ -35,6 +38,15 @@
           <a class="pp-btn pp-btn--outlined pp-btn--block pp-state" routerLink="/test">Modificar mis respuestas</a>
         </div>
       } @else {
+        @if (session.state() === 'registrado') {
+          <section class="pp-card pp-card--outlined perfil-cuenta">
+            <h2 class="pp-card__title">Mi cuenta</h2>
+            <p class="pp-card__body perfil-muted">Correo electrónico: {{ session.user()?.email }}</p>
+            <button type="button" class="pp-btn pp-btn--text pp-btn--lead pp-state perfil-salir" (click)="cerrarSesion()">
+              <span class="pp-icon pp-icon--20" aria-hidden="true">logout</span>Cerrar sesión
+            </button>
+          </section>
+        }
         <ul class="pp-list pp-list--contained">
           @for (b of bloquesVacios; track b) {
             <li class="pp-list__item"><span class="pp-list__headline">{{ b }}</span><span class="pp-list__supporting">Sin completar</span></li>
