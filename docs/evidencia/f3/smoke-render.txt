@@ -1,0 +1,10 @@
+Prueba básica contra https://pinky-pet-api.onrender.com · 2026-11-24T09:46:09Z
+✔ health · 234 ms (incluye el despertar si estaba dormido)
+✔ registro · smoke-1795513569815@ejemplo.com
+✔ test guardado
+✔ compatibilidad · Luna 97 %, Coco 95 %, Simba 87 %, Kira 82 %, Nube 70 %, Rocky 54 %
+✔ solicitud enviada · luna
+✔ una sola solicitud activa
+✔ estado de la solicitud
+✔ cancelación
+✔ el simulador de la protectora no es accesible desde fuera (404 sin clave)
