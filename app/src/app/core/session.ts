@@ -44,6 +44,13 @@ export class Session {
     await this.start(await this.api.request<SessionView>('/auth/login', { method: 'POST', body: { email, password } }));
   }
 
+  /** Devuelve true si la cuenta se acaba de crear (desde Registro se va al Test). */
+  async loginWithGoogle(idToken: string): Promise<boolean> {
+    const s = await this.api.request<SessionView & { created: boolean }>('/auth/google', { method: 'POST', body: { idToken } });
+    await this.start(s);
+    return s.created;
+  }
+
   async logout(): Promise<void> {
     const refreshToken = await this.store.getRefresh();
     this.clear();

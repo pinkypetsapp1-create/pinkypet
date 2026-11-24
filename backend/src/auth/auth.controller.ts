@@ -3,7 +3,7 @@ import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagg
 import { ThrottlerGuard } from '@nestjs/throttler';
 import { Errors } from '../common/errors';
 import { UsersService } from '../users/users.service';
-import { LoginDto, RefreshDto, RegisterDto, SessionView, UserView } from './auth.dto';
+import { GoogleLoginDto, GoogleSessionView, LoginDto, RefreshDto, RegisterDto, SessionView, UserView } from './auth.dto';
 import { AuthGuard, UserId } from './auth.guard';
 import { AuthService } from './auth.service';
 
@@ -32,6 +32,17 @@ export class AuthController {
   @ApiResponse({ status: 429, description: 'TOO_MANY_ATTEMPTS' })
   login(@Body() dto: LoginDto): Promise<SessionView> {
     return this.auth.login(dto.email, dto.password);
+  }
+
+  @Post('google')
+  @HttpCode(200)
+  @UseGuards(ThrottlerGuard)
+  @ApiOperation({ summary: '«Continuar con Google»: inicia sesión o crea la cuenta con un ID token de Google' })
+  @ApiResponse({ status: 200, type: GoogleSessionView })
+  @ApiResponse({ status: 401, description: 'GOOGLE_TOKEN_INVALID' })
+  @ApiResponse({ status: 503, description: 'GOOGLE_NOT_CONFIGURED' })
+  google(@Body() dto: GoogleLoginDto): Promise<GoogleSessionView> {
+    return this.auth.loginWithGoogle(dto.idToken);
   }
 
   @Post('refresh')

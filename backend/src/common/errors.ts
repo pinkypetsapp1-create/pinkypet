@@ -14,6 +14,8 @@ export const ErrorCode = {
   PET_NOT_FOUND: 'PET_NOT_FOUND',
   PET_NOT_AVAILABLE: 'PET_NOT_AVAILABLE',
   TOO_MANY_ATTEMPTS: 'TOO_MANY_ATTEMPTS',
+  GOOGLE_TOKEN_INVALID: 'GOOGLE_TOKEN_INVALID',
+  GOOGLE_NOT_CONFIGURED: 'GOOGLE_NOT_CONFIGURED',
   NOT_FOUND: 'NOT_FOUND',
   INTERNAL_ERROR: 'INTERNAL_ERROR',
 } as const;
@@ -54,6 +56,10 @@ export const Errors = {
   requestNotCancellable: () =>
     new AppError(ErrorCode.REQUEST_NOT_CANCELLABLE, HttpStatus.CONFLICT, 'Esta solicitud ya no está en proceso'),
   petNotFound: () => new AppError(ErrorCode.PET_NOT_FOUND, HttpStatus.NOT_FOUND, 'No se ha encontrado la mascota'),
+  googleInvalid: () =>
+    new AppError(ErrorCode.GOOGLE_TOKEN_INVALID, HttpStatus.UNAUTHORIZED, 'No se ha podido verificar la cuenta de Google'),
+  googleNotConfigured: () =>
+    new AppError(ErrorCode.GOOGLE_NOT_CONFIGURED, HttpStatus.SERVICE_UNAVAILABLE, 'El inicio de sesión con Google no está configurado'),
   petNotAvailable: () =>
     new AppError(ErrorCode.PET_NOT_AVAILABLE, HttpStatus.CONFLICT, 'Esta mascota ya no está disponible'),
 };

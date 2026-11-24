@@ -1,6 +1,9 @@
 export const environment = {
   production: true,
-  /** Se fija en la Fase 3 con la URL de Render. */
-  apiUrl: 'http://localhost:3000',
-  apiTimeoutMs: 15_000,
+  /** Backend publicado en Render (render.yaml: servicio «pinky-pet-api»). Si Render asigna otra URL, cámbiala aquí. */
+  apiUrl: 'https://pinky-pet-api.onrender.com',
+  /** Render gratuito se duerme tras 15 min y tarda ~1 min en despertar: se espera hasta 75 s (decisión F3, mitigación). */
+  apiTimeoutMs: 75_000,
+  /** ID de cliente web de Google (OAuth). No es secreto. Vacío = no se muestra «Continuar con Google». */
+  googleWebClientId: '',
 };

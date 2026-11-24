@@ -4,4 +4,9 @@ export const environment = {
   apiUrl: 'http://localhost:3000',
   /** Tiempo máximo de espera de una petición. */
   apiTimeoutMs: 15_000,
+  /**
+   * ID de cliente web de Google (OAuth). No es secreto. Vacío = no se muestra «Continuar con Google».
+   * Cómo obtenerlo: docs/DEPLOY.md, «Google».
+   */
+  googleWebClientId: '',
 };

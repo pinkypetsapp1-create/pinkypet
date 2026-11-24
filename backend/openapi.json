@@ -94,6 +94,44 @@
         ]
       }
     },
+    "/auth/google": {
+      "post": {
+        "operationId": "AuthController_google",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleLoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoogleSessionView"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "GOOGLE_TOKEN_INVALID"
+          },
+          "503": {
+            "description": "GOOGLE_NOT_CONFIGURED"
+          }
+        },
+        "summary": "«Continuar con Google»: inicia sesión o crea la cuenta con un ID token de Google",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
     "/auth/refresh": {
       "post": {
         "operationId": "AuthController_refresh",
@@ -637,6 +675,47 @@
         "required": [
           "email",
           "password"
+        ]
+      },
+      "GoogleLoginDto": {
+        "type": "object",
+        "properties": {
+          "idToken": {
+            "type": "string",
+            "description": "ID token que devuelve el inicio de sesión de Google en la app"
+          }
+        },
+        "required": [
+          "idToken"
+        ]
+      },
+      "GoogleSessionView": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          },
+          "expiresIn": {
+            "type": "number",
+            "description": "Segundos de vida del accessToken"
+          },
+          "refreshToken": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserView"
+          },
+          "created": {
+            "type": "boolean",
+            "description": "true si la cuenta se acaba de crear (desde Registro se va al Test)"
+          }
+        },
+        "required": [
+          "accessToken",
+          "expiresIn",
+          "refreshToken",
+          "user",
+          "created"
         ]
       },
       "RefreshDto": {

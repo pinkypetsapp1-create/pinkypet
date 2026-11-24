@@ -6,6 +6,7 @@ import { UsersModule } from '../users/users.module';
 import { AuthController } from './auth.controller';
 import { AuthGuard, OptionalAuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
+import { GoogleAuthLibraryVerifier, GoogleVerifier } from './google-verifier';
 import { RefreshToken, RefreshTokenSchema } from './refresh-token.schema';
 
 @Global()
@@ -19,7 +20,7 @@ import { RefreshToken, RefreshTokenSchema } from './refresh-token.schema';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, AuthGuard, OptionalAuthGuard],
+  providers: [AuthService, AuthGuard, OptionalAuthGuard, { provide: GoogleVerifier, useClass: GoogleAuthLibraryVerifier }],
   exports: [AuthService, AuthGuard, OptionalAuthGuard],
 })
 export class AuthModule {}

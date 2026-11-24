@@ -263,13 +263,13 @@ CLAUDE.md · docs/ · design/ (solo lectura) · scripts/ · backend/ (NestJS + M
 
 | Decisión | Notas | Estado |
 |---|---|---|
-| «Continuar con Google» | **Oculto** (botón y separador «o») hasta que se implemente. Anotado en `design-feedback.md` F1-1. | decidido 2026-11-23 |
+| «Continuar con Google» | **Implementado en la Fase 3** (decisión del 2026-11-24): `POST /auth/google` verifica el ID token con Google; si ya existe una cuenta con ese correo, se entra en ella. En la app el botón aparece solo si hay `googleWebClientId`; desde Registro lleva al Test y desde Iniciar sesión al Inicio. | decidido 2026-11-24 |
 | Umbral de «ninguna mascota compatible» | **50 %**: por debajo, la mascota no cuenta como compatible. | decidido 2026-11-23 |
 | ¿Solicitud sin test? | **No**: exige cuenta y test (`TEST_REQUIRED`). | decidido 2026-11-23 |
 | Simulación de la protectora | **Endpoint solo de desarrollo**: `POST /dev/requests/:id/resolve` con la cabecera `X-Dev-Key`. No existe con `NODE_ENV=production`. Atajo: `npm run demo:resolve -- <id> finalizada\|rechazada`. | decidido 2026-11-23 |
 | Disponibilidad tras la respuesta | Si la protectora responde (`finalizada` o `rechazada`), la mascota deja de estar disponible y sale del catálogo. Si se cancela, sigue disponible. `npm run seed` vuelve a dejarlas todas disponibles. | decidido 2026-11-23 |
 | Cálculo del % | Siempre a partir de las respuestas del test (§4.4 bis). | decidido 2026-11-23 |
-| ¿iOS fuera de alcance? | — | pendiente |
+| ¿iOS fuera de alcance? | Sí: solo Android (lienzo 412 × 917 dp, APK, Keystore). | decidido 2026-11-24 (F3-4) |
 | Capturas de referencia | Las saca Claude con Chrome desde el modo play de Claude Design (aproximadas, design-feedback F2-3); el equipo pidió trabajar con ellas. | decidido 2026-11-23 |
 | D1 · Fase 2 en tres entregas | 2a (base, Inicio, Registro, Login, Test) · 2b (Mascotas, Ficha) · 2c (Proceso, Perfil, primer inicio, errores). | aplicado 2026-11-23 (el equipo pidió empezar ya) |
 | D2 · Dónde se guarda la sesión | Android Keystore (`@aparajita/capacitor-secure-storage`); en el navegador, token de acceso en memoria y de renovación en `sessionStorage`. Ver `app/src/app/core/token-store.ts`. | aplicado 2026-11-23 (el equipo pidió empezar ya) |
@@ -277,7 +277,11 @@ CLAUDE.md · docs/ · design/ (solo lectura) · scripts/ · backend/ (NestJS + M
 | F2-4 · Cerrar sesión | «Cerrar sesión» en la tarjeta «Mi cuenta» de Mi perfil (completado y registrado sin test) → Inicio · sin cuenta. Añadido en DS y AF el 2026-11-24. | decidido 2026-11-24 |
 | F2-6 · Qué muestra «Estado de la solicitud» | Ver design-feedback F2-6. | aplicado 2026-11-23 |
 | F2-1 · Texto de «sin conexión» en Registro, Login y Test | Se reutiliza el texto literal de Error-Catalogo en el aviso de cada pantalla. | decidido 2026-11-23 |
-| Mitigar el arranque en frío de Render | Usar los estados de carga existentes (por ejemplo, el del botón) y timeouts largos, sin pantallas nuevas. | proponer en F3 |
+| Mitigar el arranque en frío de Render | La app llama a `/health` al abrirse (despierta el backend), espera hasta 75 s por petición y no bloquea el arranque más de 8 s; si falla, las pantallas de error del diseño. | decidido 2026-11-24 |
+| F3-1 · Secretos JWT | Los genera Render (`generateValue` en `render.yaml`). | decidido 2026-11-24 |
+| F3-2 · Red de Atlas | `0.0.0.0/0` + usuario con contraseña aleatoria (Render gratuito no tiene IP fija). | decidido 2026-11-24 |
+| F3-3 · Seed en producción | Solo al arrancar con la base de datos vacía; reinicio manual con `npm run seed`. | decidido 2026-11-24 |
+| Tamaño de letra del sistema (Android) | `@capacitor/text-zoom`: la app aplica el tamaño preferido del sistema al WebView. | aplicado 2026-11-24 |
 
 ## 11. Fases
 

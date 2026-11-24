@@ -50,3 +50,15 @@ export class SessionView {
   @ApiProperty() refreshToken!: string;
   @ApiProperty({ type: UserView }) user!: UserView;
 }
+
+export class GoogleLoginDto {
+  @ApiProperty({ description: 'ID token que devuelve el inicio de sesión de Google en la app' })
+  @IsString({ context: { code: 'REQUIRED' } })
+  @IsNotEmpty({ context: { code: 'REQUIRED' } })
+  @MaxLength(4096, { context: { code: 'MAX_LENGTH' } })
+  idToken!: string;
+}
+
+export class GoogleSessionView extends SessionView {
+  @ApiProperty({ description: 'true si la cuenta se acaba de crear (desde Registro se va al Test)' }) created!: boolean;
+}

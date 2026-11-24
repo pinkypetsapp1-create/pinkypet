@@ -1,0 +1,31 @@
+# Blueprint de Render para el backend de Pinky Pet (plan gratuito). Ver docs/DEPLOY.md.
+# Los valores secretos NO están aquí: «sync: false» = se pegan en el panel de Render; «generateValue» = los crea Render.
+services:
+  - type: web
+    name: pinky-pet-api
+    runtime: node
+    plan: free
+    region: frankfurt
+    rootDir: backend
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: node dist/main.js
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "26"
+      - key: MONGODB_URI
+        sync: false
+      # Decisión F3-1: los secretos JWT los genera Render; nadie los ve ni los copia.
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://localhost,capacitor://localhost,http://localhost:8100
+      - key: SEED_DEMO_PASSWORD
+        sync: false
+      - key: GOOGLE_CLIENT_IDS
+        sync: false

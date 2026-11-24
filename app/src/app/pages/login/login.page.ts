@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
 import { ApiError } from '../../core/api';
 import { EMAIL_PATTERN, TEXTOS } from '../../core/error-text';
+import { Google } from '../../core/google';
 import { Session } from '../../core/session';
 import { AccountPrompts } from '../../ui/account-prompts';
 import { Banner } from '../../ui/banner';
@@ -19,6 +20,7 @@ import { networkText } from '../network-text';
 })
 export class LoginPage implements OnInit {
   private readonly session = inject(Session);
+  protected readonly google = inject(Google);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
   protected readonly scrolled = signal(false);
@@ -62,6 +64,23 @@ export class LoginPage implements OnInit {
       } else {
         this.banner.set(networkText(e));
       }
+    } finally {
+      this.sending.set(false);
+    }
+  }
+
+  /** «Continuar con Google»: desde Registro lleva al Test (cuenta nueva) y desde Iniciar sesión al Inicio (CONEXIONES). */
+  protected async conGoogle(): Promise<void> {
+    if (this.sending()) return;
+    this.sending.set(true);
+    try {
+      const idToken = await this.google.idToken();
+      if (!idToken) return; // la persona cerró el selector de Google
+      const created = await this.session.loginWithGoogle(idToken);
+      void created;
+      await this.router.navigateByUrl('/inicio');
+    } catch (e) {
+      this.banner.set(networkText(e));
     } finally {
       this.sending.set(false);
     }

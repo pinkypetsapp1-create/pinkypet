@@ -27,6 +27,9 @@ Backend (desde `backend/`; configuración en `backend/.env`, plantilla en `.env.
 | `npm run seed` | Mascotas, preguntas y 3 cuentas demo (idempotente) |
 | `npm run openapi` | Regenera `backend/openapi.json` (contrato para la app) |
 | `npm run demo:resolve -- <id> finalizada\|rechazada` | Simula la respuesta de la protectora (solo desarrollo) |
+| `npm run smoke -- <url>` | Prueba básica contra el backend publicado (Fase 3) |
+
+Despliegue (Render + Atlas + Google + APK): `docs/DEPLOY.md` · `render.yaml`.
 
 ## Estructura
 

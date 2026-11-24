@@ -20,6 +20,12 @@
 
       <div class="auth-actions">
         <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-state" [attr.aria-disabled]="sending()" (click)="submit()">Iniciar sesión</button>
+      @if (google.enabled && !banner()) {
+        <div class="pp-divider-label">o</div>
+        <button type="button" class="pp-btn pp-btn--outlined pp-btn--block pp-state" [attr.aria-disabled]="sending()" (click)="conGoogle()">
+          <span class="pp-btn__logo" aria-hidden="true"></span>Continuar con Google
+        </button>
+      }
       </div>
 
       <pp-account-prompts [login]="false" registroPregunta="¿No tienes cuenta?" />

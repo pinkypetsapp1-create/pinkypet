@@ -25,6 +25,12 @@
 
       <div class="auth-actions">
         <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-state" [attr.aria-disabled]="sending()" (click)="submit()">Crear cuenta y hacer el test</button>
+      @if (google.enabled && !summary() && !emailTaken()) {
+        <div class="pp-divider-label">o</div>
+        <button type="button" class="pp-btn pp-btn--outlined pp-btn--block pp-state" [attr.aria-disabled]="sending()" (click)="conGoogle()">
+          <span class="pp-btn__logo" aria-hidden="true"></span>Continuar con Google
+        </button>
+      }
       </div>
 
       @if (!emailTaken() && !summary()) {

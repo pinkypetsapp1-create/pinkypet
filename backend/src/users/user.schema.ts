@@ -12,6 +12,10 @@ export class User {
   @Prop({ required: true })
   passwordHash!: string;
 
+  /** Identificador de la cuenta de Google («sub»), solo si la persona ha entrado con Google (si no, no existe). */
+  @Prop({ type: String })
+  googleSub?: string;
+
   /** Respuestas del test (texto literal de cada opción), o null si aún no lo ha hecho. */
   @Prop({ type: Object, default: null })
   answers!: Answers | null;
@@ -22,3 +26,6 @@ export class User {
 
 export type UserDocument = HydratedDocument<User>;
 export const UserSchema = SchemaFactory.createForClass(User);
+// Único solo entre las cuentas que tienen Google: un índice «sparse» trataría null como valor repetido
+// y bloquearía cualquier segundo registro sin Google (lo detectó test/google.e2e-spec.ts).
+UserSchema.index({ googleSub: 1 }, { unique: true, partialFilterExpression: { googleSub: { $type: 'string' } } });

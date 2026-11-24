@@ -10,6 +10,8 @@ export interface Env {
   corsOrigins: string[];
   authThrottleLimit: number;
   devKey: string | null;
+  /** IDs de cliente OAuth de Google aceptados (web y Android). Vacío = «Continuar con Google» desactivado. */
+  googleClientIds: string[];
 }
 
 export const ENV = Symbol('ENV');
@@ -42,6 +44,7 @@ export function loadEnv(source: NodeJS.ProcessEnv = process.env): Env {
     authThrottleLimit: Number(source.AUTH_THROTTLE_LIMIT ?? 5),
     // El endpoint de simulación no existe en producción, aunque alguien defina DEV_KEY.
     devKey: nodeEnv !== 'production' && source.DEV_KEY?.trim() ? source.DEV_KEY.trim() : null,
+    googleClientIds: (source.GOOGLE_CLIENT_IDS ?? '').split(',').map((o) => o.trim()).filter(Boolean),
   };
   if (env.jwtSecret && env.jwtSecret === env.jwtRefreshSecret) {
     errors.push('JWT_SECRET y JWT_REFRESH_SECRET deben ser distintos');

@@ -7,6 +7,7 @@ import { Model, Types } from 'mongoose';
 import { Errors } from '../common/errors';
 import { ENV, Env } from '../config/env';
 import { User, UserDocument } from '../users/user.schema';
+import { GoogleVerifier } from './google-verifier';
 import { RefreshToken, RefreshTokenDocument } from './refresh-token.schema';
 import { SessionView, UserView } from './auth.dto';
 
@@ -24,6 +25,7 @@ export class AuthService {
     private readonly jwt: JwtService,
     @InjectModel(User.name) private readonly users: Model<UserDocument>,
     @InjectModel(RefreshToken.name) private readonly tokens: Model<RefreshTokenDocument>,
+    private readonly google: GoogleVerifier,
   ) {}
 
   static toView(u: UserDocument): UserView {
@@ -50,6 +52,34 @@ export class AuthService {
       : (await argon2.verify(await this.dummyHash, password), false);
     if (!user || !ok) throw Errors.invalidCredentials();
     return this.startSession(user);
+  }
+
+  /**
+   * «Continuar con Google». Si ya hay una cuenta con ese correo (con contraseña), se entra en esa misma cuenta:
+   * Google garantiza que el correo es de quien inicia sesión. Si no, se crea una cuenta nueva sin contraseña utilizable.
+   */
+  async loginWithGoogle(idToken: string): Promise<SessionView & { created: boolean }> {
+    if (!this.env.googleClientIds.length) throw Errors.googleNotConfigured();
+    const g = await this.google.verify(idToken);
+    if (!g) throw Errors.googleInvalid();
+    const email = g.email.trim().toLowerCase();
+    let user = await this.users.findOne({ $or: [{ googleSub: g.sub }, { email }] });
+    let created = false;
+    if (!user) {
+      const unusable = await argon2.hash(randomBytes(32).toString('base64url'), { type: argon2.argon2id });
+      try {
+        user = await this.users.create({ email, passwordHash: unusable, googleSub: g.sub });
+        created = true;
+      } catch (e) {
+        if ((e as { code?: number }).code !== 11000) throw e;
+        user = await this.users.findOne({ email });
+        if (!user) throw e;
+      }
+    } else if (!user.googleSub) {
+      user.googleSub = g.sub;
+      await user.save();
+    }
+    return { ...(await this.startSession(user)), created };
   }
 
   /** Rota el token: el usado queda revocado y se entrega uno nuevo de la misma familia. */

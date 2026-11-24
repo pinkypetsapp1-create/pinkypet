@@ -54,6 +54,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/google": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** «Continuar con Google»: inicia sesión o crea la cuenta con un ID token de Google */
+        post: operations["AuthController_google"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/refresh": {
         parameters: {
             query?: never;
@@ -268,6 +285,19 @@ export interface components {
             /** @example persona@ejemplo.com */
             email: string;
             password: string;
+        };
+        GoogleLoginDto: {
+            /** @description ID token que devuelve el inicio de sesión de Google en la app */
+            idToken: string;
+        };
+        GoogleSessionView: {
+            accessToken: string;
+            /** @description Segundos de vida del accessToken */
+            expiresIn: number;
+            refreshToken: string;
+            user: components["schemas"]["UserView"];
+            /** @description true si la cuenta se acaba de crear (desde Registro se va al Test) */
+            created: boolean;
         };
         RefreshDto: {
             /** @description Token de renovación recibido al iniciar sesión o en la última renovación */
@@ -531,6 +561,43 @@ export interface operations {
             };
             /** @description TOO_MANY_ATTEMPTS */
             429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_google: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GoogleLoginDto"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GoogleSessionView"];
+                };
+            };
+            /** @description GOOGLE_TOKEN_INVALID */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description GOOGLE_NOT_CONFIGURED */
+            503: {
                 headers: {
                     [name: string]: unknown;
                 };
