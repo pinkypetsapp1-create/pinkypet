@@ -9,6 +9,13 @@
 }
 html, body { background: var(--surface); color: var(--on-surface); font-family: var(--font-sans); }
 
+/* Android 15+ dibuja la app bajo la barra de estado y los botones del sistema (edge-to-edge; viewport-fit=cover).
+   Las barras de la app se alargan con los márgenes de seguridad del sistema y los pintan de su color.
+   En el navegador los márgenes valen 0 y no cambia nada (docs/design-feedback.md F3-5). */
+.pp-topbar { box-sizing: content-box; padding-top: env(safe-area-inset-top, 0px); }
+.pp-navbar { box-sizing: content-box; padding-bottom: env(safe-area-inset-bottom, 0px); }
+.pp-page:not(:has(pp-navigation-bar)) { box-sizing: border-box; padding-bottom: env(safe-area-inset-bottom, 0px); }
+
 /* Pantalla: barra superior + contenido con scroll + barras inferiores (igual que los artboards). */
 .pp-page { position: relative; display: flex; flex-direction: column; height: 100%; background: var(--surface); }
 .pp-page > ion-content { flex: 1; --background: var(--surface); --color: var(--on-surface); }

@@ -33,11 +33,16 @@ export class Splash implements OnInit {
   ngOnInit(): void {
     if (!tomarAnimacionDeEntrada() || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const { width: w, height: h } = (this.el.nativeElement as HTMLElement).getBoundingClientRect();
-    // Proporciones del DS a 412 × 917: sello de 58 % del ancho centrado en (w/2, 445/917·h); vuela al sello de la barra (32, 32).
+    // Proporciones del DS a 412 × 917: sello de 58 % del ancho centrado en (w/2, 445/917·h); vuela al sello de la barra
+    // (32, 32), o a donde esté de verdad si la barra baja por la barra de estado de Android.
+    const marca = document.querySelector('pp-inicio .pp-topbar__mark')?.getBoundingClientRect();
+    const host = (this.el.nativeElement as HTMLElement).getBoundingClientRect();
+    const mx = marca?.width ? marca.left - host.left + marca.width / 2 : 32;
+    const my = marca?.height ? marca.top - host.top + marca.height / 2 : 32;
     const seal = Math.round(w * 0.58);
     const cx = w / 2;
     const cy = (h * 445) / 917;
-    this.vars.set(`--pp-seal-size:${seal}px;--pp-seal-x:${cx}px;--pp-seal-y:${cy}px;--pp-dx:${32 - cx}px;--pp-dy:${32 - cy}px;--pp-scale:${32 / seal}`);
+    this.vars.set(`--pp-seal-size:${seal}px;--pp-seal-x:${cx}px;--pp-seal-y:${cy}px;--pp-dx:${mx - cx}px;--pp-dy:${my - cy}px;--pp-scale:${32 / seal}`);
     this.huellas.set([858, 780, 702, 624].map((y, i) => ({
       i,
       style: `--i:${i};--x:${cx + (i % 2 ? 23 : -23)}px;--y:${(h * y) / 917}px;--r:${i % 2 ? 6 : -6}deg`,
