@@ -68,6 +68,7 @@ Las variantes «Oscuro…», «…Texto», «Texto-…», «…Zoom» y «Zoom-�
 | `/inicio` | `Main` (I), `Inicio-Registrado` (R), `Inicio-Sesion` (T/S) | I · R · T · S | Carrusel «Buscan hogar» (sin %) o «Los que más encajan contigo» (con %); tarjeta del test |
 | `/registro` | `Registro`, `Error-Registro-Campos`, `Error-Registro-Existe` | I | Formulario de correo y contraseña; errores `VALIDATION_FAILED` y `EMAIL_ALREADY_REGISTERED` |
 | `/login` | `Login`, `Error-Login` | I | Formulario; error `AUTH_INVALID_CREDENTIALS` |
+| `/inicio` (ventanas) | `Main-Info-Hogar`, `Main-Info-DiaADia`, `Main-Info-Mascota` | todos | Diálogo de cada bloque del test al pulsar su caja; botón según el estado |
 | `/recuperar` | `Recuperar`, `Recuperar-Enviado` | I | Correo → `POST /auth/password/forgot` (misma respuesta exista o no la cuenta) |
 | `/nueva-contrasena?token=` | `NuevaContrasena`, `-Hecha`, `-Caducado` | cualquiera | Enlace del correo; `GET`/`POST /auth/password/reset`; `RESET_TOKEN_INVALID` → caducado |
 | `/test` | `Test` (R, vacío), `Test-Error`, `Test-Completado` (T, con respuestas) | R · T · S | 15 preguntas en 3 bloques y consejos del experto; respuestas guardadas |

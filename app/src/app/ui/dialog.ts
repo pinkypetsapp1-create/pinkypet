@@ -15,7 +15,10 @@ let next = 0;
          [attr.aria-labelledby]="id + '-t'" [attr.aria-describedby]="id + '-d'">
       @if (icon()) { <span class="pp-icon pp-dialog__icon" aria-hidden="true">{{ icon() }}</span> }
       <h2 class="pp-dialog__title" [id]="id + '-t'">{{ title() }}</h2>
-      <p class="pp-dialog__body" [id]="id + '-d'">{{ body() }}</p>
+      <div [id]="id + '-d'">
+        <p class="pp-dialog__body">{{ body() }}</p>
+        @if (body2()) { <p class="pp-dialog__body pp-dialog__body--next">{{ body2() }}</p> }
+      </div>
       <div class="pp-dialog__actions"><ng-content /></div>
     </div>
   `,
@@ -24,11 +27,14 @@ let next = 0;
     :host { position: absolute; inset: 0; z-index: 30; display: flex; align-items: safe center; justify-content: center; overflow-y: auto; }
     .pp-scrim { position: fixed; }
     .pp-dialog { position: relative; margin: var(--space-6) 0; }
+    /* Diálogo informativo de dos párrafos (Dialog README, «Bloque del test»): 12 px entre ellos. */
+    .pp-dialog__body--next { margin-top: var(--space-3); }
   `],
 })
 export class Dialog implements AfterViewInit {
   readonly title = input.required<string>();
   readonly body = input.required<string>();
+  readonly body2 = input<string | null>(null);
   readonly icon = input<string | null>(null);
   readonly alert = input(false);
   readonly scrimLabel = input('Cerrar');

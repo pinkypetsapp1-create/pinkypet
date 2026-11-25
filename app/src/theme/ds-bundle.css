@@ -1,5 +1,5 @@
 /* ARCHIVO GENERADO · NO EDITAR
- * Origen: design/design-system/components/bundle.css (sha256 1b24ecbae3e7d58b…), sin el @import de Google Fonts
+ * Origen: design/design-system/components/bundle.css (sha256 0b5b95508d71e64f…), sin el @import de Google Fonts
  * Regenerar con: npm run tokens
  */
 /* Pinky Pet · M3 Expressive — estilos de componentes extraídos del wireframe de fidelidad media.
@@ -336,6 +336,7 @@
 .pp-ring-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .pp-ring-tile { box-sizing: border-box; background: var(--surface-container-lowest); border: 1px solid var(--outline-variant); border-radius: var(--corner-medium); padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
 .pp-ring-tile > .pp-icon { color: var(--on-surface-variant); }
+button.pp-ring-tile { width: 100%; margin: 0; font: inherit; color: inherit; cursor: pointer; }
 .pp-ring--88 { width: 88px; height: 88px; margin: 4px 0; }
 .pp-ring--88 .pp-ring__track, .pp-ring--88 .pp-ring__active { stroke-linecap: round; }
 .pp-ring--88 .pp-ring__label { font: 600 22px/28px var(--font-sans); }

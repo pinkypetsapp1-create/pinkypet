@@ -66,7 +66,7 @@ Observaciones encontradas al probar la app. Recordatorio de la regla 4 de `CLAUD
 
 ---
 
-## 4. «Qué tiene en cuenta el test»: ventana emergente al pulsar cada porcentaje
+## 4. «Qué tiene en cuenta el test»: ventana emergente al pulsar cada porcentaje · ✅ resuelto
 
 **Dónde:** Inicio, sección «Qué tiene en cuenta el test», con las 3 cajas de anillo: «Mi hogar» 34 %, «Mi día a día» 33 % y «La mascota que busco» 33 % (`app/src/app/pages/inicio/inicio.page.html`, `bloques` en `inicio.page.ts`).
 

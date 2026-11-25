@@ -46,7 +46,8 @@
         <p class="inicio-muted">15 preguntas en 3 bloques de 5. Cada diagrama indica qué parte del test ocupa cada bloque.</p>
         <div class="pp-ring-tiles">
           @for (b of bloques; track b.titulo) {
-            <div class="pp-ring-tile" role="img" [attr.aria-label]="b.titulo + ': 5 preguntas, ' + b.pct + ' % del test'">
+            <button type="button" class="pp-ring-tile pp-state" aria-haspopup="dialog" (click)="abrirBloque(b, $event)"
+                    [attr.aria-label]="b.titulo + ', ' + b.pct + ' % del test. Ver qué preguntas incluye'">
               <span class="pp-icon" aria-hidden="true">{{ b.icon }}</span>
               <div class="pp-ring pp-ring--88">
                 <svg width="88" height="88" viewBox="0 0 88 88" aria-hidden="true">
@@ -57,7 +58,7 @@
               </div>
               <span class="pp-ring-stat__title" aria-hidden="true">{{ b.titulo }}</span>
               <span class="pp-ring-stat__meta" aria-hidden="true">5 preguntas</span>
-            </div>
+            </button>
           }
         </div>
         <p class="pp-note">
@@ -72,5 +73,11 @@
     </main>
   </ion-content>
   <pp-navigation-bar active="inicio" />
+  @if (bloqueAbierto(); as b) {
+    <pp-dialog [title]="b.titulo" [icon]="b.icon" [body]="b.texto" [body2]="b.peso" (closed)="cerrarBloque()">
+      <a class="pp-btn pp-btn--text pp-state" [routerLink]="ctaBloque().link">{{ ctaBloque().texto }}</a>
+      <button type="button" class="pp-btn pp-btn--text pp-state" (click)="cerrarBloque()">Cerrar</button>
+    </pp-dialog>
+  }
   <pp-splash />
 </div>
