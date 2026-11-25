@@ -46,7 +46,7 @@ Necesitas la **huella SHA-1** de la firma del APK de depuración, que aparece al
 4. Pega ese ID:
    - en `app/src/environments/environment.ts` y `environment.prod.ts`, en `googleWebClientId`;
    - en Render, en la variable `GOOGLE_CLIENT_IDS`.
-5. **Crear credenciales → ID de cliente de OAuth → Android** → paquete `es.pinkypet.app` → huella SHA-1 del paso 4.3. Copia también este ID y añádelo en Render a `GOOGLE_CLIENT_IDS`, separado por una coma del de la web.
+5. **Clientes → Crear cliente → Android** → nombre «Pinky Pet Android», paquete `es.pinkypet.app` y la huella SHA-1 de la firma del APK (apartado 4). **Hecho el 2026-11-25** (ID `13489786586-0qlnpu12asr39k9th0k7bsli5oi6p9m5…`, SHA-1 `84:0B:02:B3:…:A2:8B`). **No hace falta añadirlo a Render:** en Android la app pide el token con el ID **web** (`webClientId`), así que el token lleva ese ID y el backend ya lo acepta. El cliente Android solo sirve para que Google reconozca el paquete y la firma. Google avisa de que puede tardar de 5 minutos a unas horas en activarse, y en modo de prueba solo pueden entrar los «usuarios de prueba».
 
 ## 3 bis. «¿Has olvidado tu contraseña?»: Brevo (gratis, 300 correos al día)
 

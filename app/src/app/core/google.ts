@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Capacitor } from '@capacitor/core';
 import { SocialLogin } from '@capgo/capacitor-social-login';
 import { environment } from '../../environments/environment';
 
@@ -16,11 +17,17 @@ export class Google {
     // En la web, Google abre una ventana emergente y vuelve a una URL fija, que debe estar en
     // «URIs de redireccionamiento autorizados» del cliente OAuth (docs/DEPLOY.md, paso 3).
     this.ready ??= SocialLogin.initialize({
-      google: { webClientId: environment.googleWebClientId, mode: 'online', redirectUrl: `${window.location.origin}/` },
+      google: Capacitor.isNativePlatform()
+        ? // Android (Credential Manager): el ID web va en webClientId; el cliente Android solo registra paquete + SHA-1.
+          // Solo hace falta el idToken, así que se omite la autorización extra (en BridgeActivity puede colgarse).
+          { webClientId: environment.googleWebClientId, mode: 'online', skipAuthOnlyAuthorizationAfterSignIn: true }
+        : { webClientId: environment.googleWebClientId, mode: 'online', redirectUrl: `${window.location.origin}/` },
     });
     await this.ready;
     try {
-      const r = await SocialLogin.login({ provider: 'google', options: { scopes: ['email', 'profile'] } });
+      // En Android no se pasan scopes: con la BridgeActivity estándar Google los rechaza (ya incluye email y perfil).
+      const options = Capacitor.isNativePlatform() ? {} : { scopes: ['email', 'profile'] };
+      const r = await SocialLogin.login({ provider: 'google', options });
       const result = r.result as { idToken?: string | null };
       return result.idToken ?? null;
     } catch (e) {
