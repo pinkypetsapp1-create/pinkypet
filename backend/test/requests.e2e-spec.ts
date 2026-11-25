@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { runSeed } from '../src/seed/seed';
 import { DEMO_ANSWERS } from '../src/seed/demo.data';
+import { PETS } from '../src/seed/pets.data';
 import { DEMO_PASSWORD, DEV_KEY, TestCtx, bearer, login, register, startApp } from './helpers';
 
 async function userWithTest(ctx: TestCtx, email: string) {
@@ -65,7 +66,7 @@ describe('solicitudes de adopción', () => {
 
   it('envíos simultáneos: solo uno queda en proceso', async () => {
     const s = await userWithTest(ctx, 'simultaneo@correo.com');
-    const pets = ['luna', 'simba', 'rocky', 'kira', 'coco', 'nube'];
+    const pets = PETS.map((p) => p.slug);
     const results = await Promise.all(pets.map((petId) => ctx.http().post('/requests').set(bearer(s.accessToken)).send({ petId })));
     expect(results.filter((r) => r.status === 201)).toHaveLength(1);
     expect(results.filter((r) => r.status === 409).every((r) => r.body.code === 'ACTIVE_REQUEST_EXISTS')).toBe(true);
@@ -121,8 +122,8 @@ describe('solicitudes de adopción', () => {
     const first = await count();
     await runSeed(ctx.conn, DEMO_PASSWORD);
     expect(await count()).toEqual(first);
-    expect(first).toEqual({ pets: 6, questions: 15, demo: 3 });
-    expect((await ctx.http().get('/pets').expect(200)).body.total).toBe(6); // Nube vuelve a estar disponible
+    expect(first).toEqual({ pets: PETS.length, questions: 15, demo: 3 });
+    expect((await ctx.http().get('/pets').expect(200)).body.total).toBe(PETS.length); // Nube vuelve a estar disponible
   });
 });
 

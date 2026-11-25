@@ -1,4 +1,9 @@
 import { DEMO_ANSWERS } from '../src/seed/demo.data';
+import { PETS } from '../src/seed/pets.data';
+
+// Las seis mascotas originales del diseño; las añadidas con /nueva-mascota se comprueban a partir de PETS.
+const ORIGINALES = ['luna', 'simba', 'rocky', 'kira', 'coco', 'nube'];
+const slugs = (f: (p: (typeof PETS)[number]) => boolean) => PETS.filter(f).map((p) => p.slug);
 import { TestCtx, bearer, login, register, startApp } from './helpers';
 
 describe('test y compatibilidad', () => {
@@ -16,7 +21,9 @@ describe('test y compatibilidad', () => {
   it('cuenta demo: orden del diseño y % calculados desde sus respuestas', async () => {
     const s = await login(ctx, 'persona@ejemplo.com');
     const res = await ctx.http().get('/compatibility').set(bearer(s.accessToken)).expect(200);
-    expect(res.body.items.map((p: { id: string; compatibilidad: { porcentaje: number } }) => [p.id, p.compatibilidad.porcentaje])).toEqual([
+    const items = res.body.items.map((p: { id: string; compatibilidad: { porcentaje: number } }) => [p.id, p.compatibilidad.porcentaje]);
+    expect(items).toHaveLength(PETS.length);
+    expect(items.filter(([id]: [string]) => ORIGINALES.includes(id))).toEqual([
       ['luna', 97], ['coco', 95], ['simba', 87], ['kira', 82], ['nube', 70], ['rocky', 54],
     ]);
     expect(res.body).toMatchObject({ sinCompatibles: false, umbral: 50 });
@@ -62,19 +69,20 @@ describe('test y compatibilidad', () => {
   describe('catálogo', () => {
     it('sin sesión: sin %, en el orden del catálogo', async () => {
       const res = await ctx.http().get('/pets').expect(200);
-      expect(res.body.total).toBe(6);
-      expect(res.body.items.map((p: { id: string }) => p.id)).toEqual(['luna', 'simba', 'rocky', 'kira', 'coco', 'nube']);
+      expect(res.body.total).toBe(PETS.length);
+      expect(res.body.items.map((p: { id: string }) => p.id)).toEqual(PETS.map((p) => p.slug));
       expect(res.body.items[0].compatibilidad).toBeUndefined();
       expect(res.body.items[0]).not.toHaveProperty('atributos');
     });
 
     it('filtros: tipo, necesidades especiales y provincia', async () => {
       const ids = async (q: string) => (await ctx.http().get(`/pets${q}`).expect(200)).body.items.map((p: { id: string }) => p.id);
-      expect(await ids('?tipo=gato')).toEqual(['luna', 'simba']);
-      expect(await ids('?tipo=perro,otros')).toEqual(['rocky', 'kira', 'coco', 'nube']);
-      expect(await ids('?ne=true')).toEqual(['luna', 'kira', 'nube']);
-      expect(await ids('?tipo=gato&ne=true')).toEqual(['luna']);
-      expect(await ids('?provincia=Barcelona')).toHaveLength(6);
+      expect(await ids('?tipo=gato')).toEqual(slugs((p) => p.tipo === 'gato'));
+      expect(await ids('?tipo=perro,otros')).toEqual(slugs((p) => p.tipo !== 'gato'));
+      expect(await ids('?ne=true')).toEqual(slugs((p) => p.necesidadesEspeciales));
+      expect(await ids('?tipo=gato&ne=true')).toEqual(slugs((p) => p.tipo === 'gato' && p.necesidadesEspeciales));
+      expect(await ids('?provincia=Barcelona')).toEqual(slugs((p) => p.provincia === 'Barcelona'));
+      expect((await ids('?provincia=Barcelona')).filter((s: string) => ORIGINALES.includes(s))).toEqual(ORIGINALES);
       expect(await ids('?provincia=Madrid')).toEqual([]);
     });
 

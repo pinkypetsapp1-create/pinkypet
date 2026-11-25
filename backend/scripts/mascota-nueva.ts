@@ -122,7 +122,7 @@ function main(): void {
   const diseno = {
     'Ficha.dc.html · D': `      ${slug}: { name: ${q(nombre)}, meta: ${q(meta)}, ne: ${pet.necesidadesEspeciales}, pct: ${demo.porcentaje}, b: [${demo.bloques.hogar}, ${demo.bloques.diaADia}, ${demo.bloques.mascota}],\n        info: [${Object.values(pet.info).map(q).join(', ')}],\n        encaja: ${q(pet.encaja)}, cuenta: ${q(pet.cuenta)} }`,
     'FOTO (Ficha, Catalogo, Main)': `      ${slug}: ['<URL de la foto en Alta fidelidad>', ${q(alt)}]`,
-    'Catalogo.dc.html · animals': `      { id: ${q(nombre)}, tipo: '${pet.tipo}', ne: ${pet.necesidadesEspeciales}, sexo: ${q(pet.sexo)}, edad: ${q(pet.edad)}, city: ${q(pet.ciudad)}, size: ${q(pet.tamano)}, pct: ${demo.porcentaje}, reason: ${q(motivo)} }`,
+    'Catalogo.dc.html · animals': `      { id: ${q(nombre)}, tipo: '${pet.tipo}', ne: ${pet.necesidadesEspeciales}, sexo: ${q(pet.sexo)}, edad: ${q(pet.edad)}, city: ${q(pet.ciudad)}, size: ${q(pet.tamano)}, prov: ${q(provincia)}, pct: ${demo.porcentaje}, reason: ${q(motivo)} }`,
     'Main.dc.html · lista': `{ name: ${q(nombre)}, pct: ${demo.porcentaje} }`,
   };
 

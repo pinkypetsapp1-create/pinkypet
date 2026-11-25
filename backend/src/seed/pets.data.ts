@@ -274,5 +274,47 @@ export const PETS: readonly PetSeed[] = [
       "necesidadesEspeciales": "altas",
       "experiencia": "basica"
     }
+  },
+  {
+    "slug": "donatello",
+    "nombre": "Donatello",
+    "especie": "Perro",
+    "sexo": "Macho",
+    "edad": "3 años",
+    "ciudad": "Vigo",
+    "provincia": "A Coruña",
+    "tamano": "Pequeño",
+    "tipo": "perro",
+    "necesidadesEspeciales": false,
+    "info": {
+      "estadoSalud": "Buena",
+      "vacunacion": "Al día",
+      "cuidados": "Dos paseos largos al día.",
+      "comportamiento": "Energético y loco.",
+      "nivelActividad": "Media",
+      "convivenciaMascotas": "Sí",
+      "necesidadesEspeciales": "No",
+      "historia": "Rescatado en la calle."
+    },
+    "encaja": "Le gustan las personas activas.",
+    "cuenta": "Será más feliz con mucho espacio y dos paseos largos al día.",
+    "motivoCorto": "Necesita mucho ejercicio.",
+    "foto": {
+      "asset": "fotos/donatello.jpg",
+      "alt": "Donatello, perro salchicha"
+    },
+    "atributos": {
+      "tamano": "pequeno",
+      "etapa": "adulto",
+      "actividad": "alto",
+      "vivienda": "piso",
+      "horasSolaMax": 4,
+      "tiempoDiario": "medio",
+      "convivenciaNinos": "no",
+      "convivenciaMascotas": "si",
+      "costeMensual": "medio",
+      "necesidadesEspeciales": "ninguna",
+      "experiencia": "basica"
+    }
   }
 ];

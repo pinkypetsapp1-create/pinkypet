@@ -38,13 +38,13 @@ describe('cuenta demo (persona@ejemplo.com)', () => {
   });
 
   it('da los % calculados documentados en SPEC', () => {
-    expect(Object.fromEntries(results.map((r) => [r.slug, r.porcentaje]))).toEqual({
+    expect(Object.fromEntries(results.filter((r) => ORIGINALES.includes(r.slug)).map((r) => [r.slug, r.porcentaje]))).toEqual({
       luna: 97, coco: 95, simba: 87, kira: 82, nube: 70, rocky: 54,
     });
   });
 
-  it('las seis son compatibles con el umbral del 50 %', () => {
-    expect(results.every((r) => r.compatible)).toBe(true);
+  it('las seis originales son compatibles con el umbral del 50 %', () => {
+    expect(results.filter((r) => ORIGINALES.includes(r.slug)).every((r) => r.compatible)).toBe(true);
   });
 });
 
