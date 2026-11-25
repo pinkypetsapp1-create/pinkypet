@@ -126,9 +126,9 @@
   ],
   "lastChange": {
     "by": "Claude",
-    "at": "2026-11-25T08:15:48Z",
+    "at": "2026-11-25T09:47:19Z",
     "via": "Claude Code",
-    "note": "Recuperar contraseña: «¿Has olvidado tu contraseña?», «Repetir contraseña» y sus textos de error (Button y TextField)."
+    "note": "AnimalCard: 1 columna por debajo de 412 px; Tag «Necesidades especiales» parte el texto en vez de salirse de la tarjeta (bundle.css)."
   },
   "layout": "files",
   "libraries": [],

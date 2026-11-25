@@ -2,6 +2,13 @@
 
 Cada entrada corresponde a una ejecución de `/sincronizar-diseno` (o a la copia inicial). Los sha256 de cada archivo están en `design.lock.json`.
 
+## 2026-11-25 · DS 1795600045-6224 / AF 1795600216-4a29 · Tarjetas en pantallas estrechas
+
+Observación del equipo (OPPO Reno 13): «Ver compatibilidad» en dos líneas y «Necesidades especiales» fuera de la tarjeta. Opción A aprobada.
+- **DS:** `components/bundle.css` (`.pp-animal-card .pp-tag` puede partir el texto: `max-width: 100%; white-space: normal`); `AnimalCard/README.md` (1 columna por debajo de 412 px); `Tag/README.md`.
+- **AF:** pantalla nueva `Catalogo-360` (Mascotas a 360 px, 1 columna) con su nota; `TabBar` acepta un ancho (`ancho`, 412 px por defecto); `CatalogoTexto` y `CatalogoZoom` con la etiqueta que parte el texto, y `CatalogoZoom` en 1 columna; copia de `bundle.css` dentro de AF actualizada.
+- **Tokens y assets:** sin cambios. Coherencia DS ↔ AF: OK.
+
 ## 2026-11-25 · DS 1795594555-9de7 / AF 1795594569-d2ff · Recuperar contraseña y «Repetir contraseña»
 
 Cambio hecho por Claude en Claude Design con el OK del equipo (DS → Alta fidelidad → código).

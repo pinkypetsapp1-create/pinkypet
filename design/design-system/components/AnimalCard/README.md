@@ -1,5 +1,5 @@
 # AnimalCard
-Tarjeta de mascota de Mascotas y de Compatibles, en una rejilla de 2 columnas con 8 px de hueco.
+Tarjeta de mascota de Mascotas y de Compatibles, en una rejilla de 2 columnas con 8 px de hueco. **Por debajo de 412 px de ancho, 1 columna** (cada tarjeta ocupa todo el ancho): con dos columnas, «Ver compatibilidad» no cabe en una línea y la etiqueta se salía de la tarjeta.
 
 ## Anatomía (de arriba abajo)
 1. `MediaPlaceholder` de 128 px **a sangre** (ocupa todo el ancho de la tarjeta, sin el relleno de 16 px; el texto de debajo mantiene su margen) y con las esquinas superiores de la tarjeta, con fondo `tertiary-container` (arena) e icono y texto en `on-tertiary-container` (7,97:1).
@@ -18,7 +18,7 @@ Tarjeta de mascota de Mascotas y de Compatibles, en una rejilla de 2 columnas co
 Con el test hecho, la lista se ordena de mayor a menor compatibilidad.
 
 ## Reglas
-Todas las tarjetas de una fila tienen la misma altura y el botón queda siempre abajo. El `<article>` lleva `aria-label` con el nombre.
+Todas las tarjetas de una fila tienen la misma altura y el botón queda siempre abajo. Nada se sale de la tarjeta: si la etiqueta no cabe, parte el texto en dos líneas (ver `Tag`). Con la letra del sistema grande, el botón puede seguir pasando a dos líneas (ACC1). El `<article>` lleva `aria-label` con el nombre.
 
 ## Tokens
 `surface-container-lowest`, `outline-variant`, `on-surface`, `on-surface-variant`, `primary`, `tertiary-container`, `on-tertiary-container`, `secondary-container`, `on-secondary-container`, `corner-medium`.

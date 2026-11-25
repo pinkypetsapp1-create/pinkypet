@@ -13,7 +13,7 @@
 body{margin:0}
 </style>
 </helmet>
-<nav aria-label="Navegación principal" style="width: 412px; min-height: 64px; box-sizing: border-box; flex: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background-color: #F1EDEB; font-family: Roboto, system-ui, sans-serif">
+<nav aria-label="Navegación principal" style="width: {{ancho}}; min-height: 64px; box-sizing: border-box; flex: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background-color: #F1EDEB; font-family: Roboto, system-ui, sans-serif">
   <sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
     <a href="{{t.href}}" aria-current="{{t.cur}}" aria-label="{{t.aria}}" class="tb" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: {{t.color}}">
       <span class="sl" style="width: 56px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background-color: {{t.ind}}">
@@ -24,7 +24,7 @@ body{margin:0}
   </sc-for>
 </nav>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["inicio","buscar","como","perfil"],"default":"inicio"},"estado":{"editor":"enum","options":["invitado","registrado","completo"],"default":"invitado"},"$preview":{"width":412,"height":64}}'>
+<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["inicio","buscar","como","perfil"],"default":"inicio"},"estado":{"editor":"enum","options":["invitado","registrado","completo"],"default":"invitado"},"ancho":{"editor":"text","default":"412px"},"$preview":{"width":412,"height":64}}'>
 class Component extends DCLogic {
   renderVals() {
     const a = this.props.active ?? 'inicio';
@@ -38,6 +38,7 @@ class Component extends DCLogic {
       { k: 'perfil', label: 'Mi perfil', icon: 'person', href: pick('PerfilVacio.dc.html', 'PerfilVacio-Registrado.dc.html', 'PerfilCompletado.dc.html') }
     ];
     return {
+      ancho: this.props.ancho || '412px',
       tabs: defs.map((d, i) => {
         const on = d.k === a;
         return {
