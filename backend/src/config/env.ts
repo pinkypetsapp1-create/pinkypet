@@ -12,6 +12,12 @@ export interface Env {
   devKey: string | null;
   /** IDs de cliente OAuth de Google aceptados (web y Android). Vacío = «Continuar con Google» desactivado. */
   googleClientIds: string[];
+  /** Recuperar contraseña: clave de la API de Brevo (vacía = los correos solo se escriben en el registro). */
+  brevoApiKey: string | null;
+  /** Remitente verificado en Brevo. */
+  mailFrom: string | null;
+  /** Dirección pública de la app, para el enlace del correo. */
+  appUrl: string;
 }
 
 export const ENV = Symbol('ENV');
@@ -45,7 +51,11 @@ export function loadEnv(source: NodeJS.ProcessEnv = process.env): Env {
     // El endpoint de simulación no existe en producción, aunque alguien defina DEV_KEY.
     devKey: nodeEnv !== 'production' && source.DEV_KEY?.trim() ? source.DEV_KEY.trim() : null,
     googleClientIds: (source.GOOGLE_CLIENT_IDS ?? '').split(',').map((o) => o.trim()).filter(Boolean),
+    brevoApiKey: source.BREVO_API_KEY?.trim() || null,
+    mailFrom: source.MAIL_FROM?.trim() || null,
+    appUrl: (source.APP_URL?.trim() || 'http://localhost:8100').replace(/\/$/, ''),
   };
+  if (env.brevoApiKey && !env.mailFrom) errors.push('Con BREVO_API_KEY hace falta MAIL_FROM (el remitente verificado en Brevo)');
   if (env.jwtSecret && env.jwtSecret === env.jwtRefreshSecret) {
     errors.push('JWT_SECRET y JWT_REFRESH_SECRET deben ser distintos');
   }

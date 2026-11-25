@@ -48,6 +48,16 @@ Necesitas la **huella SHA-1** de la firma del APK de depuración, que aparece al
    - en Render, en la variable `GOOGLE_CLIENT_IDS`.
 5. **Crear credenciales → ID de cliente de OAuth → Android** → paquete `es.pinkypet.app` → huella SHA-1 del paso 4.3. Copia también este ID y añádelo en Render a `GOOGLE_CLIENT_IDS`, separado por una coma del de la web.
 
+## 3 bis. «¿Has olvidado tu contraseña?»: Brevo (gratis, 300 correos al día)
+
+1. Crea una cuenta en <https://www.brevo.com> (plan Free).
+2. **Senders, Domains & Dedicated IPs → Senders → Add a sender**: nombre «Pinky Pet» y el correo del equipo. Brevo envía un código a ese correo para verificarlo.
+3. **SMTP & API → API Keys → Generate a new API key** (nombre «pinky-pet-api»). Cópiala: solo se ve una vez. **No la pegues en el chat.**
+4. En Render → **pinky-pet-api → Environment**: `BREVO_API_KEY` = la clave y `MAIL_FROM` = el correo verificado del paso 2. `APP_URL` ya viene puesta (`https://pinky-pet-app.onrender.com`).
+5. Prueba: en la app, *Iniciar sesión → ¿Has olvidado tu contraseña?* con una cuenta vuestra. El correo llega en menos de un minuto (mirad también en spam). El enlace caduca en 1 hora y solo sirve una vez; al cambiar la contraseña se cierran las sesiones abiertas.
+
+Sin `BREVO_API_KEY` todo funciona igual, pero el correo no sale (en local se escribe en la terminal de la API).
+
 ## 4. App Android: Android Studio y APK de depuración
 
 1. Instala **Android Studio** desde <https://developer.android.com/studio> (con el asistente por defecto: SDK, emulador y JDK incluidos).

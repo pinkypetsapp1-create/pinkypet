@@ -62,3 +62,25 @@ export class GoogleLoginDto {
 export class GoogleSessionView extends SessionView {
   @ApiProperty({ description: 'true si la cuenta se acaba de crear (desde Registro se va al Test)' }) created!: boolean;
 }
+
+export class ForgotPasswordDto {
+  @ApiProperty({ example: 'nombre@correo.com' })
+  @IsString({ context: { code: 'FORMAT' } })
+  @Matches(EMAIL_PATTERN, { context: { code: 'FORMAT' } })
+  @MaxLength(254, { context: { code: 'FORMAT' } })
+  email!: string;
+}
+
+export class ResetPasswordDto {
+  @ApiProperty({ description: 'El «token» del enlace del correo' })
+  @IsString({ context: { code: 'REQUIRED' } })
+  @IsNotEmpty({ context: { code: 'REQUIRED' } })
+  @MaxLength(256, { context: { code: 'MAX_LENGTH' } })
+  token!: string;
+
+  @ApiProperty({ minLength: 8 })
+  @IsString({ context: { code: 'MIN_LENGTH' } })
+  @MinLength(8, { context: { code: 'MIN_LENGTH' } })
+  @MaxLength(128, { context: { code: 'MAX_LENGTH' } })
+  password!: string;
+}

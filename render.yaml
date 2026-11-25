@@ -29,6 +29,12 @@ services:
         sync: false
       - key: GOOGLE_CLIENT_IDS
         sync: false
+      - key: BREVO_API_KEY
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+      - key: APP_URL
+        value: https://pinky-pet-app.onrender.com
 
   # La app como web (para probarla online desde cualquier navegador). Usa el backend de arriba (environment.prod.ts).
   - type: web

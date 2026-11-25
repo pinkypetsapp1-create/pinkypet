@@ -16,6 +16,7 @@ export const ErrorCode = {
   TOO_MANY_ATTEMPTS: 'TOO_MANY_ATTEMPTS',
   GOOGLE_TOKEN_INVALID: 'GOOGLE_TOKEN_INVALID',
   GOOGLE_NOT_CONFIGURED: 'GOOGLE_NOT_CONFIGURED',
+  RESET_TOKEN_INVALID: 'RESET_TOKEN_INVALID',
   NOT_FOUND: 'NOT_FOUND',
   INTERNAL_ERROR: 'INTERNAL_ERROR',
 } as const;
@@ -60,6 +61,8 @@ export const Errors = {
     new AppError(ErrorCode.GOOGLE_TOKEN_INVALID, HttpStatus.UNAUTHORIZED, 'No se ha podido verificar la cuenta de Google'),
   googleNotConfigured: () =>
     new AppError(ErrorCode.GOOGLE_NOT_CONFIGURED, HttpStatus.SERVICE_UNAVAILABLE, 'El inicio de sesión con Google no está configurado'),
+  resetTokenInvalid: () =>
+    new AppError(ErrorCode.RESET_TOKEN_INVALID, HttpStatus.GONE, 'El enlace ha caducado o ya se ha usado'),
   petNotAvailable: () =>
     new AppError(ErrorCode.PET_NOT_AVAILABLE, HttpStatus.CONFLICT, 'Esta mascota ya no está disponible'),
 };

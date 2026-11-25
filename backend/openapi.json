@@ -132,6 +132,90 @@
         ]
       }
     },
+    "/auth/password/forgot": {
+      "post": {
+        "operationId": "AuthController_forgot",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Petición aceptada"
+          },
+          "429": {
+            "description": "TOO_MANY_ATTEMPTS"
+          }
+        },
+        "summary": "«¿Has olvidado tu contraseña?»: envía un enlace (la respuesta es la misma exista o no la cuenta)",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/password/reset": {
+      "get": {
+        "operationId": "AuthController_checkReset",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "El enlace vale"
+          },
+          "410": {
+            "description": "RESET_TOKEN_INVALID"
+          }
+        },
+        "summary": "Comprueba si el enlace del correo sigue valiendo (sin usarlo)",
+        "tags": [
+          "auth"
+        ]
+      },
+      "post": {
+        "operationId": "AuthController_reset",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Contraseña cambiada"
+          },
+          "400": {
+            "description": "VALIDATION_FAILED · fields.password [MIN_LENGTH]"
+          },
+          "410": {
+            "description": "RESET_TOKEN_INVALID"
+          }
+        },
+        "summary": "Guarda la contraseña nueva, gasta el enlace y cierra todas las sesiones",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
     "/auth/refresh": {
       "post": {
         "operationId": "AuthController_refresh",
@@ -716,6 +800,35 @@
           "refreshToken",
           "user",
           "created"
+        ]
+      },
+      "ForgotPasswordDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "nombre@correo.com"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "ResetPasswordDto": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "El «token» del enlace del correo"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "required": [
+          "token",
+          "password"
         ]
       },
       "RefreshDto": {
