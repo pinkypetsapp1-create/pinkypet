@@ -46,7 +46,7 @@ Observaciones encontradas al probar la app. Recordatorio de la regla 4 de `CLAUD
 
 ---
 
-## 3. Animación del logotipo cada vez que se abre la app
+## 3. Animación del logotipo cada vez que se abre la app · ✅ resuelto
 
 **Ahora:** la animación del logotipo (`pp-splash`, `app/src/app/ui/splash.ts`) solo sale **la primera vez** que se abre la app (se guarda en `localStorage` que ya se vio) y solo en Inicio.
 

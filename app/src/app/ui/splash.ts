@@ -1,12 +1,11 @@
 import { Component, ElementRef, OnInit, inject, signal } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { tomarAnimacionDeEntrada } from '../core/arranque';
 import { HUELLA_SVG } from './shapes';
-
-const VISTO = 'pp.primerInicio';
 
 /**
  * SplashPrimerInicio del Design System (components/SplashPrimerInicio): huellas → sello → el sello vuela al de la
- * barra superior. Solo la primera vez que se abre la app; con movimiento reducido no se muestra. 1,55 s.
+ * barra superior. Cada vez que se abre la app en Inicio (una vez por arranque); con movimiento reducido no se muestra. 1,55 s.
  * Las posiciones del DS son para 412 × 917; aquí se calculan a partir del tamaño real de la pantalla.
  */
 @Component({
@@ -32,14 +31,7 @@ export class Splash implements OnInit {
   protected readonly huellas = signal<{ i: number; style: string }[]>([]);
 
   ngOnInit(): void {
-    let visto = true;
-    try {
-      visto = localStorage.getItem(VISTO) === '1';
-      localStorage.setItem(VISTO, '1');
-    } catch {
-      /* sin almacenamiento: no se muestra para no repetirla en cada arranque */
-    }
-    if (visto || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!tomarAnimacionDeEntrada() || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const { width: w, height: h } = (this.el.nativeElement as HTMLElement).getBoundingClientRect();
     // Proporciones del DS a 412 × 917: sello de 58 % del ancho centrado en (w/2, 445/917·h); vuela al sello de la barra (32, 32).
     const seal = Math.round(w * 0.58);

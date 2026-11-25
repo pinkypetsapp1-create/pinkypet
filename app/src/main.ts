@@ -7,6 +7,7 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular';
 // antes de que el router cambie la URL. Por eso se importa aquí y no solo en Registro e Iniciar sesión.
 import '@capgo/capacitor-social-login';
 import { AppComponent } from './app/app.component';
+import './app/core/arranque'; // guarda la ruta con la que se abre la app (animación de entrada)
 import { routes } from './app/app.routes';
 import { Session } from './app/core/session';
 import { applySystemTextZoom } from './app/core/text-zoom';
