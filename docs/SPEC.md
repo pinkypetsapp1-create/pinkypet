@@ -292,3 +292,5 @@ CLAUDE.md · docs/ · design/ (solo lectura) · scripts/ · backend/ (NestJS + M
 | F2 | Capturas de 412 × 917 comparadas con `design/reference/` en claro, oscuro y texto al 200 % |
 | F3 | La app funciona contra el backend desplegado (smoke test) |
 | F4 | Informe Ionic vs nativo en un Android real de gama media |
+
+> **iOS (2026-11-25):** el equipo decide añadir el proyecto iOS para verlo en el simulador de Xcode (`app/ios/`, docs/DEPLOY.md §4 bis). El entregable principal sigue siendo Android (APK).

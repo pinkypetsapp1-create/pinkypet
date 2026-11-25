@@ -9,7 +9,8 @@ import { environment } from '../../environments/environment';
  */
 @Injectable({ providedIn: 'root' })
 export class Google {
-  readonly enabled = !!environment.googleWebClientId;
+  /** En iOS hace falta además su propio cliente OAuth (googleIosClientId); sin él, el botón no se muestra. */
+  readonly enabled = !!environment.googleWebClientId && (Capacitor.getPlatform() !== 'ios' || !!environment.googleIosClientId);
   private ready: Promise<void> | null = null;
 
   /** null si la persona cierra el selector de Google sin elegir cuenta. */
@@ -20,7 +21,7 @@ export class Google {
       google: Capacitor.isNativePlatform()
         ? // Android (Credential Manager): el ID web va en webClientId; el cliente Android solo registra paquete + SHA-1.
           // Solo hace falta el idToken, así que se omite la autorización extra (en BridgeActivity puede colgarse).
-          { webClientId: environment.googleWebClientId, mode: 'online', skipAuthOnlyAuthorizationAfterSignIn: true }
+          { webClientId: environment.googleWebClientId, iOSClientId: environment.googleIosClientId || undefined, iOSServerClientId: environment.googleWebClientId, mode: 'online', skipAuthOnlyAuthorizationAfterSignIn: true }
         : { webClientId: environment.googleWebClientId, mode: 'online', redirectUrl: `${window.location.origin}/` },
     });
     await this.ready;

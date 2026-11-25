@@ -87,6 +87,28 @@ El APK queda en `app/android/app/build/outputs/apk/debug/app-debug.apk` (≈ 14 
 
 **Huella SHA-1 de la firma de depuración** (para el cliente Android de Google, paso 3.5): `840b02b3859b572c2611cb2408da2b133e39a28b`. Es la de este Mac (`~/.android/debug.keystore`): si se compila en otro ordenador, la huella cambia. Para verla: `~/Library/Android/sdk/build-tools/36.0.0/apksigner verify --print-certs app-debug.apk`.
 
+## 4 bis. App iOS en el simulador de Xcode
+
+El proyecto iOS está en `app/ios/` (Capacitor 8 con Swift Package Manager: no hace falta CocoaPods). Identificador `es.pinkypet.app`, iOS 15 o superior. Apunta al backend de Render; su origen `capacitor://localhost` ya está en `CORS_ORIGINS`.
+
+**Una sola vez (lo hace el equipo):**
+1. Instalar **Xcode** desde la App Store (≈ 15 GB, con vuestro Apple ID). Abrirlo una vez: pedirá instalar componentes y el simulador de **iOS** (elegid iOS en «Platforms»).
+2. En la Terminal (pide la contraseña de administración del Mac):
+   ```
+   sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+   sudo xcodebuild -license accept
+   ```
+
+**Cada vez que queráis verla en el simulador:**
+```
+cd ~/proyecto/pinkypet/app
+npx ng build && npx cap sync ios
+npx cap run ios        # elige un iPhone de la lista; o «npx cap open ios» y ▶︎ en Xcode
+```
+Para el simulador no hace falta cuenta de desarrollador de Apple ni firmar. Para instalarla en un iPhone real sí (Apple ID gratuito en Xcode → Signing & Capabilities → Team).
+
+**«Continuar con Google» en iOS:** no se muestra hasta crear un cliente OAuth **iOS** en Google Cloud (ID del paquete `es.pinkypet.app`), poner su ID en `googleIosClientId` (`app/src/environments/`) y añadir su «iOS URL scheme» a `app/ios/App/App/Info.plist` (`CFBundleURLTypes`).
+
 ## 5. Prueba básica
 
 - **Automática** (desde `backend/`): `npm run smoke -- https://pinky-pet-api.onrender.com`. Comprueba salud, registro, test, compatibilidad, solicitud, «una sola activa», estado, cancelación y que el simulador no existe en producción.

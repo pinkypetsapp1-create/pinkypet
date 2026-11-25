@@ -9,4 +9,6 @@ export const environment = {
    * Cómo obtenerlo: docs/DEPLOY.md, «Google».
    */
   googleWebClientId: '13489786586-c3qlu0936qfd7jk4egf0l8bslvdqi26n.apps.googleusercontent.com',
+  /** «Continuar con Google» en iOS: ID del cliente OAuth iOS de Google Cloud. Vacío = el botón no se muestra en iOS. */
+  googleIosClientId: '',
 };
