@@ -2,6 +2,14 @@
 
 Cada entrada corresponde a una ejecución de `/sincronizar-diseno` (o a la copia inicial). Los sha256 de cada archivo están en `design.lock.json`.
 
+## 2026-11-25 · DS 1795607040-66c8 / AF 1795607103-4583 · Mascota nueva: Donatello
+
+Primera mascota añadida con `/nueva-mascota` (ficha en `mascotas/hechas/donatello.md`).
+- **DS:** foto `assets/Fotos/donatello.jpg` (blob `af9341a8…`, recortada a 4:3 y ampliada a 1254 × 940 desde la original de 360 × 640); `design-system.json` y `assets/Fotos/README.md`.
+- **AF:** Donatello en `Ficha` (D, FOTO y la opción `animal`), `Catalogo` (animals y FOTO) y `Main` (lista y FOTO); pantalla nueva `Ficha-Donatello`. El filtro de Ubicación de `Catalogo` ya usa la provincia de cada mascota (`prov`, Barcelona por defecto).
+- **No se duplican** las copias Oscuro/Texto/Zoom ni las pantallas de estado por mascota.
+- **Tokens:** sin cambios. Coherencia DS ↔ AF: OK.
+
 ## 2026-11-25 · DS 1795604949-7133 / AF 1795604953-aa22 · Ventanas de «Qué tiene en cuenta el test»
 
 Observación del equipo: al pulsar cada caja de porcentaje, una ventana que explique el bloque, con el botón para hacer el test. Textos aprobados el 25-11-2026.

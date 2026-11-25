@@ -176,7 +176,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A62
   </sc-if>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"animal":{"editor":"enum","options":["luna","simba","rocky","kira","coco","nube"],"default":"luna"},"$preview":{"width":412,"height":917}}'>
+<script type="text/x-dc" data-dc-script data-props='{"animal":{"editor":"enum","options":["luna","simba","rocky","kira","coco","nube","donatello"],"default":"luna"},"$preview":{"width":412,"height":917}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
@@ -202,7 +202,10 @@ class Component extends DCLogic {
         encaja: 'Se adapta bien a un piso y a tu horario.', cuenta: 'Le encanta salir de la jaula y moverse libremente cada día.' },
       nube: { name: 'Nube', meta: 'Cobaya · Hembra · 4 años · Terrassa · Pequeño', ne: true, pct: 70, b: [75, 70, 65],
         info: ['Necesita revisiones dentales.', 'No aplica', 'Dieta rica en heno y revisiones dentales.', 'Tranquila y sociable.', 'Media', 'Convive mejor con otra cobaya.', 'Sí: problemas dentales.', 'Rescatada de un abandono.'],
-        encaja: 'Es tranquila y sociable.', cuenta: 'Estará estupenda con sus revisiones dentales y, si puede ser, la compañía de otra cobaya.' }
+        encaja: 'Es tranquila y sociable.', cuenta: 'Estará estupenda con sus revisiones dentales y, si puede ser, la compañía de otra cobaya.' },
+      donatello: { name: 'Donatello', meta: 'Perro · Macho · 3 años · Vigo · Pequeño', ne: false, pct: 79, b: [100, 40, 95],
+        info: ['Buena', 'Al día', 'Dos paseos largos al día.', 'Energético y loco.', 'Media', 'Sí', 'No', 'Rescatado en la calle.'],
+        encaja: 'Le gustan las personas activas.', cuenta: 'Será más feliz con mucho espacio y dos paseos largos al día.' }
     };
     const FOTO = {
       luna: ['/_blob/f499ff1e450e2795f8e1d11984d2dd45', 'Luna, gata gris y blanca, sentada junto a un muro de piedra y unas flores'],
@@ -210,7 +213,8 @@ class Component extends DCLogic {
       rocky: ['/_blob/e64e5104dba8cc71abdf9658d68c71c3', 'Rocky, perro de pelo dorado, sentado en el césped con la lengua fuera'],
       kira: ['/_blob/e279d8b2fac5945d660786711e94302d', 'Kira, perra blanca y marrón con collar rosa, sentada en un parque'],
       coco: ['/_blob/00c86d453d6db4db83544cd15853d468', 'Coco, conejo blanco y beige de orejas caídas, sentado sobre una alfombra'],
-      nube: ['/_blob/a1537a9ce239f0ab16a66a7430cd6b0c', 'Nube, cobaya blanca y naranja sobre una manta azul']
+      nube: ['/_blob/a1537a9ce239f0ab16a66a7430cd6b0c', 'Nube, cobaya blanca y naranja sobre una manta azul'],
+      donatello: ['/_blob/d3ff8c0c5697ed78c2bf37c9ee42eed4', 'Donatello, perro salchicha']
     };
     const a = D[this.props.animal ?? 'luna'] || D.luna;
     const ph = FOTO[this.props.animal ?? 'luna'] || FOTO.luna;

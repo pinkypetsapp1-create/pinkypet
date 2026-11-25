@@ -2,11 +2,11 @@
   "comment": "Generado por scripts/design-lock.mjs. No editar a mano.",
   "designSystem": {
     "url": "https://claude.ai/artifact/FdYKiHu4B9TE7YT6tG8ErF",
-    "version": "1795604949-7133",
-    "syncedAt": "2026-11-25T11:10:56Z",
+    "version": "1795607040-66c8",
+    "syncedAt": "2026-11-25T11:46:50Z",
     "files": {
       "README.md": "9123948f7673016b17a6a6f93bbaeed5857c26cee323ebd2fc002a0eeb3a1a85",
-      "assets/Fotos/README.md": "14e49479edba3383ba6dd1f2d8c5a2a7463c30d0df855bd86e569e125aa7c311",
+      "assets/Fotos/README.md": "7dae459430af6128180f5ea4d4af39f0683c25d1c09aeef01342bb8a3da7d669",
       "assets/Ilustraciones/README.md": "d13a0f11dad2e4562bae9b2d319aacbb50eafea89c98b4c5e875ed2c1d8f395a",
       "assets/Logotipo/README.md": "76df3a341792cc1e7a23e7e3b2c2dc1f697c53ab49ded03bc9ea2b275aeb9e67",
       "components/AccountPrompt/README.md": "49ea811613bed5e30205e207281eb8002b762d10306616c86c20c26a0271bbe3",
@@ -93,13 +93,17 @@
       "components/TopAppBar/README.md": "c6c173f775589117e3be0304b5d1f500b222287db8ef3bad2d0273670ae615a6",
       "components/TopAppBar/preview.html": "f20077cf2e128241b929166e6d3baefb3c943323f10e52cb05a9fc5e0b62532b",
       "components/bundle.css": "0b5b95508d71e64f0cf003a6b2ebb460b8d1effcd9f15854073bba880072c4d1",
-      "design-system.json": "eaa91ab563947b15abdd986c1b5d101c97551ca8ce814159cbf0ebe4a54110ae",
+      "design-system.json": "8ab3d508aabf629751df32494ee3d7106d5a1a5ecabce54619c9b9e917d271e9",
       "tokens.json": "1fee07b9fff74615370f294ad47ba50174836de51af824199c5e0aca53f446db"
     },
     "assets": {
       "assets/Fotos/coco.jpg": {
         "sha256": "c58b66d2b130652f1e423fab1064fda99f1bbeac1f682f23268b6eeb5d3bcb83",
         "blob": "94bd1359ef9185d1d1507d732ee8efca"
+      },
+      "assets/Fotos/donatello.jpg": {
+        "sha256": "ae23e299b6618c04e0b84d4c084d12dabb50f55156c90298f1f94db91e4aeee1",
+        "blob": "af9341a825c348f439e359d2c8cf1c21"
       },
       "assets/Fotos/kira.jpg": {
         "sha256": "9dc8d5455ba1059aec0faf1f4b3eb4bc8c8ec7893b3cd465213d9dc8f2249ec9",
@@ -149,8 +153,8 @@
   },
   "altaFidelidad": {
     "url": "https://claude.ai/artifact/1MwUAQpwJFExpLby6g9vH2",
-    "version": "1795604953-aa22",
-    "syncedAt": "2026-11-25T11:10:56Z",
+    "version": "1795607103-4583",
+    "syncedAt": "2026-11-25T11:46:50Z",
     "coherence": {
       "recordedVersion": "1795026227-9d5e",
       "copiedAt": "2026-11-18T18:35:00Z",
@@ -160,7 +164,7 @@
     "files": {
       "Catalogo-360.dc.html": "e8575065d88c4870dbda58aac2a505545d1d56b581d4df45b5627ffb59ec9664",
       "Catalogo-Registrado.dc.html": "13d2ba4b09f6b83b6c8c95a8574f61f00a9620ed975341726c8c990b85ed5d00",
-      "Catalogo.dc.html": "08925e9a2dbfa3c8f31b2f66b7fc09dbcf7b0b8da186a9c84d6f64cd808f64cf",
+      "Catalogo.dc.html": "55fe7342e77561b8d7d797bbc69503ac150f3d8c67474680c53c473e0dd5c119",
       "CatalogoOscuro.dc.html": "e6988618146a9adf5d55c9ddc35e945fd921dd90d82c1d9fa7953770646624a3",
       "CatalogoTexto.dc.html": "743c7d7a54dd15fe5d50e2d9d76a7b95a7ca6ef59ebdbe7ef9ac681a2d9c858e",
       "CatalogoZoom.dc.html": "6e21fb966f5483eac4cf1675ec9494891443ffdd682b626b7c242ff0f95624d7",
@@ -201,6 +205,7 @@
       "EstadoZoom.dc.html": "a444d8548a49dc01972a29af56125d8c2dcca88a0307f22666837bbe567920e3",
       "Ficha-Coco-Enviada.dc.html": "bf8de739e353c54402c06a8d5c577e00e05e067fcce721a8de1071adb06fd582",
       "Ficha-Coco.dc.html": "b2bcbdbb313cb75ae7c7178ff42f47c978e67eeba4b14fae2f43c5483e1c2c50",
+      "Ficha-Donatello.dc.html": "6cf0b95f012ecb58a57dac0e61dc4685a7fd48432d8f6dc945b2513f598f108e",
       "Ficha-Kira-Enviada.dc.html": "c5dbc1ee89aef8550dcd4834d9cc05bc7cb131f229967170ad51efb4749e4bf8",
       "Ficha-Kira.dc.html": "0fa539d9fba97d349b456f104971fe97992a03838d8fa526cae144070b0f44bf",
       "Ficha-Limite.dc.html": "d38325de67baac74111262a5070f7e867944566166102beba281d324b3071932",
@@ -212,7 +217,7 @@
       "Ficha-Rocky.dc.html": "6564d7f61e0c9e6cc9dd858a94dfd7350da1cc1fe0038a7b93278e973507fdeb",
       "Ficha-Simba-Enviada.dc.html": "499eee6c94301b3abb1a7026d821b62a9cb5b9dce54e526bfbfa9ea6c995d9a1",
       "Ficha-Simba.dc.html": "b5f5ea0127b0f3cdbd75daf34142730af6d3f5edd4f462a76f4874c4b69b3fc7",
-      "Ficha.dc.html": "43b83bb8004a023c98d6ff6d7826f099d90e503bd806d2d7c0b922aa11534012",
+      "Ficha.dc.html": "bd831b4436608b43ef219143fd0891bcb15afaface2c7ff11d159c73a78bf768",
       "FichaOscuro.dc.html": "8ba8d6fb3b7746f4a078c126e6eebb16e80be029612dcbc5d40f965d28f6e191",
       "FichaTexto.dc.html": "673b481362e8ef5777effbc705de9cdb920a215b727c4f78300e2c2d8156539c",
       "FichaZoom.dc.html": "0320981f6764bfa2ae339024e6726b42e6fe9fcb0e8b23a8f792734276e132e7",
@@ -222,7 +227,7 @@
       "Main-Info-DiaADia.dc.html": "8a6006a1c82b2bae6f88f043c848f81b60fa142ca619c1082adab7e82c4f3784",
       "Main-Info-Hogar.dc.html": "ef5e1d50e1d133593f875feefcc3b05a90d8e9bdab997d598cf6d805999e0d14",
       "Main-Info-Mascota.dc.html": "6bac7ec952956e91ade6dd2e8bf594fd69dd31dcf652d0b4fb488dca5f609e46",
-      "Main.dc.html": "0fd2c9eaec8c8c805ffece2a120df11ffbdee5b50e91d272a6c1909872673258",
+      "Main.dc.html": "08b1beac9c8d1cb8e739b9cd6d141021a25ce346824458d4265aabfeb0125267",
       "MainOscuro.dc.html": "6e9b37778efa294414722e6278e94ca3a65d4f40a1ec8a0e70c04d357903eb9c",
       "MainTexto.dc.html": "3669c62d14de4e40a0f66bce72e3734ee80ca8e12cc7204e1d8c23fca48969b0",
       "MainZoom.dc.html": "1a9563ea3eff1509dbfdf8d10059501c6d519ef3048c7699a19e492b39a18ebd",
@@ -273,7 +278,7 @@
       "Zoom-MiSolicitud.dc.html": "1dc9a6afc15968b9d29091e4940ff7f66a2f533984138c772d4e801e7fa88494",
       "Zoom-Test-Completado.dc.html": "af226554e23cdb6052e0ea3d3004b4ddac5c6df4f1678b05990abf52f3ce0508",
       "Zoom-Test.dc.html": "0051bec92f9c5219d9b131f56aa251f1239faf2fb23c720aca9c5f705351d0a5",
-      "canvas.json": "447fa36309f780cc85ee28884727bbf67da2fea8e2cc179684ca90e47efaad09"
+      "canvas.json": "d03b14507359e9ec520e2611d3c9287988f94f8f2741ac5a455bd0ecef7481c6"
     }
   },
   "reference": {

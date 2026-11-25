@@ -172,7 +172,8 @@ class Component extends DCLogic {
     const hCatalogo = test ? 'Compatibles.dc.html' : (estado === 'registrado' ? 'Catalogo-Registrado.dc.html' : 'Catalogo.dc.html');
     const lista = [
       { name: 'Luna', pct: 92 }, { name: 'Simba', pct: 81 }, { name: 'Rocky', pct: 64 },
-      { name: 'Kira', pct: 76 }, { name: 'Coco', pct: 85 }, { name: 'Nube', pct: 70 }
+      { name: 'Kira', pct: 76 }, { name: 'Coco', pct: 85 }, { name: 'Nube', pct: 70 },
+      { name: 'Donatello', pct: 79 }
     ];
     const orden = test ? lista.slice().sort((x, y) => y.pct - x.pct) : lista;
     const FOTO = {
@@ -181,7 +182,8 @@ class Component extends DCLogic {
       rocky: ['/_blob/e64e5104dba8cc71abdf9658d68c71c3', 'Rocky, perro de pelo dorado, sentado en el césped con la lengua fuera'],
       kira: ['/_blob/e279d8b2fac5945d660786711e94302d', 'Kira, perra blanca y marrón con collar rosa, sentada en un parque'],
       coco: ['/_blob/00c86d453d6db4db83544cd15853d468', 'Coco, conejo blanco y beige de orejas caídas, sentado sobre una alfombra'],
-      nube: ['/_blob/a1537a9ce239f0ab16a66a7430cd6b0c', 'Nube, cobaya blanca y naranja sobre una manta azul']
+      nube: ['/_blob/a1537a9ce239f0ab16a66a7430cd6b0c', 'Nube, cobaya blanca y naranja sobre una manta azul'],
+      donatello: ['/_blob/d3ff8c0c5697ed78c2bf37c9ee42eed4', 'Donatello, perro salchicha']
     };
     const animals = orden.map((a) => ({
       name: a.name, photo: FOTO[a.name.toLowerCase()][0], pct: a.pct, showPct: test,
