@@ -20,13 +20,21 @@ describe('fórmula del % global', () => {
   });
 });
 
+const ORIGINALES = ['luna', 'coco', 'simba', 'kira', 'nube', 'rocky'];
+
 describe('cuenta demo (persona@ejemplo.com)', () => {
   const results = PETS.map((p) => ({ slug: p.slug, ...computeCompatibility(p.atributos, DEMO_ANSWERS) })).sort(
     (a, b) => b.porcentaje - a.porcentaje,
   );
 
   it('ordena las mascotas igual que el diseño', () => {
-    expect(results.map((r) => r.slug)).toEqual(['luna', 'coco', 'simba', 'kira', 'nube', 'rocky']);
+    // Las seis originales: el orden del diseño (docs/SPEC.md §4.4; sus % del diseño son orientativos, §4.4 bis).
+    expect(results.map((r) => r.slug).filter((s) => ORIGINALES.includes(s))).toEqual(ORIGINALES);
+    // Las añadidas con /nueva-mascota: el % de su ficha en el diseño es el calculado para la cuenta demo.
+    const src = readFileSync(join(DESIGN, 'Ficha.dc.html'), 'utf8');
+    const start = src.indexOf('const D = {');
+    const D = vm.runInNewContext(`(${src.slice(start + 10, src.indexOf('const FOTO', start)).trim().replace(/;$/, '')})`) as Record<string, { pct: number }>;
+    for (const r of results.filter((x) => !ORIGINALES.includes(x.slug))) expect(r.porcentaje).toBe(D[r.slug].pct);
   });
 
   it('da los % calculados documentados en SPEC', () => {

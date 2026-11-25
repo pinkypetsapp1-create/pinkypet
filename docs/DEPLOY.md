@@ -82,3 +82,7 @@ Sin `BREVO_API_KEY` todo funciona igual, pero el correo no sale (en local se esc
 ## Reiniciar la demo
 
 En el plan gratuito no hay consola en Render. Desde vuestro ordenador, con `MONGODB_URI` y `SEED_DEMO_PASSWORD` en `backend/.env`: `cd backend && npm run seed`. Restablece las mascotas y las 3 cuentas demo; no toca las demás cuentas.
+
+## Añadir mascotas
+
+Rellenad `mascotas/nueva-mascota.md`, dejad la foto en `mascotas/fotos/` y escribid `/nueva-mascota` en Claude Code. Para subirla a Atlas hace falta `backend/.env` con `MONGODB_URI` (una sola vez). No uséis `npm run seed` para esto: restablece las cuentas demo y vuelve a poner disponibles las mascotas adoptadas.

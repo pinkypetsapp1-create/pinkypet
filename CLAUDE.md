@@ -12,6 +12,7 @@ Especificación completa: `docs/SPEC.md`. Mapa diseño → código: `docs/design
 | `npm test` | Tests de los scripts (tokens) |
 | `npm run design:lock -- --check` | Comprueba que `design/` coincide con `design/design.lock.json` |
 | `/sincronizar-diseno` | Trae los cambios de Claude Design (solo la lanza el equipo) |
+| `/nueva-mascota` | Añade la mascota de `mascotas/nueva-mascota.md` (+ su foto en `mascotas/fotos/`) al diseño, la app, el servidor y las bases de datos (solo la lanza el equipo) |
 | `npm run capturas -- 2a\|2b\|2c` | Capturas de la app (claro, oscuro, 206 px) en `docs/evidencia/<entrega>/`; necesita API y app arrancadas |
 | `npm run comparar -- design/_incoming/reference docs/evidencia/<entrega>` | Diseño y app lado a lado en `docs/evidencia/<entrega>/comparacion/` |
 
@@ -25,6 +26,8 @@ Backend (desde `backend/`; configuración en `backend/.env`, plantilla en `.env.
 | `npm run start:dev` | API contra `MONGODB_URI`, recargando al guardar |
 | `npm test` · `npm run test:e2e` | Tests unitarios · e2e (MongoDB en memoria) |
 | `npm run seed` | Mascotas, preguntas y 3 cuentas demo (idempotente) |
+| `npm run mascota:leer -- <ficha>` | Comprueba una ficha de mascota nueva (`--escribir` la añade a `pets.data.ts`) |
+| `npm run mascotas:subir` | Sube las mascotas a `MONGODB_URI` sin tocar cuentas ni disponibilidad |
 | `npm run openapi` | Regenera `backend/openapi.json` (contrato para la app) |
 | `npm run demo:resolve -- <id> finalizada\|rechazada` | Simula la respuesta de la protectora (solo desarrollo) |
 | `npm run smoke -- <url>` | Prueba básica contra el backend publicado (Fase 3) |
