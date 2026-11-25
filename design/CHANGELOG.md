@@ -2,6 +2,14 @@
 
 Cada entrada corresponde a una ejecución de `/sincronizar-diseno` (o a la copia inicial). Los sha256 de cada archivo están en `design.lock.json`.
 
+## 2026-11-25 · DS 1795594555-9de7 / AF 1795594569-d2ff · Recuperar contraseña y «Repetir contraseña»
+
+Cambio hecho por Claude en Claude Design con el OK del equipo (DS → Alta fidelidad → código).
+- **Componentes (DS):** `Button/README.md` (botón de texto «¿Has olvidado tu contraseña?» y botones rellenos «Enviar enlace», «Volver a iniciar sesión», «Guardar contraseña», «Pedir un enlace nuevo»); `TextField/README.md` («Repetir contraseña», «Nueva contraseña», «Repite la contraseña.», «Las contraseñas no coinciden.»).
+- **Pantallas nuevas (AF):** `Recuperar`, `Recuperar-Enviado`, `NuevaContrasena`, `NuevaContrasena-Hecha`, `NuevaContrasena-Caducado`, en la fila superior (x 6336–9504) con sus notas CONEXIONES.
+- **Pantallas cambiadas (AF):** `Registro` (campo «Repetir contraseña» y resumen de hasta 3 campos), `Error-Registro-Campos` (3 campos), `Error-Registro-Existe`, `Login` y `Error-Login` («¿Has olvidado tu contraseña?»); notas `nLogin` y `nRegistro`.
+- **Tokens y assets:** sin cambios. Coherencia DS ↔ AF: OK.
+
 ## 2026-11-24 · DS 1795509334-bb26 / AF 1795509349-ff9d · «Cerrar sesión» (F2-4)
 
 Cambio hecho por Claude en Claude Design con el OK del equipo, en el orden de la regla: DS → Alta fidelidad → código.

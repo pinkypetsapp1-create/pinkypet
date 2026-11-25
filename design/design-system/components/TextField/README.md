@@ -7,10 +7,11 @@ Campo de texto outlined de 56 px con la etiqueta sobre el borde, siempre visible
 - **Error** (`pp-field--error`, `aria-invalid="true"`): borde de 2 px en `error`, icono `error` relleno a la derecha (relleno derecho de 52) y etiqueta y ayuda en `error`.
 
 ## Textos del wireframe
-- «Correo electrónico» / «Contraseña».
+- «Correo electrónico» / «Contraseña» / «Repetir contraseña» (Registro y Nueva contraseña) / «Nueva contraseña».
 - «Escribe un correo completo, por ejemplo nombre@correo.com.»
 - «La contraseña debe tener al menos 8 caracteres. Ahora tiene 6.»
 - «Escribe tu contraseña.»
+- «Repite la contraseña.» (vacío) y «Las contraseñas no coinciden.» (Repetir contraseña).
 - «Por seguridad, vuelve a escribir tu contraseña.» (ayuda neutra)
 
 ## Accesibilidad

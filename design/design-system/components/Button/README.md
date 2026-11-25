@@ -4,12 +4,12 @@ Botón en píldora que se cuadra al pulsar (morph de forma de M3 Expressive): M 
 ## Variantes del wireframe
 | Variante | Clase | Textos del wireframe |
 |---|---|---|
-| Relleno M | `pp-btn pp-btn--filled pp-btn--block` | «Descubrir mi compatibilidad», «Enviar solicitud de adopción», «Ver el estado de mi solicitud», «Iniciar sesión», «Crear cuenta y hacer el test», «Ver mis mascotas compatibles», «Quitar filtros», «Reintentar», «Revisar mis respuestas», «Volver a mis mascotas compatibles» |
+| Relleno M | `pp-btn pp-btn--filled pp-btn--block` | «Descubrir mi compatibilidad», «Enviar solicitud de adopción», «Ver el estado de mi solicitud», «Iniciar sesión», «Crear cuenta y hacer el test», «Ver mis mascotas compatibles», «Quitar filtros», «Reintentar», «Revisar mis respuestas», «Volver a mis mascotas compatibles», «Enviar enlace» y «Volver a iniciar sesión» (Recuperar contraseña), «Guardar contraseña» y «Pedir un enlace nuevo» (Nueva contraseña) |
 | Tonal S | `pp-btn pp-btn--tonal pp-btn--s` | «Ver compatibilidad», «Más información» (tarjeta de mascota): acción repetida en la rejilla, por debajo del único relleno de la pantalla |
 | Outlined M | `pp-btn pp-btn--outlined pp-btn--block` | «Seguir mirando otras mascotas», «Ver la ficha de la mascota», «Modificar mis respuestas», «Ver el estado de mi solicitud» (Cómo adoptar) |
 | Outlined M con logo | `+ pp-btn__logo` | «Continuar con Google» (logotipo «G» oficial de Google, multicolor, 20 × 20; no se recolorea) |
 | Outlined S | `pp-btn pp-btn--outlined pp-btn--s` | «Iniciar sesión con este correo» (dentro del aviso de error) |
-| Texto | `pp-btn pp-btn--text` | Acciones de diálogo: «Sí, enviar solicitud», «Cancelar», «Reintentar el envío»… |
+| Texto | `pp-btn pp-btn--text` | Acciones de diálogo: «Sí, enviar solicitud», «Cancelar», «Reintentar el envío»…; «¿Has olvidado tu contraseña?» bajo el campo Contraseña de Iniciar sesión, alineado con el texto (margen izquierdo −12) |
 | Texto con icono | `pp-btn pp-btn--text pp-btn--lead` | `person_add` «Regístrate», `login` «Inicia sesión», `logout` «Cerrar sesión» (tarjeta «Mi cuenta» de Mi perfil), `close` «Cancelar solicitud», `filter_alt_off` «Quitar filtros» |
 
 ## Reglas

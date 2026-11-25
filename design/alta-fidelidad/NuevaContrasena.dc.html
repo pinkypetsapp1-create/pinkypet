@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Registro</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&amp;family=Roboto:wght@400;500;600;700&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block">
+<style>
+body{margin:0}
+a{color:#734863}
+.ms{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;direction:ltr;font-feature-settings:'liga';-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.ms.f{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A6265;outline-offset:2px}
+.tf:focus{border:2px solid #734863!important;padding-left:15px!important}
+.tf.err:focus{border-color:#BA1A1A!important}
+.sl:hover{background-image:linear-gradient(rgba(28,27,27,.08),rgba(28,27,27,.08))}
+.sl:active{background-image:linear-gradient(rgba(28,27,27,.1),rgba(28,27,27,.1))}
+.sp:hover{background-image:linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08))}
+.sp:active{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.pm:active{border-radius:12px!important}
+.pp-scope{timeline-scope:--pp-main}
+.pp-main{scroll-timeline:--pp-main block}
+.pp-main>*{flex-shrink:0}
+.pp-bar{animation:pp-bar linear both;animation-timeline:--pp-main;animation-range:0 8px}
+@keyframes pp-bar{from{background-color:#FDF8F7}to{background-color:#F1EDEB}}
+</style>
+</helmet>
+<div class="pp-scope" style="position: relative; width: 412px; height: 917px; display: flex; flex-direction: column; background-color: #FDF8F7; color: #1C1B1B; font-family: Roboto, system-ui, sans-serif; overflow: hidden">
+  <header class="pp-bar" style="min-height: 64px; flex: none; display: flex; align-items: center; gap: 4px; padding: 0 4px; background-color: #FDF8F7">
+    <a href="Login.dc.html" aria-label="Volver" class="sl" style="flex: none; width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #1C1B1B; text-decoration: none"><span class="ms" aria-hidden="true" style="font-size: 24px">arrow_back</span></a>
+    <span style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; font-size: 22px; line-height: 28px; font-weight: 400">Nueva contraseña</span>
+  </header>
+  <sc-if value="{{formulario}}" hint-placeholder-val="{{true}}">
+  <main class="pp-main" style="flex: 1; overflow-y: auto; padding: 16px 16px 24px; display: flex; flex-direction: column; gap: 24px">
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <h1 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 32px; line-height: 40px; font-weight: 600">Crea una contraseña nueva</h1>
+      <p style="margin: 0; font-size: 16px; line-height: 24px">Elige una contraseña de al menos 8 caracteres.</p>
+    </div>
+    <sc-if value="{{showSummary}}" hint-placeholder-val="{{false}}">
+      <div role="alert" style="display: flex; align-items: flex-start; gap: 12px; padding: 16px; border-radius: 12px; background-color: #FFDAD6; color: #93000A">
+        <span class="ms f" aria-hidden="true" style="flex: none; font-size: 24px; color: #BA1A1A">error</span>
+        <p style="margin: 0; font-size: 14px; line-height: 20px; font-weight: 500">{{summary}}</p>
+      </div>
+    </sc-if>
+    <div style="display: flex; flex-direction: column; gap: 24px">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="position: relative">
+          <input id="nc-pass" class="{{passCls}}" type="password" autocomplete="new-password" value="{{pass}}" onChange="{{set_pass}}" aria-invalid="{{passInv}}" aria-describedby="nc-pass-err" style="width: 100%; height: 56px; box-sizing: border-box; padding: {{passPad}}; border: {{passBorder}}; border-radius: 4px; background-color: transparent; font-family: inherit; font-size: 16px; line-height: 24px; color: #1C1B1B">
+          <label for="nc-pass" style="position: absolute; left: 12px; top: -8px; padding: 0 4px; background-color: #FDF8F7; font-size: 12px; line-height: 16px; color: {{passLabel}}">Nueva contraseña</label>
+          <sc-if value="{{passErr}}" hint-placeholder-val="{{false}}"><span class="ms f" aria-hidden="true" style="position: absolute; right: 12px; top: 16px; font-size: 24px; color: #BA1A1A">error</span></sc-if>
+        </div>
+        <sc-if value="{{passErr}}" hint-placeholder-val="{{false}}"><p id="nc-pass-err" style="margin: 0; padding: 0 16px; font-size: 12px; line-height: 16px; color: #BA1A1A">{{passMsg}}</p></sc-if>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="position: relative">
+          <input id="nc-pass2" class="{{pass2Cls}}" type="password" autocomplete="new-password" value="{{pass2}}" onChange="{{set_pass2}}" aria-invalid="{{pass2Inv}}" aria-describedby="nc-pass2-err" style="width: 100%; height: 56px; box-sizing: border-box; padding: {{pass2Pad}}; border: {{pass2Border}}; border-radius: 4px; background-color: transparent; font-family: inherit; font-size: 16px; line-height: 24px; color: #1C1B1B">
+          <label for="nc-pass2" style="position: absolute; left: 12px; top: -8px; padding: 0 4px; background-color: #FDF8F7; font-size: 12px; line-height: 16px; color: {{pass2Label}}">Repetir contraseña</label>
+          <sc-if value="{{pass2Err}}" hint-placeholder-val="{{false}}"><span class="ms f" aria-hidden="true" style="position: absolute; right: 12px; top: 16px; font-size: 24px; color: #BA1A1A">error</span></sc-if>
+        </div>
+        <sc-if value="{{pass2Err}}" hint-placeholder-val="{{false}}"><p id="nc-pass2-err" style="margin: 0; padding: 0 16px; font-size: 12px; line-height: 16px; color: #BA1A1A">{{pass2Msg}}</p></sc-if>
+      </div>
+    </div>
+    <sc-if value="{{valid}}" hint-placeholder-val="{{false}}">
+      <a href="NuevaContrasena-Hecha.dc.html" class="sp pm" style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 8px 24px; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-size: 16px; line-height: 24px; font-weight: 500; text-decoration: none; text-align: center">Guardar contraseña</a>
+    </sc-if>
+    <sc-if value="{{invalid}}" hint-placeholder-val="{{true}}">
+      <button type="button" onClick="{{check}}" class="sp pm" style="width: 100%; min-height: 56px; padding: 8px 24px; border: none; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-family: inherit; font-size: 16px; line-height: 24px; font-weight: 500; cursor: pointer; text-align: center">Guardar contraseña</button>
+    </sc-if>
+  </main>
+  </sc-if>
+  <sc-if value="{{hecha}}" hint-placeholder-val="{{false}}">
+  <main class="pp-main" style="flex: 1; overflow-y: auto; padding: 48px 16px 24px; display: flex; flex-direction: column">
+  <section role="status" style="flex: none; display: flex; flex-direction: column; align-items: center; text-align: center">
+    <span aria-hidden="true" style="position: relative; flex: none; width: 96px; height: 96px; display: flex; align-items: center; justify-content: center"><svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" focusable="false" style="position: absolute; inset: 0"><path fill="#E6E2E0" d="M48.00 0.00L50.49 0.41L52.88 1.55L55.09 3.21L57.13 5.07L59.04 6.81L60.94 8.18L62.96 9.02L65.21 9.34L67.72 9.30L70.43 9.15L73.21 9.18L75.86 9.65L78.18 10.73L80.02 12.44L81.29 14.71L82.06 17.33L82.48 20.08L82.80 22.72L83.28 25.09L84.13 27.14L85.48 28.90L87.30 30.50L89.42 32.10L91.59 33.84L93.48 35.81L94.80 38.05L95.37 40.50L95.14 43.05L94.22 45.58L92.86 48.00L91.37 50.27L90.09 52.42L89.24 54.53L88.96 56.71L89.19 59.04L89.74 61.56L90.34 64.25L90.67 67.00L90.46 69.64L89.57 72.00L87.97 73.96L85.79 75.45L83.24 76.54L80.62 77.37L78.15 78.15L76.02 79.12L74.28 80.45L72.87 82.24L71.66 84.43L70.43 86.85L69.01 89.24L67.28 91.30L65.19 92.78L62.79 93.50L60.19 93.48L57.53 92.83L54.94 91.82L52.50 90.78L50.20 90.00L48.00 89.72L45.80 90.00L43.50 90.78L41.06 91.82L38.47 92.83L35.81 93.48L33.21 93.50L30.81 92.78L28.72 91.30L26.99 89.24L25.57 86.85L24.34 84.43L23.13 82.24L21.72 80.45L19.98 79.12L17.85 78.15L15.38 77.37L12.76 76.54L10.21 75.45L8.03 73.96L6.43 72.00L5.54 69.64L5.33 67.00L5.66 64.25L6.26 61.56L6.81 59.04L7.04 56.71L6.76 54.53L5.91 52.42L4.63 50.27L3.14 48.00L1.78 45.58L0.86 43.05L0.63 40.50L1.20 38.05L2.52 35.81L4.41 33.84L6.58 32.10L8.70 30.50L10.52 28.90L11.87 27.14L12.72 25.09L13.20 22.72L13.52 20.08L13.94 17.33L14.71 14.71L15.98 12.44L17.82 10.73L20.14 9.65L22.79 9.18L25.57 9.15L28.28 9.30L30.79 9.34L33.04 9.02L35.06 8.18L36.96 6.81L38.87 5.07L40.91 3.21L43.12 1.55L45.51 0.41Z"></path></svg><span class="ms" style="position: relative; font-size: 48px; color: #4F4449; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48">check_circle</span></span>
+    <h2 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 12px 0 0; font-size: 24px; line-height: 32px; font-weight: 400">Contraseña cambiada</h2>
+    <p style="margin: 12px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">Ya puedes iniciar sesión con tu contraseña nueva.</p>
+    <a href="Login.dc.html" class="sp pm" style="align-self: stretch; margin-top: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 8px 24px; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-size: 16px; line-height: 24px; font-weight: 500; text-decoration: none; text-align: center">Iniciar sesión</a>
+  </section>
+  </main>
+  </sc-if>
+  <sc-if value="{{caducado}}" hint-placeholder-val="{{false}}">
+  <main class="pp-main" style="flex: 1; overflow-y: auto; padding: 48px 16px 24px; display: flex; flex-direction: column">
+  <section role="status" style="flex: none; display: flex; flex-direction: column; align-items: center; text-align: center">
+    <span aria-hidden="true" style="position: relative; flex: none; width: 96px; height: 96px; display: flex; align-items: center; justify-content: center"><svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" focusable="false" style="position: absolute; inset: 0"><path fill="#E6E2E0" d="M48.00 0.00L50.48 0.60L52.81 2.23L54.89 4.51L56.74 6.86L58.51 8.78L60.38 9.89L62.55 10.09L65.11 9.58L67.99 8.76L71.01 8.15L73.85 8.19L76.21 9.17L77.87 11.11L78.79 13.80L79.14 16.86L79.25 19.86L79.56 22.45L80.42 24.45L82.05 25.89L84.42 26.97L87.24 28.01L90.04 29.28L92.32 30.99L93.65 33.17L93.85 35.71L93.01 38.43L91.49 41.11L89.82 43.60L88.55 45.87L88.07 48.00L88.55 50.13L89.82 52.40L91.49 54.89L93.01 57.57L93.85 60.29L93.65 62.83L92.32 65.01L90.04 66.72L87.24 67.99L84.42 69.03L82.05 70.11L80.42 71.55L79.56 73.55L79.25 76.14L79.14 79.14L78.79 82.20L77.87 84.89L76.21 86.83L73.85 87.81L71.01 87.85L67.99 87.24L65.11 86.42L62.55 85.91L60.38 86.11L58.51 87.22L56.74 89.14L54.89 91.49L52.81 93.77L50.48 95.40L48.00 96.00L45.52 95.40L43.19 93.77L41.11 91.49L39.26 89.14L37.49 87.22L35.62 86.11L33.45 85.91L30.89 86.42L28.01 87.24L24.99 87.85L22.15 87.81L19.79 86.83L18.13 84.89L17.21 82.20L16.86 79.14L16.75 76.14L16.44 73.55L15.58 71.55L13.95 70.11L11.58 69.03L8.76 67.99L5.96 66.72L3.68 65.01L2.35 62.83L2.15 60.29L2.99 57.57L4.51 54.89L6.18 52.40L7.45 50.13L7.93 48.00L7.45 45.87L6.18 43.60L4.51 41.11L2.99 38.43L2.15 35.71L2.35 33.17L3.68 30.99L5.96 29.28L8.76 28.01L11.58 26.97L13.95 25.89L15.58 24.45L16.44 22.45L16.75 19.86L16.86 16.86L17.21 13.80L18.13 11.11L19.79 9.17L22.15 8.19L24.99 8.15L28.01 8.76L30.89 9.58L33.45 10.09L35.62 9.89L37.49 8.78L39.26 6.86L41.11 4.51L43.19 2.23L45.52 0.60Z"></path></svg><span class="ms" style="position: relative; font-size: 48px; color: #4F4449; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48">link_off</span></span>
+    <h2 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 12px 0 0; font-size: 24px; line-height: 32px; font-weight: 400">Este enlace ya no sirve</h2>
+    <p style="margin: 12px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">Ha caducado o ya se ha usado. Pide uno nuevo para cambiar tu contraseña.</p>
+    <a href="Recuperar.dc.html" class="sp pm" style="align-self: stretch; margin-top: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 8px 24px; border-radius: 28px; background-color: #734863; color: #FFFFFF; font-size: 16px; line-height: 24px; font-weight: 500; text-decoration: none; text-align: center">Pedir un enlace nuevo</a>
+  </section>
+  </main>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"estado":{"editor":"enum","options":["formulario","hecha","caducado"],"default":"formulario"},"$preview":{"width":412,"height":917}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { pass: '', pass2: '', tried: false };
+  }
+  renderVals() {
+    const estado = this.props.estado ?? 'formulario';
+    const { pass, pass2, tried } = this.state;
+    const passOk = pass.length >= 8;
+    const pass2Ok = pass2.length > 0 && pass2 === pass;
+    const passErr = tried && !passOk;
+    const pass2Err = tried && !pass2Ok;
+    const n = (passErr ? 1 : 0) + (pass2Err ? 1 : 0);
+    const field = (err) => ({
+      cls: err ? 'tf err' : 'tf',
+      pad: err ? '0 52px 0 15px' : '0 16px',
+      border: err ? '2px solid #BA1A1A' : '1px solid #81747A',
+      label: err ? '#BA1A1A' : '#4F4449',
+      inv: err ? 'true' : 'false'
+    });
+    const p = field(passErr), r = field(pass2Err);
+    return {
+      formulario: estado === 'formulario', hecha: estado === 'hecha', caducado: estado === 'caducado',
+      pass, set_pass: (ev) => this.setState({ pass: ev.target.value }),
+      pass2, set_pass2: (ev) => this.setState({ pass2: ev.target.value }),
+      check: () => this.setState({ tried: true }),
+      valid: passOk && pass2Ok, invalid: !(passOk && pass2Ok),
+      showSummary: n > 0,
+      summary: n === 2 ? 'Revisa los 2 campos marcados para guardar tu contraseña.' : 'Revisa el campo marcado para guardar tu contraseña.',
+      passErr, passCls: p.cls, passPad: p.pad, passBorder: p.border, passLabel: p.label, passInv: p.inv,
+      passMsg: pass.length === 0 ? 'La contraseña debe tener al menos 8 caracteres.' : 'La contraseña debe tener al menos 8 caracteres. Ahora tiene ' + pass.length + '.',
+      pass2Err, pass2Cls: r.cls, pass2Pad: r.pad, pass2Border: r.border, pass2Label: r.label, pass2Inv: r.inv,
+      pass2Msg: pass2.length === 0 ? 'Repite la contraseña.' : 'Las contraseñas no coinciden.'
+    };
+  }
+}
+</script>
+</body>
+</html>

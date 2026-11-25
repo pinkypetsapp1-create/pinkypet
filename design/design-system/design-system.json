@@ -126,9 +126,9 @@
   ],
   "lastChange": {
     "by": "Claude",
-    "at": "2026-11-24T08:35:28Z",
+    "at": "2026-11-25T08:15:48Z",
     "via": "Claude Code",
-    "note": "F2-4: botón de texto con icono «Cerrar sesión» (logout) en la tarjeta «Mi cuenta» de Mi perfil."
+    "note": "Recuperar contraseña: «¿Has olvidado tu contraseña?», «Repetir contraseña» y sus textos de error (Button y TextField)."
   },
   "layout": "files",
   "libraries": [],

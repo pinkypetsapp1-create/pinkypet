@@ -65,6 +65,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A62
         </div>
         <sc-if value="{{passErr}}" hint-placeholder-val="{{false}}"><p id="reg-pass-err" style="margin: 0; padding: 0 16px; font-size: 12px; line-height: 16px; color: #BA1A1A">{{passMsg}}</p></sc-if>
       </div>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="position: relative">
+          <input id="reg-pass2" class="{{pass2Cls}}" type="password" autocomplete="new-password" value="{{pass2}}" onChange="{{setPass2}}" aria-invalid="{{pass2Inv}}" aria-describedby="reg-pass2-err" style="width: 100%; height: 56px; box-sizing: border-box; padding: {{pass2Pad}}; border: {{pass2Border}}; border-radius: 4px; background-color: transparent; font-family: inherit; font-size: 16px; line-height: 24px; color: #1C1B1B">
+          <label for="reg-pass2" style="position: absolute; left: 12px; top: -8px; padding: 0 4px; background-color: #FDF8F7; font-size: 12px; line-height: 16px; color: {{pass2Label}}">Repetir contraseña</label>
+          <sc-if value="{{pass2Err}}" hint-placeholder-val="{{false}}"><span class="ms f" aria-hidden="true" style="position: absolute; right: 12px; top: 16px; font-size: 24px; color: #BA1A1A">error</span></sc-if>
+        </div>
+        <sc-if value="{{pass2Err}}" hint-placeholder-val="{{false}}"><p id="reg-pass2-err" style="margin: 0; padding: 0 16px; font-size: 12px; line-height: 16px; color: #BA1A1A">{{pass2Msg}}</p></sc-if>
+      </div>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 16px">
@@ -93,15 +101,17 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A62
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { email: '', pass: '', tried: false };
+    this.state = { email: '', pass: '', pass2: '', tried: false };
   }
   renderVals() {
-    const { email, pass, tried } = this.state;
+    const { email, pass, pass2, tried } = this.state;
     const emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim());
     const passOk = pass.length >= 8;
+    const pass2Ok = pass2.length > 0 && pass2 === pass;
     const emailErr = tried && !emailOk;
     const passErr = tried && !passOk;
-    const n = (emailErr ? 1 : 0) + (passErr ? 1 : 0);
+    const pass2Err = tried && !pass2Ok;
+    const n = (emailErr ? 1 : 0) + (passErr ? 1 : 0) + (pass2Err ? 1 : 0);
     const field = (err) => ({
       cls: err ? 'tf err' : 'tf',
       pad: err ? '0 52px 0 15px' : '0 16px',
@@ -109,17 +119,20 @@ class Component extends DCLogic {
       label: err ? '#BA1A1A' : '#4F4449',
       inv: err ? 'true' : 'false'
     });
-    const e = field(emailErr), p = field(passErr);
+    const e = field(emailErr), p = field(passErr), r = field(pass2Err);
     return {
       email, pass,
       setEmail: (ev) => this.setState({ email: ev.target.value }),
       setPass: (ev) => this.setState({ pass: ev.target.value }),
+      pass2, setPass2: (ev) => this.setState({ pass2: ev.target.value }),
       check: () => this.setState({ tried: true }),
-      valid: emailOk && passOk, invalid: !(emailOk && passOk),
+      valid: emailOk && passOk && pass2Ok, invalid: !(emailOk && passOk && pass2Ok),
       showSummary: n > 0,
-      summary: n === 2 ? 'Revisa los 2 campos marcados para crear tu cuenta.' : 'Revisa el campo marcado para crear tu cuenta.',
+      summary: n === 1 ? 'Revisa el campo marcado para crear tu cuenta.' : 'Revisa los ' + n + ' campos marcados para crear tu cuenta.',
       emailErr, emailCls: e.cls, emailPad: e.pad, emailBorder: e.border, emailLabel: e.label, emailInv: e.inv,
       passErr, passCls: p.cls, passPad: p.pad, passBorder: p.border, passLabel: p.label, passInv: p.inv,
+      pass2Err, pass2Cls: r.cls, pass2Pad: r.pad, pass2Border: r.border, pass2Label: r.label, pass2Inv: r.inv,
+      pass2Msg: pass2.length === 0 ? 'Repite la contraseña.' : 'Las contraseñas no coinciden.',
       passMsg: pass.length === 0 ? 'La contraseña debe tener al menos 8 caracteres.' : 'La contraseña debe tener al menos 8 caracteres. Ahora tiene ' + pass.length + '.'
     };
   }
