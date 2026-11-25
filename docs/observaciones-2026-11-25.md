@@ -4,7 +4,7 @@ Observaciones encontradas al probar la app. Recordatorio de la regla 4 de `CLAUD
 
 ---
 
-## 1. «¿Has olvidado tu contraseña?» → correo para cambiar la contraseña
+## 1. «¿Has olvidado tu contraseña?» → correo para cambiar la contraseña · ✅ resuelto
 
 **Qué queremos:** desde Iniciar sesión, la persona pide un correo y, con el enlace que recibe, cambia su contraseña.
 
@@ -25,7 +25,7 @@ Observaciones encontradas al probar la app. Recordatorio de la regla 4 de `CLAUD
 
 ---
 
-## 2. Móvil OPPO Reno 13: «Ver compatibilidad» en dos líneas y la etiqueta «Necesidades especiales» se sale de la tarjeta
+## 2. Móvil OPPO Reno 13 · ✅ resuelto (opción A: 1 columna por debajo de 412 px): «Ver compatibilidad» en dos líneas y la etiqueta «Necesidades especiales» se sale de la tarjeta
 
 **Dónde:** «Mis mascotas compatibles» y el catálogo, en la tarjeta `pp-animal-card` (`app/src/app/ui/animal-card.ts`). El botón es tonal S y la etiqueta es `pp-tag`.
 

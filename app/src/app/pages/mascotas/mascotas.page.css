@@ -6,6 +6,8 @@
 .mascotas-ubicacion { position: relative; }
 .mascotas-menu { position: absolute; z-index: 5; left: 0; top: calc(100% - var(--space-1)); }
 .mascotas-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); margin-top: calc(-1 * var(--space-1)); }
+/* AnimalCard (DS 1795600045-6224): por debajo de 412 px de ancho, 1 columna (Catalogo-360.dc.html). */
+@media (max-width: 411.98px) { .mascotas-grid { grid-template-columns: minmax(0, 1fr); } }
 .mascotas-promo { margin-top: var(--space-2); }
 .mascotas-promo .pp-card__actions { margin-top: var(--space-6); }
 /* El diseño deja 48 px entre el título y la forma: 16 (hueco) + 16 (relleno de pp-empty) + 16. */

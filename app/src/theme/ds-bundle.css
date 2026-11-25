@@ -1,5 +1,5 @@
 /* ARCHIVO GENERADO · NO EDITAR
- * Origen: design/design-system/components/bundle.css (sha256 49db8b900e5057c5…), sin el @import de Google Fonts
+ * Origen: design/design-system/components/bundle.css (sha256 1b24ecbae3e7d58b…), sin el @import de Google Fonts
  * Regenerar con: npm run tokens
  */
 /* Pinky Pet · M3 Expressive — estilos de componentes extraídos del wireframe de fidelidad media.
@@ -103,7 +103,7 @@
 .pp-animal-card__spacer { flex: 1; min-height: 12px; }
 .pp-animal-card__footer { border-top: 1px solid var(--outline-variant); }
 .pp-animal-card__footer .pp-target { margin-top: 4px; }
-.pp-animal-card .pp-tag { margin-top: 12px; }
+.pp-animal-card .pp-tag { margin-top: 12px; max-width: 100%; white-space: normal; }
 .pp-animal-card .pp-media { margin: -16px -16px 0; height: 128px; border-radius: calc(var(--corner-medium) - 1px) calc(var(--corner-medium) - 1px) 0 0; background: var(--tertiary-container); color: var(--on-tertiary-container); }
 .pp-animal-card .pp-meter { margin-top: 12px; }
 
