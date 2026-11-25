@@ -58,20 +58,34 @@ Necesitas la **huella SHA-1** de la firma del APK de depuración, que aparece al
 
 Sin `BREVO_API_KEY` todo funciona igual, pero el correo no sale (en local se escribe en la terminal de la API).
 
-## 4. App Android: Android Studio y APK de depuración
+## 4. App Android: APK de depuración desde la terminal (sin Android Studio)
 
-1. Instala **Android Studio** desde <https://developer.android.com/studio> (con el asistente por defecto: SDK, emulador y JDK incluidos).
-2. En Android Studio → *Device Manager* → crea un emulador **Pixel 7** (pantalla de 412 × 915 dp, la más parecida al lienzo) con Android 15.
-3. Huella SHA-1 para Google (paso 3.5), en la terminal:
-   `keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android | grep SHA1`
-4. Genera el APK (o pídemelo y lo hago yo):
-   ```
-   cd app
-   npx ng build
-   npx cap sync android
-   cd android && ./gradlew assembleDebug
-   ```
-   El APK queda en `app/android/app/build/outputs/apk/debug/app-debug.apk`. Para abrirlo en el emulador: `npx cap run android`.
+Hace falta **Java 25** (ya instalado: `/usr/libexec/java_home -v 25`) y el **SDK de Android** en `~/Library/Android/sdk`. No hacen falta permisos de administración.
+
+**Una sola vez, para instalar el SDK** (≈ 650 MB):
+```
+mkdir -p ~/Library/Android/sdk/cmdline-tools && cd /tmp
+curl -fLO https://dl.google.com/android/repository/commandlinetools-mac-13114758_latest.zip
+unzip -q commandlinetools-mac-13114758_latest.zip && mv cmdline-tools ~/Library/Android/sdk/cmdline-tools/latest
+export ANDROID_HOME=~/Library/Android/sdk
+yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools"
+echo "sdk.dir=$HOME/Library/Android/sdk" > ~/proyecto/pinkypet/app/android/local.properties
+```
+
+**Cada vez que queráis un APK nuevo** (≈ 1 minuto; la primera vez, ~7):
+```
+cd ~/proyecto/pinkypet/app
+npx ng build && npx cap sync android
+cd android && JAVA_HOME=$(/usr/libexec/java_home -v 25) ./gradlew assembleDebug
+```
+El APK queda en `app/android/app/build/outputs/apk/debug/app-debug.apk` (≈ 14 MB). Apunta al backend de Render.
+
+**Instalarlo en el móvil:** pasad el APK al móvil (cable USB, Google Drive, correo…), abridlo y permitid «Instalar apps desconocidas» para esa app. Con el móvil conectado por USB y la depuración USB activada, también: `~/Library/Android/sdk/platform-tools/adb install -r app-debug.apk`.
+
+**Gradle 9.1** (no 8.14) porque Gradle 8 no funciona con Java 25.
+
+**Huella SHA-1 de la firma de depuración** (para el cliente Android de Google, paso 3.5): `840b02b3859b572c2611cb2408da2b133e39a28b`. Es la de este Mac (`~/.android/debug.keystore`): si se compila en otro ordenador, la huella cambia. Para verla: `~/Library/Android/sdk/build-tools/36.0.0/apksigner verify --print-certs app-debug.apk`.
 
 ## 5. Prueba básica
 
