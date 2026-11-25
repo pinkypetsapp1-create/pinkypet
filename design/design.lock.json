@@ -2,8 +2,8 @@
   "comment": "Generado por scripts/design-lock.mjs. No editar a mano.",
   "designSystem": {
     "url": "https://claude.ai/artifact/FdYKiHu4B9TE7YT6tG8ErF",
-    "version": "1795600951-f0b0",
-    "syncedAt": "2026-11-25T10:04:19Z",
+    "version": "1795604949-7133",
+    "syncedAt": "2026-11-25T11:10:56Z",
     "files": {
       "README.md": "9123948f7673016b17a6a6f93bbaeed5857c26cee323ebd2fc002a0eeb3a1a85",
       "assets/Fotos/README.md": "14e49479edba3383ba6dd1f2d8c5a2a7463c30d0df855bd86e569e125aa7c311",
@@ -32,7 +32,7 @@
       "components/CompatibilityMeter/README.md": "100a96f25d84bbed4d8b2d121e0572e497f52f616a91527c1f45daf458fd8fb5",
       "components/CompatibilityMeter/preview.html": "130dc2f3cae289c666f893434a16e058a459af0339a0af2ee3977ab7bd16753a",
       "components/Cover/preview.html": "410340845531149ad197b11bd86816bd405e3cd9354374e21dd4b75a7483b557",
-      "components/Dialog/README.md": "fb2dec030846418e5f90df657fdb20602a8daa862728f6b07668c458972c5e4d",
+      "components/Dialog/README.md": "15c9165813b99e496e2657fc74fd0a17eb97478a27360ebbd0688be6fe54537d",
       "components/Dialog/preview.html": "fc2598435465ed22ffde51b546e8d4f4cffa2d9f30786de8d410b97a92f72417",
       "components/Divider/README.md": "62e8ba5b86e9440775f62d9ea96547a167ed5b409c61b42b9455a4ace2eba284",
       "components/Divider/preview.html": "1555ed4e9ab55e88c1e0a90f8e51072048edf4a440619871802c79facc063712",
@@ -66,7 +66,7 @@
       "components/ProcessHero/preview.html": "5f803083f3be8a107dca1d685618b14ce65d7f52f5ea2530694932b435741f55",
       "components/ProcessSteps/README.md": "d2e5e297f6f76c4158273bf13457532c9088e7b353be6fe44f095cf56cedda4e",
       "components/ProcessSteps/preview.html": "1cf2ec796b0fc2e578fce980e2c0eaa409d7d09abd77e78d9916f37ea4a09427",
-      "components/ProgressRing/README.md": "9231d385af2b0344adf8b7c18d2842efacd74a8770a39a72be181ba3c5f24f80",
+      "components/ProgressRing/README.md": "5fb4006adc4cc5b75d02e996cc22340d0392b5c3b955e93c003c06c475b05046",
       "components/ProgressRing/preview.html": "765d682c5be43f057307086ae9b597de9145191128262a1ba3fabd9e4934e172",
       "components/Question/README.md": "b7d31af4541cc0c7915e6dc7a3b26c59693f08d870e2eaff8c5ce320a179dd36",
       "components/Question/preview.html": "374a0bd62c5d428c288bb98831e5ad536eab94450a481a75d8d830d1f1925fb6",
@@ -92,8 +92,8 @@
       "components/TextPatterns/preview.html": "9c02b9335229c9ef63600796714f93cc931d569006d0fe19a632e419a17c441d",
       "components/TopAppBar/README.md": "c6c173f775589117e3be0304b5d1f500b222287db8ef3bad2d0273670ae615a6",
       "components/TopAppBar/preview.html": "f20077cf2e128241b929166e6d3baefb3c943323f10e52cb05a9fc5e0b62532b",
-      "components/bundle.css": "1b24ecbae3e7d58b4d22b616b00d4cd2be8dbac527170651945ac14e900729d3",
-      "design-system.json": "ec71d40fe0a51a55483082478e4a5be41eb483f4549d893be0157b4ee627b179",
+      "components/bundle.css": "0b5b95508d71e64f0cf003a6b2ebb460b8d1effcd9f15854073bba880072c4d1",
+      "design-system.json": "eaa91ab563947b15abdd986c1b5d101c97551ca8ce814159cbf0ebe4a54110ae",
       "tokens.json": "1fee07b9fff74615370f294ad47ba50174836de51af824199c5e0aca53f446db"
     },
     "assets": {
@@ -149,8 +149,8 @@
   },
   "altaFidelidad": {
     "url": "https://claude.ai/artifact/1MwUAQpwJFExpLby6g9vH2",
-    "version": "1795600954-b874",
-    "syncedAt": "2026-11-25T10:04:19Z",
+    "version": "1795604953-aa22",
+    "syncedAt": "2026-11-25T11:10:56Z",
     "coherence": {
       "recordedVersion": "1795026227-9d5e",
       "copiedAt": "2026-11-18T18:35:00Z",
@@ -219,7 +219,10 @@
       "Inicio-Registrado.dc.html": "b6deef016bad62d74aed2f3f36323b427039f09e08003d0bc4fabae6ed26718d",
       "Inicio-Sesion.dc.html": "8fed1f98be328e12e9f89330383523f35a519accf1cb5a66708dfec61741d800",
       "Login.dc.html": "2296434aa74f31ea771bc9c33b72c8f8cbeb49e1af06eb33269408a7bf345ef7",
-      "Main.dc.html": "0dae55cd72e55a8ee907c57427e7cb46e06d40d4732084afe90eed290a4c974b",
+      "Main-Info-DiaADia.dc.html": "8a6006a1c82b2bae6f88f043c848f81b60fa142ca619c1082adab7e82c4f3784",
+      "Main-Info-Hogar.dc.html": "ef5e1d50e1d133593f875feefcc3b05a90d8e9bdab997d598cf6d805999e0d14",
+      "Main-Info-Mascota.dc.html": "6bac7ec952956e91ade6dd2e8bf594fd69dd31dcf652d0b4fb488dca5f609e46",
+      "Main.dc.html": "0fd2c9eaec8c8c805ffece2a120df11ffbdee5b50e91d272a6c1909872673258",
       "MainOscuro.dc.html": "6e9b37778efa294414722e6278e94ca3a65d4f40a1ec8a0e70c04d357903eb9c",
       "MainTexto.dc.html": "3669c62d14de4e40a0f66bce72e3734ee80ca8e12cc7204e1d8c23fca48969b0",
       "MainZoom.dc.html": "1a9563ea3eff1509dbfdf8d10059501c6d519ef3048c7699a19e492b39a18ebd",
@@ -270,7 +273,7 @@
       "Zoom-MiSolicitud.dc.html": "1dc9a6afc15968b9d29091e4940ff7f66a2f533984138c772d4e801e7fa88494",
       "Zoom-Test-Completado.dc.html": "af226554e23cdb6052e0ea3d3004b4ddac5c6df4f1678b05990abf52f3ce0508",
       "Zoom-Test.dc.html": "0051bec92f9c5219d9b131f56aa251f1239faf2fb23c720aca9c5f705351d0a5",
-      "canvas.json": "907ab3e9bd05fc248bede2efdd71cd2227a7924a7d7401cb5d6869ade2450494"
+      "canvas.json": "447fa36309f780cc85ee28884727bbf67da2fea8e2cc179684ca90e47efaad09"
     }
   },
   "reference": {

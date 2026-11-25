@@ -85,7 +85,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A62
       <h2 style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 0; font-size: 22px; line-height: 28px; font-weight: 400">Qué tiene en cuenta el test</h2>
       <p style="margin: 0; font-size: 14px; line-height: 20px; color: #4F4449">15 preguntas en 3 bloques de 5. Cada diagrama indica qué parte del test ocupa cada bloque.</p>
       <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
-        <div role="img" aria-label="Mi hogar: 5 preguntas, 34 % del test" style="box-sizing: border-box; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center">
+        <button type="button" onClick="{{abrirHogar}}" aria-haspopup="dialog" aria-label="Mi hogar, 34 % del test. Ver qué preguntas incluye" class="sl" style="width: 100%; margin: 0; font-family: inherit; color: inherit; cursor: pointer; box-sizing: border-box; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center">
           <span class="ms" aria-hidden="true" style="font-size: 24px; color: #4F4449">chair</span>
           <div style="position: relative; width: 88px; height: 88px; margin: 4px 0">
             <svg width="88" height="88" viewBox="0 0 88 88" aria-hidden="true" style="display: block">
@@ -96,8 +96,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A62
           </div>
           <span aria-hidden="true" style="font-size: 14px; line-height: 20px; font-weight: 500">Mi hogar</span>
           <span aria-hidden="true" style="font-size: 12px; line-height: 16px; color: #4F4449">5 preguntas</span>
-        </div>
-        <div role="img" aria-label="Mi día a día: 5 preguntas, 33 % del test" style="box-sizing: border-box; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center">
+        </button>
+        <button type="button" onClick="{{abrirDia}}" aria-haspopup="dialog" aria-label="Mi día a día, 33 % del test. Ver qué preguntas incluye" class="sl" style="width: 100%; margin: 0; font-family: inherit; color: inherit; cursor: pointer; box-sizing: border-box; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center">
           <span class="ms" aria-hidden="true" style="font-size: 24px; color: #4F4449">schedule</span>
           <div style="position: relative; width: 88px; height: 88px; margin: 4px 0">
             <svg width="88" height="88" viewBox="0 0 88 88" aria-hidden="true" style="display: block">
@@ -108,8 +108,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A62
           </div>
           <span aria-hidden="true" style="font-size: 14px; line-height: 20px; font-weight: 500">Mi día a día</span>
           <span aria-hidden="true" style="font-size: 12px; line-height: 16px; color: #4F4449">5 preguntas</span>
-        </div>
-        <div role="img" aria-label="La mascota que busco: 5 preguntas, 33 % del test" style="box-sizing: border-box; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center">
+        </button>
+        <button type="button" onClick="{{abrirMascota}}" aria-haspopup="dialog" aria-label="La mascota que busco, 33 % del test. Ver qué preguntas incluye" class="sl" style="width: 100%; margin: 0; font-family: inherit; color: inherit; cursor: pointer; box-sizing: border-box; background-color: #FFFFFF; border: 1px solid #D2C2C9; border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center">
           <span class="ms" aria-hidden="true" style="font-size: 24px; color: #4F4449">pet_supplies</span>
           <div style="position: relative; width: 88px; height: 88px; margin: 4px 0">
             <svg width="88" height="88" viewBox="0 0 88 88" aria-hidden="true" style="display: block">
@@ -120,7 +120,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A62
           </div>
           <span aria-hidden="true" style="font-size: 14px; line-height: 20px; font-weight: 500">La mascota que busco</span>
           <span aria-hidden="true" style="font-size: 12px; line-height: 16px; color: #4F4449">5 preguntas</span>
-        </div>
+        </button>
       </div>
       <p style="margin: 0; display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 20px; color: #4F4449">
         <span class="ms" aria-hidden="true" style="flex: none; font-size: 20px; color: #734863">check_circle</span>
@@ -141,10 +141,29 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A62
   </main>
 
   <dc-import name="TabBar" active="inicio" estado="{{estado}}" segunda="{{segunda}}" hint-size="412px,64px"></dc-import>
+  <sc-if value="{{infoOpen}}" hint-placeholder-val="{{false}}">
+    <button type="button" aria-label="Cerrar" onClick="{{cerrarInfo}}" style="position: absolute; inset: 0; z-index: 20; border: none; padding: 0; margin: 0; background-color: rgba(0, 0, 0, 0.32); cursor: pointer"></button>
+    <div role="dialog" aria-modal="true" aria-labelledby="info-t" aria-describedby="info-d" style="position: absolute; z-index: 21; left: 50px; top: 50%; transform: translateY(-50%); width: 312px; box-sizing: border-box; padding: 24px; border-radius: 28px; background-color: #ECE7E6; display: flex; flex-direction: column">
+      <span class="ms" aria-hidden="true" style="align-self: center; font-size: 24px; color: #3A6265">{{infoIcon}}</span>
+      <h2 id="info-t" style="font-family: Fraunces, Georgia, serif; font-optical-sizing: auto; font-variation-settings: 'SOFT' 50, 'WONK' 0; margin: 16px 0 0; font-size: 24px; line-height: 32px; font-weight: 400; text-align: center">{{infoTitle}}</h2>
+      <div id="info-d">
+        <p style="margin: 16px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">{{infoP1}}</p>
+        <p style="margin: 12px 0 0; font-size: 14px; line-height: 20px; color: #4F4449">{{infoP2}}</p>
+      </div>
+      <div style="margin-top: 24px; display: flex; flex-direction: column; align-items: flex-end">
+        <a href="{{infoHref}}" class="sl" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 12px; border-radius: 24px; color: #734863; font-size: 14px; line-height: 20px; font-weight: 500; text-decoration: none">{{infoCta}}</a>
+        <button type="button" onClick="{{cerrarInfo}}" class="sl" style="min-height: 48px; padding: 0 12px; border: none; border-radius: 24px; background-color: transparent; color: #734863; font-family: inherit; font-size: 14px; line-height: 20px; font-weight: 500; cursor: pointer">Cerrar</button>
+      </div>
+    </div>
+  </sc-if>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"estado":{"editor":"enum","options":["invitado","registrado","completo"],"default":"invitado"},"segunda":{"editor":null},"$preview":{"width":412,"height":917}}'>
+<script type="text/x-dc" data-dc-script data-props='{"estado":{"editor":"enum","options":["invitado","registrado","completo"],"default":"invitado"},"segunda":{"editor":null},"info":{"editor":"enum","options":["","hogar","dia","mascota"],"default":""},"$preview":{"width":412,"height":917}}'>
 class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { info: null };
+  }
   renderVals() {
     const estado = this.props.estado ?? 'invitado';
     const segunda = this.props.segunda || '';
@@ -169,6 +188,13 @@ class Component extends DCLogic {
       href: test ? 'Ficha-' + a.name + '.dc.html' : hCatalogo,
       aria: test ? a.name + ', ' + a.pct + ' % compatible. Ver su ficha' : a.name + '. Ver las mascotas'
     }));
+    const BLOQUES = {
+      hogar: { icon: 'chair', t: 'Mi hogar', p1: 'Una mascota pasa casi todo su tiempo en casa. Estas 5 preguntas comprueban si tu hogar está preparado para ella: si hay niños pequeños u otras mascotas, si todas las personas con las que vives están de acuerdo, el tipo de vivienda y si permite tener animales.', p2: 'Cuenta un 34 % del resultado. Los tres bloques pesan casi lo mismo; el hogar, un poco más, porque sin una casa preparada lo demás no se puede cumplir.' },
+      dia: { icon: 'schedule', t: 'Mi día a día', p1: 'Cuidar de una mascota pide tiempo cada día. Estas 5 preguntas miran cuántas horas estaría sola, cuánto tiempo puedes dedicarle, quién la cuidaría si viajas o enfermas, tu ritmo de vida y si ya has tenido mascotas.', p2: 'Cuenta un 33 % del resultado, un tercio del test.' },
+      mascota: { icon: 'pet_supplies', t: 'La mascota que busco', p1: 'Cada mascota tiene su carácter y sus necesidades. Estas 5 preguntas recogen lo que buscas: tamaño, nivel de actividad y edad, lo que puedes dedicar cada mes a sus cuidados y si adoptarías una mascota con necesidades especiales.', p2: 'Cuenta un 33 % del resultado, un tercio del test.' }
+    };
+    const infoKey = this.state.info !== null ? this.state.info : (this.props.info || '');
+    const bloque = BLOQUES[infoKey];
     let hero;
     if (test && segunda) {
       hero = { t: 'Tu solicitud para adoptar a ' + segunda + ' está en proceso', b: 'La protectora la está revisando. Te avisaremos cuando responda.', c: 'Ver el estado de mi solicitud', h: segunda === 'Luna' ? 'MiSolicitud.dc.html' : 'Solicitud-' + segunda + '.dc.html' };
@@ -180,7 +206,14 @@ class Component extends DCLogic {
     return {
       estado, segunda, sinSesion: !sesion, hCatalogo, animals,
       carTitle: test ? 'Los que más encajan contigo' : 'Buscan hogar',
-      heroTitle: hero.t, heroBody: hero.b, heroCta: hero.c, heroHref: hero.h
+      heroTitle: hero.t, heroBody: hero.b, heroCta: hero.c, heroHref: hero.h,
+      infoOpen: !!bloque, infoIcon: bloque ? bloque.icon : '', infoTitle: bloque ? bloque.t : '', infoP1: bloque ? bloque.p1 : '', infoP2: bloque ? bloque.p2 : '',
+      infoCta: test ? 'Revisar mis respuestas' : 'Hacer el test de compatibilidad',
+      infoHref: test ? 'PerfilCompletado.dc.html' : (sesion ? 'Test.dc.html' : 'Registro.dc.html'),
+      abrirHogar: () => this.setState({ info: 'hogar' }),
+      abrirDia: () => this.setState({ info: 'dia' }),
+      abrirMascota: () => this.setState({ info: 'mascota' }),
+      cerrarInfo: () => this.setState({ info: '' })
     };
   }
 }

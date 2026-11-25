@@ -15,7 +15,7 @@ Al aparecer, el tramo activo se llena desde 0 con el spring espacial de Expressi
 r = 40, así que la circunferencia es 251,33. Con extremos redondeados de 8, el hueco del trazo es 4 + 8 = 12: activo = C·p − 12; la pista empieza en activo + 12 y mide C − activo − 24.
 
 ## Accesibilidad
-Cada tarjeta es `role="img"` con su `aria-label` («Mi hogar: 5 preguntas, 34 % del test»); lo de dentro va con `aria-hidden`.
+Cada tarjeta es un **botón** (`<button class="pp-ring-tile pp-state">`) que abre el diálogo de su bloque (ver `Dialog`), con `aria-label` «Mi hogar, 34 % del test. Ver qué preguntas incluye» y `aria-haspopup="dialog"`; lo de dentro va con `aria-hidden`. Al pulsarla, capa de estado de M3 (`pp-state`). *Cambio del equipo, 25-11-2026: antes era `role="img"`, sin acción.*
 
 ## Fuente
 Wireframe de fidelidad media: Inicio.

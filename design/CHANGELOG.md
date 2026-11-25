@@ -2,6 +2,13 @@
 
 Cada entrada corresponde a una ejecución de `/sincronizar-diseno` (o a la copia inicial). Los sha256 de cada archivo están en `design.lock.json`.
 
+## 2026-11-25 · DS 1795604949-7133 / AF 1795604953-aa22 · Ventanas de «Qué tiene en cuenta el test»
+
+Observación del equipo: al pulsar cada caja de porcentaje, una ventana que explique el bloque, con el botón para hacer el test. Textos aprobados el 25-11-2026.
+- **DS:** `Dialog/README.md` (variante «Bloque del test», informativa con acción); `ProgressRing/README.md` (la caja es un botón que abre su diálogo); `bundle.css` (`button.pp-ring-tile`).
+- **AF:** `Main` con las cajas como botones y el diálogo de cada bloque (prop `info`); pantallas nuevas `Main-Info-Hogar`, `Main-Info-DiaADia` y `Main-Info-Mascota`; notas `nMain` y `nInfoBloques`; copia de `bundle.css` dentro de AF actualizada.
+- **Tokens y assets:** sin cambios. Coherencia DS ↔ AF: OK.
+
 ## 2026-11-25 · DS 1795600951-f0b0 / AF 1795600954-b874 · Animación del logotipo al abrir la app
 
 Observación del equipo: que la animación del logotipo salga cada vez que se abre la app.
