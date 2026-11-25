@@ -2,8 +2,8 @@
   "comment": "Generado por scripts/design-lock.mjs. No editar a mano.",
   "designSystem": {
     "url": "https://claude.ai/artifact/FdYKiHu4B9TE7YT6tG8ErF",
-    "version": "1795600045-6224",
-    "syncedAt": "2026-11-25T09:50:31Z",
+    "version": "1795600951-f0b0",
+    "syncedAt": "2026-11-25T10:04:19Z",
     "files": {
       "README.md": "9123948f7673016b17a6a6f93bbaeed5857c26cee323ebd2fc002a0eeb3a1a85",
       "assets/Fotos/README.md": "14e49479edba3383ba6dd1f2d8c5a2a7463c30d0df855bd86e569e125aa7c311",
@@ -76,7 +76,7 @@
       "components/SelectableCard/preview.html": "244e5429b3567f3a7b4afb97a8f5a88fea70ef3221b5b8383a21ccff5fad9e9b",
       "components/Shapes/README.md": "a613a5ddd804ff8e5a208c7197a02b1cdaadb0fb1bff7d33029f7f10515c173e",
       "components/Shapes/preview.html": "5d8b2ae390a22c98db7a3f2974e4cd6440c0b7af95a0a0588828c5c39a913052",
-      "components/SplashPrimerInicio/README.md": "904812015992a0a31506501a65e9fd4a4fcfe91d67559f9b51478aaf35b1e66b",
+      "components/SplashPrimerInicio/README.md": "7e3a84a06e02efc116f6c3ae595a664b136fc236e459e4725e18cc4914e17b15",
       "components/SplashPrimerInicio/preview.html": "371f1c767aa04e181a2ae55b1db48e3501d7a127342108dc720f197624f0a23c",
       "components/StatusCard/README.md": "76fb9b8182f042f3a84a2b140cc2cccc2ae858a7c1e209a3374ce56e0418a508",
       "components/StatusCard/preview.html": "32a93cade8b8606bd488b3a7e8008b2ac593bbfca2b85ac51bc05f8f2bc3f79e",
@@ -93,7 +93,7 @@
       "components/TopAppBar/README.md": "c6c173f775589117e3be0304b5d1f500b222287db8ef3bad2d0273670ae615a6",
       "components/TopAppBar/preview.html": "f20077cf2e128241b929166e6d3baefb3c943323f10e52cb05a9fc5e0b62532b",
       "components/bundle.css": "1b24ecbae3e7d58b4d22b616b00d4cd2be8dbac527170651945ac14e900729d3",
-      "design-system.json": "81274c95de8f76a1ec90d8540c87851cddb4443a6d4a71492c294eb167e59852",
+      "design-system.json": "ec71d40fe0a51a55483082478e4a5be41eb483f4549d893be0157b4ee627b179",
       "tokens.json": "1fee07b9fff74615370f294ad47ba50174836de51af824199c5e0aca53f446db"
     },
     "assets": {
@@ -149,8 +149,8 @@
   },
   "altaFidelidad": {
     "url": "https://claude.ai/artifact/1MwUAQpwJFExpLby6g9vH2",
-    "version": "1795600216-4a29",
-    "syncedAt": "2026-11-25T09:50:31Z",
+    "version": "1795600954-b874",
+    "syncedAt": "2026-11-25T10:04:19Z",
     "coherence": {
       "recordedVersion": "1795026227-9d5e",
       "copiedAt": "2026-11-18T18:35:00Z",
@@ -270,7 +270,7 @@
       "Zoom-MiSolicitud.dc.html": "1dc9a6afc15968b9d29091e4940ff7f66a2f533984138c772d4e801e7fa88494",
       "Zoom-Test-Completado.dc.html": "af226554e23cdb6052e0ea3d3004b4ddac5c6df4f1678b05990abf52f3ce0508",
       "Zoom-Test.dc.html": "0051bec92f9c5219d9b131f56aa251f1239faf2fb23c720aca9c5f705351d0a5",
-      "canvas.json": "20fd0c08e1ebca47a2e8b510297947b5f847b27eb64e8a13695306b44f940ba5"
+      "canvas.json": "907ab3e9bd05fc248bede2efdd71cd2227a7924a7d7401cb5d6869ade2450494"
     }
   },
   "reference": {

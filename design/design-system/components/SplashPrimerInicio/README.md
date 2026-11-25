@@ -1,8 +1,8 @@
 # Splash / Primer inicio
-Animación de marca que se ve **solo la primera vez que se abre la app** (después se entra directamente al Inicio). Dura **1,55 s**, no tiene texto ni barra de carga y termina en el Inicio real: el sello de la marca vuela hasta el sello de la barra superior.
+Animación de marca que se ve **cada vez que se abre la app** (al arrancarla de cero; no al volver al Inicio desde otra pestaña ni al volver a la app desde segundo plano). Dura **1,55 s**, no tiene texto ni barra de carga y termina en el Inicio real: el sello de la marca vuela hasta el sello de la barra superior.
 
 ## Secuencia (pantalla de 412 × 917)
-1. Sobre el Inicio («sin cuenta», porque la primera vez nadie ha iniciado sesión) aparece una **capa** `surface` al 86 % con desenfoque de 5 px.
+1. Sobre el Inicio (en el estado de la persona: sin cuenta, registrada o con test) aparece una **capa** `surface` al 86 % con desenfoque de 5 px.
 2. **4 huellas** (`Huella`, 40 px) suben desde abajo por el eje central, alternando ±23 px y ±6°: centros en y = 858, 780, 702 y 624.
 3. Aparece el **sello** centrado: 239 px (58 % del ancho), centro en (206, 445). Es el mismo `pp-mark` del logo, a otro tamaño.
 4. El sello **vuela** hasta el sello de 32 px de la barra (centro en 32, 32): `translate(-174px, -413px) scale(.1339)`. Aterriza sobre el círculo, no sobre el conjunto con «Pinky Pet».
@@ -28,11 +28,11 @@ El documento de partida proponía `(.25, .8, .25, 1)` y `(.4, 0, .2, 1)`; no son
 En Oscuro, `[data-theme="dark"]` (o `pp-splash--dark`) sube la opacidad de las huellas a 0,7, porque al 0,5 se pierden sobre el fondo oscuro.
 
 ## Reglas
-- **Solo el primer inicio.** La app guarda que ya se vio; las siguientes veces abre el Inicio sin animación.
+- **Cada vez que se abre la app.** Se muestra una sola vez por arranque, al llegar al Inicio. Si la app se abre en otra pantalla (por ejemplo, desde el enlace del correo de «Nueva contraseña»), no se muestra. *Cambio del equipo, 25-11-2026: antes era solo el primer inicio.*
 - **Movimiento reducido:** con `prefers-reduced-motion: reduce` no se muestra nada y se ve el Inicio directamente.
 - **Accesibilidad:** todo el componente es decorativo (`aria-hidden="true"`). Mientras dura, la capa recibe los toques para que no se pulse nada por debajo; al terminar se oculta y el foco empieza en el Inicio. Dura menos de 5 s y no parpadea.
 - **Capa:** M3 no tiene un rol para esta capa (su `scrim` es negro al 32 %). Se usa `surface` con transparencia: no es un color nuevo, es un rol del tema mezclado con transparente.
-- **Plataforma:** en Android 12 o posterior el sistema muestra antes su propia pantalla de arranque con el icono. Esta animación es una **transición de primer inicio** que va después, no sustituye a esa pantalla.
+- **Plataforma:** en Android 12 o posterior el sistema muestra antes su propia pantalla de arranque con el icono. Esta animación es una **transición de entrada** que va después, no sustituye a esa pantalla.
 - Sin texto, sin huellas en horizontal y sin rebote.
 
 ## Uso

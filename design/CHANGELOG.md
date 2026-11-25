@@ -2,6 +2,13 @@
 
 Cada entrada corresponde a una ejecución de `/sincronizar-diseno` (o a la copia inicial). Los sha256 de cada archivo están en `design.lock.json`.
 
+## 2026-11-25 · DS 1795600951-f0b0 / AF 1795600954-b874 · Animación del logotipo al abrir la app
+
+Observación del equipo: que la animación del logotipo salga cada vez que se abre la app.
+- **DS:** `SplashPrimerInicio/README.md`: cada vez que se abre la app en Inicio, una vez por arranque (antes, solo la primera vez); sobre el Inicio del estado de la persona.
+- **AF:** notas `t00` y `n00` del canvas.
+- **Tokens, assets y CSS:** sin cambios. Coherencia DS ↔ AF: OK.
+
 ## 2026-11-25 · DS 1795600045-6224 / AF 1795600216-4a29 · Tarjetas en pantallas estrechas
 
 Observación del equipo (OPPO Reno 13): «Ver compatibilidad» en dos líneas y «Necesidades especiales» fuera de la tarjeta. Opción A aprobada.
