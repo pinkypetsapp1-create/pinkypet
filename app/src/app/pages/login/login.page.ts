@@ -1,5 +1,5 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { IonContent } from '@ionic/angular';
 import { ApiError } from '../../core/api';
 import { EMAIL_PATTERN, TEXTOS } from '../../core/error-text';
@@ -14,7 +14,7 @@ import { networkText } from '../network-text';
 /** Iniciar sesión y Error-Login. «Continuar con Google» oculto (SPEC §10). */
 @Component({
   selector: 'pp-login',
-  imports: [IonContent, TopAppBar, TextField, Banner, AccountPrompts],
+  imports: [IonContent, RouterLink, TopAppBar, TextField, Banner, AccountPrompts],
   templateUrl: './login.page.html',
   styleUrl: '../auth.css',
 })

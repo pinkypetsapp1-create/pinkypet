@@ -25,8 +25,10 @@ export class RegistroPage {
   protected readonly scrolled = signal(false);
   protected readonly email = signal('');
   protected readonly password = signal('');
+  protected readonly password2 = signal('');
   protected readonly emailError = signal<string | null>(null);
   protected readonly passError = signal<string | null>(null);
+  protected readonly pass2Error = signal<string | null>(null);
   protected readonly summary = signal<string | null>(null);
   protected readonly emailTaken = signal(false);
   protected readonly sending = signal(false);
@@ -37,9 +39,10 @@ export class RegistroPage {
     const email = this.email().trim();
     const pass = this.password();
     const emailErr = EMAIL_PATTERN.test(email) ? null : TEXTOS.emailFormato;
-    const passErr = pass.length >= 8 ? null : pass.length === 0 ? TEXTOS.passMin : TEXTOS.passMinAhora(pass.length);
-    this.showFieldErrors(emailErr, passErr);
-    if (emailErr || passErr) return;
+    const passErr = TEXTOS.passError(pass);
+    const pass2Err = TEXTOS.pass2Error(pass, this.password2());
+    this.showFieldErrors(emailErr, passErr, pass2Err);
+    if (emailErr || passErr || pass2Err) return;
 
     this.sending.set(true);
     try {
@@ -62,10 +65,11 @@ export class RegistroPage {
     void this.router.navigate(['/login'], { queryParams: { email: this.email().trim() } });
   }
 
-  private showFieldErrors(emailErr: string | null, passErr: string | null): void {
+  private showFieldErrors(emailErr: string | null, passErr: string | null, pass2Err: string | null = null): void {
     this.emailError.set(emailErr);
     this.passError.set(passErr);
-    const n = (emailErr ? 1 : 0) + (passErr ? 1 : 0);
+    this.pass2Error.set(pass2Err);
+    const n = [emailErr, passErr, pass2Err].filter(Boolean).length;
     this.summary.set(n ? TEXTOS.resumenRegistro(n) : null);
   }
 

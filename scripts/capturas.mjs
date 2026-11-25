@@ -24,7 +24,8 @@ const ESCENARIOS = {
       nombre: 'Error-Registro-Campos', ruta: '/registro',
       acciones: async (p) => {
         await p.getByLabel('Correo electrónico').fill('nombre@correo');
-        await p.getByLabel('Contraseña').fill('123456');
+        await p.getByLabel('Contraseña', { exact: true }).fill('123456');
+        await p.getByLabel('Repetir contraseña').fill('perro12');
         await p.getByRole('button', { name: 'Crear cuenta y hacer el test' }).click();
       },
     },
@@ -32,7 +33,8 @@ const ESCENARIOS = {
       nombre: 'Error-Registro-Existe', ruta: '/registro',
       acciones: async (p) => {
         await p.getByLabel('Correo electrónico').fill(CUENTA.conTest);
-        await p.getByLabel('Contraseña').fill('una-contraseña-larga');
+        await p.getByLabel('Contraseña', { exact: true }).fill('una-contraseña-larga');
+        await p.getByLabel('Repetir contraseña').fill('una-contraseña-larga');
         await p.getByRole('button', { name: 'Crear cuenta y hacer el test' }).click();
         await p.getByText('Ya existe una cuenta con este correo.').waitFor();
       },

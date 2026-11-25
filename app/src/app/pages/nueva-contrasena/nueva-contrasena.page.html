@@ -1,0 +1,38 @@
+<div class="pp-page">
+  <pp-top-app-bar variant="back" title="Nueva contraseña" back="/login" [scrolled]="scrolled()" />
+  <ion-content [scrollEvents]="true" (ionScroll)="scrolled.set($event.detail.scrollTop > 0)">
+    @switch (estado()) {
+      @case ('formulario') {
+        <main class="auth-main">
+          <div class="auth-head">
+            <h1 class="pp-screen-title">Crea una contraseña nueva</h1>
+            <p class="pp-intro">Elige una contraseña de al menos 8 caracteres.</p>
+          </div>
+          @if (summary()) { <pp-banner [text]="summary()!" /> }
+          <form class="auth-fields" novalidate (submit)="$event.preventDefault(); submit()">
+            <pp-text-field label="Nueva contraseña" type="password" autocomplete="new-password" [(value)]="password" [error]="passError()" />
+            <pp-text-field label="Repetir contraseña" type="password" autocomplete="new-password" [(value)]="password2" [error]="pass2Error()" />
+            <button type="submit" class="pp-visually-hidden" tabindex="-1" aria-hidden="true"></button>
+          </form>
+          <div class="auth-actions">
+            <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-state" [attr.aria-disabled]="sending()" (click)="submit()">Guardar contraseña</button>
+          </div>
+        </main>
+      }
+      @case ('hecha') {
+        <main class="auth-main auth-resultado">
+          <pp-empty-state role="status" icon="check_circle" title="Contraseña cambiada" [texts]="['Ya puedes iniciar sesión con tu contraseña nueva.']">
+            <a class="pp-btn pp-btn--filled pp-btn--block pp-state" routerLink="/login">Iniciar sesión</a>
+          </pp-empty-state>
+        </main>
+      }
+      @case ('caducado') {
+        <main class="auth-main auth-resultado">
+          <pp-empty-state role="alert" icon="link_off" title="Este enlace ya no sirve" [texts]="['Ha caducado o ya se ha usado. Pide uno nuevo para cambiar tu contraseña.']">
+            <a class="pp-btn pp-btn--filled pp-btn--block pp-state" routerLink="/recuperar">Pedir un enlace nuevo</a>
+          </pp-empty-state>
+        </main>
+      }
+    }
+  </ion-content>
+</div>

@@ -17,6 +17,7 @@
                        [error]="passError()" [support]="wrongCredentials() ? reescribe : null" />
         <button type="submit" class="pp-visually-hidden" tabindex="-1" aria-hidden="true"></button>
       </form>
+      <a class="pp-btn pp-btn--text pp-state auth-olvido" routerLink="/recuperar" [queryParams]="email().trim() ? { email: email().trim() } : {}">¿Has olvidado tu contraseña?</a>
 
       <div class="auth-actions">
         <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-state" [attr.aria-disabled]="sending()" (click)="submit()">Iniciar sesión</button>

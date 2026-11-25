@@ -1,0 +1,29 @@
+<div class="pp-page">
+  <pp-top-app-bar variant="back" title="Recuperar contraseña" back="/login" [scrolled]="scrolled()" />
+  <ion-content [scrollEvents]="true" (ionScroll)="scrolled.set($event.detail.scrollTop > 0)">
+    @if (!enviado()) {
+      <main class="auth-main">
+        <div class="auth-head">
+          <h1 class="pp-screen-title">¿Has olvidado tu contraseña?</h1>
+          <p class="pp-intro">Escribe el correo de tu cuenta y te enviaremos un enlace para crear una contraseña nueva.</p>
+        </div>
+        @if (banner()) { <pp-banner [text]="banner()!" /> }
+        <form class="auth-fields" novalidate (submit)="$event.preventDefault(); submit()">
+          <pp-text-field label="Correo electrónico" type="email" autocomplete="email" [(value)]="email" [error]="emailError()" />
+          <button type="submit" class="pp-visually-hidden" tabindex="-1" aria-hidden="true"></button>
+        </form>
+        <div class="auth-actions">
+          <button type="button" class="pp-btn pp-btn--filled pp-btn--block pp-state" [attr.aria-disabled]="sending()" (click)="submit()">Enviar enlace</button>
+        </div>
+        <pp-account-prompts [registro]="false" loginPregunta="¿Ya la recuerdas?" />
+      </main>
+    } @else {
+      <main class="auth-main auth-resultado">
+        <pp-empty-state role="status" icon="mark_email_read" title="Revisa tu correo"
+                        [texts]="['Si hay una cuenta con ese correo, te hemos enviado un enlace para crear una contraseña nueva. El enlace caduca en 1 hora.', 'Si no lo ves, mira también en la carpeta de spam.']">
+          <a class="pp-btn pp-btn--filled pp-btn--block pp-state" routerLink="/login">Volver a iniciar sesión</a>
+        </pp-empty-state>
+      </main>
+    }
+  </ion-content>
+</div>

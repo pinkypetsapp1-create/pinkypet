@@ -71,6 +71,41 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/password/forgot": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** «¿Has olvidado tu contraseña?»: envía un enlace (la respuesta es la misma exista o no la cuenta) */
+        post: operations["AuthController_forgot"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/password/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Comprueba si el enlace del correo sigue valiendo (sin usarlo) */
+        get: operations["AuthController_checkReset"];
+        put?: never;
+        /** Guarda la contraseña nueva, gasta el enlace y cierra todas las sesiones */
+        post: operations["AuthController_reset"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/refresh": {
         parameters: {
             query?: never;
@@ -298,6 +333,15 @@ export interface components {
             user: components["schemas"]["UserView"];
             /** @description true si la cuenta se acaba de crear (desde Registro se va al Test) */
             created: boolean;
+        };
+        ForgotPasswordDto: {
+            /** @example nombre@correo.com */
+            email: string;
+        };
+        ResetPasswordDto: {
+            /** @description El «token» del enlace del correo */
+            token: string;
+            password: string;
         };
         RefreshDto: {
             /** @description Token de renovación recibido al iniciar sesión o en la última renovación */
@@ -598,6 +642,98 @@ export interface operations {
             };
             /** @description GOOGLE_NOT_CONFIGURED */
             503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_forgot: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ForgotPasswordDto"];
+            };
+        };
+        responses: {
+            /** @description Petición aceptada */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description TOO_MANY_ATTEMPTS */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_checkReset: {
+        parameters: {
+            query: {
+                token: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description El enlace vale */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description RESET_TOKEN_INVALID */
+            410: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_reset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResetPasswordDto"];
+            };
+        };
+        responses: {
+            /** @description Contraseña cambiada */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description VALIDATION_FAILED · fields.password [MIN_LENGTH] */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description RESET_TOKEN_INVALID */
+            410: {
                 headers: {
                     [name: string]: unknown;
                 };
