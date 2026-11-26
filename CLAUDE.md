@@ -13,6 +13,7 @@ Especificación completa: `docs/SPEC.md`. Mapa diseño → código: `docs/design
 | `npm run design:lock -- --check` | Comprueba que `design/` coincide con `design/design.lock.json` |
 | `/sincronizar-diseno` | Trae los cambios de Claude Design (solo la lanza el equipo) |
 | `/nueva-mascota` | Añade la mascota de `mascotas/nueva-mascota.md` (+ su foto en `mascotas/fotos/`) al diseño, la app, el servidor y las bases de datos (solo la lanza el equipo) |
+| `npm run iconos` | Icono de la app Android y pantalla de arranque a partir del isotipo del Design System |
 | `npm run capturas -- 2a\|2b\|2c` | Capturas de la app (claro, oscuro, 206 px) en `docs/evidencia/<entrega>/`; necesita API y app arrancadas |
 | `npm run comparar -- design/_incoming/reference docs/evidencia/<entrega>` | Diseño y app lado a lado en `docs/evidencia/<entrega>/comparacion/` |
 

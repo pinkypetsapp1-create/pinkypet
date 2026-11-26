@@ -11,7 +11,8 @@
     "design:lock": "node scripts/design-lock.mjs",
     "test": "node --test scripts/*.test.mjs",
     "capturas": "node scripts/capturas.mjs",
-    "comparar": "node scripts/comparar.mjs"
+    "comparar": "node scripts/comparar.mjs",
+    "iconos": "node scripts/iconos-android.mjs"
   },
   "devDependencies": {
     "playwright": "^1.65.1"
