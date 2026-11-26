@@ -21,7 +21,7 @@ Claude también tiene el estado guardado en su memoria del proyecto.
 | F2 | App con todas las pantallas | ✅ Hecha |
 | F3 | Despliegue (Render + Atlas + APK) | ✅ Hecha: probada en el OPPO Reno 13 el 26-11 (APK, Google y texto al 200 %) |
 | F4 | Informe Ionic vs nativo en un Android real | ⬜ Sin empezar |
-| iOS | Ver la app en el simulador de Xcode | 🟡 Proyecto creado; **falta instalar Xcode** |
+| iOS | Ver la app en el simulador de Xcode | ⏸️ En pausa por decisión del equipo (26-11). El proyecto está creado y la guía es `docs/IOS.md` |
 
 ### Qué funciona en la nube
 
