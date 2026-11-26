@@ -269,7 +269,7 @@ CLAUDE.md · docs/ · design/ (solo lectura) · scripts/ · backend/ (NestJS + M
 | Simulación de la protectora | **Endpoint solo de desarrollo**: `POST /dev/requests/:id/resolve` con la cabecera `X-Dev-Key`. No existe con `NODE_ENV=production`. Atajo: `npm run demo:resolve -- <id> finalizada\|rechazada`. | decidido 2026-11-23 |
 | Disponibilidad tras la respuesta | Si la protectora responde (`finalizada` o `rechazada`), la mascota deja de estar disponible y sale del catálogo. Si se cancela, sigue disponible. `npm run seed` vuelve a dejarlas todas disponibles. | decidido 2026-11-23 |
 | Cálculo del % | Siempre a partir de las respuestas del test (§4.4 bis). | decidido 2026-11-23 |
-| ¿iOS fuera de alcance? | Sí: solo Android (lienzo 412 × 917 dp, APK, Keystore). | decidido 2026-11-24 (F3-4) |
+| ¿iOS fuera de alcance? | Cambia el 2026-11-25: el equipo añade el proyecto iOS para el simulador de Xcode (`app/ios/`, `docs/IOS.md`). El entregable principal sigue siendo Android. | decidido 2026-11-25 |
 | Capturas de referencia | Las saca Claude con Chrome desde el modo play de Claude Design (aproximadas, design-feedback F2-3); el equipo pidió trabajar con ellas. | decidido 2026-11-23 |
 | D1 · Fase 2 en tres entregas | 2a (base, Inicio, Registro, Login, Test) · 2b (Mascotas, Ficha) · 2c (Proceso, Perfil, primer inicio, errores). | aplicado 2026-11-23 (el equipo pidió empezar ya) |
 | D2 · Dónde se guarda la sesión | Android Keystore (`@aparajita/capacitor-secure-storage`); en el navegador, token de acceso en memoria y de renovación en `sessionStorage`. Ver `app/src/app/core/token-store.ts`. | aplicado 2026-11-23 (el equipo pidió empezar ya) |
