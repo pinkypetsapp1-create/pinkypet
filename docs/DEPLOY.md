@@ -89,6 +89,8 @@ El APK queda en `app/android/app/build/outputs/apk/debug/app-debug.apk` (≈ 14 
 
 ## 4 bis. App iOS en el simulador de Xcode
 
+**Guía paso a paso para cualquier Mac (también sin el proyecto descargado): `docs/IOS.md`.**
+
 El proyecto iOS está en `app/ios/` (Capacitor 8 con Swift Package Manager: no hace falta CocoaPods). Identificador `es.pinkypet.app`, iOS 15 o superior. Apunta al backend de Render; su origen `capacitor://localhost` ya está en `CORS_ORIGINS`.
 
 **Una sola vez (lo hace el equipo):**

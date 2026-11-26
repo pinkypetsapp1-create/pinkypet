@@ -54,6 +54,8 @@ Claude lo puede comprobar solo:
 - Conexión con Atlas: `backend/.env`. Está solo en este Mac y no se sube a GitHub.
 
 ### 2. iOS en el simulador (lo hacéis vosotras/os)
+
+**Se hará en el MacBook de una compañera:** guía completa en `docs/IOS.md`. Los pasos de abajo son para este Mac.
 1. Instalar **Xcode** desde la App Store (≈ 15 GB, con vuestro Apple ID).
 2. Abrir Xcode una vez y marcar **iOS** en las plataformas que ofrece instalar.
 3. En la app Terminal (piden la contraseña de administración del Mac):
