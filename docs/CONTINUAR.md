@@ -1,6 +1,6 @@
 # Cómo retomar Pinky Pet
 
-Última sesión: **25-11-2026**. Todo está guardado en GitHub (`main`, último commit `664d931` o posterior).
+Última sesión: **26-11-2026**. Todo está guardado en GitHub (`main`, último commit `664d931` o posterior).
 
 ## Para empezar la próxima sesión
 
@@ -19,7 +19,7 @@ Claude también tiene el estado guardado en su memoria del proyecto.
 | F0 | Diseño conectado y sincronización | ✅ Hecha |
 | F1 | Backend (NestJS + MongoDB) | ✅ Hecha |
 | F2 | App con todas las pantallas | ✅ Hecha |
-| F3 | Despliegue (Render + Atlas + APK) | 🟡 Falta comprobar en el móvil el texto al 200 % y «Continuar con Google» en el APK |
+| F3 | Despliegue (Render + Atlas + APK) | ✅ Hecha: probada en el OPPO Reno 13 el 26-11 (APK, Google y texto al 200 %) |
 | F4 | Informe Ionic vs nativo en un Android real | ⬜ Sin empezar |
 | iOS | Ver la app en el simulador de Xcode | 🟡 Proyecto creado; **falta instalar Xcode** |
 
@@ -65,10 +65,7 @@ Claude lo puede comprobar solo:
 
 Después, si queréis, se crea el cliente de Google para iOS (docs/DEPLOY.md §4 bis).
 
-### 3. Cerrar la Fase 3 en el OPPO Reno 13
-- Instalar el último APK: `~/Desktop/PinkyPet-debug.apk`. Para generar otro: docs/DEPLOY.md §4.
-- Probar «Continuar con Google» con una cuenta de la lista de usuarios de prueba.
-- *Ajustes → Pantalla → Tamaño de fuente* al máximo y revisar las pantallas (texto al 200 %).
+### 3. ~~Cerrar la Fase 3 en el OPPO Reno 13~~ ✅ hecho el 26-11
 
 ### 4. Fase 4: informe Ionic vs nativo
 Con el móvil real, valorar:
