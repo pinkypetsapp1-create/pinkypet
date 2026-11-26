@@ -102,6 +102,7 @@ cd ~/proyecto/pinkypet/app && npx ng serve --port 8100  # app en http://localhos
 | Ver la app en el simulador de iPhone | docs/DEPLOY.md §4 bis |
 
 ## Documentos de referencia
+- `docs/GUIA-DESDE-CERO.md`: cómo repetir todo el proceso con una app nueva.
 - `CLAUDE.md`: reglas de oro y comandos.
 - `docs/SPEC.md`: qué hace la app.
 - `docs/DEPLOY.md`: nube, APK e iOS.

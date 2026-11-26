@@ -290,4 +290,5 @@ El % **siempre** sale de las respuestas de cada persona: no hay ningún % fijo p
 | `docs/DEPLOY.md` | Nube, APK e iOS paso a paso |
 | `docs/IOS.md` | Abrir la app en el simulador de iPhone en cualquier Mac |
 | `docs/CONTINUAR.md` | Cómo retomar el trabajo |
+| `docs/GUIA-DESDE-CERO.md` | **Guía paso a paso para crear otra app desde cero** con el mismo proceso |
 | `design/CHANGELOG.md` | Historial de cambios del diseño |
